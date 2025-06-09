@@ -22,14 +22,14 @@ const partes: Part[] = [
     titulo: "Socket del CPU",
     descripcion:
       "Levanta la palanca, alinea la marca dorada del procesador con la muesca del socket y baja la palanca para fijar.",
-    imagen: "/models/guias/socket_cpu.png",
+    imagen: "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/placa-interactiva//socket-cpu-1.png",
   },
   {
     objects: ["Object_159_1"],
     titulo: "Enganche del Cooler",
     descripcion:
       "Puntos de fijación del disipador; asegurate de anclar el cooler con los clips incluidos.",
-    imagen: "/models/guias/enganche_cooler.png",
+    imagen: "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/placa-interactiva//cooler-tuto.png",
   },
   {
     objects: ["Object_33_1"],
@@ -57,7 +57,7 @@ const partes: Part[] = [
     titulo: "Slot de Tarjeta Gráfica",
     descripcion:
       "Inserta la GPU en el PCIe x16 hasta que los seguros laterales encajen.",
-    imagen: "/models/guias/slot_gpu.png",
+    imagen: "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/placa-interactiva//gpu-tuto.png",
   },
   {
     objects: ["Object_131_1"],
@@ -85,14 +85,14 @@ const partes: Part[] = [
     titulo: "Conector SATA",
     descripcion:
       "Usa estos puertos para discos duros y SSD SATA con cables SATA.",
-    imagen: "/models/guias/sata.png",
+    imagen: "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/placa-interactiva//sata%20tuto.png",
   },
   {
     objects: ["Object_53", "object_52_1", "Object_55_1", "Object_54_1"],
     titulo: "Conector del Panel Frontal",
     descripcion:
       "Pines para conectar power switch, reset switch, LEDs y buzzer del chasis.",
-    imagen: "/models/guias/panel_frontal.png",
+    imagen: "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/placa-interactiva//panel-ffrontal.png",
   },
   {
     objects: ["Object_137"],
@@ -145,7 +145,7 @@ const partes: Part[] = [
     objects: ["Object_154_1"],
     titulo: "Conector Multimedia",
     descripcion: "Pines para audio HD frontal o trasero del chasis.",
-    imagen: "/models/guias/multimedia.png",
+    imagen: "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/placa-interactiva//multimedia.png",
   },
 ];
 
