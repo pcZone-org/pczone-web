@@ -1,10 +1,8 @@
 "use client";
 import ResultBusqueda from "./resultsBusqueda";
 
-export default function ComponentesPage( searchParams: { producto: string }) {
-
-
+export default function ComponentesPage() {
     return(
-        ResultBusqueda({ params: { producto: "cpus" } })
-    )
+        ResultBusqueda()
+    );
 }

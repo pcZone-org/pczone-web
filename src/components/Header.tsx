@@ -17,7 +17,7 @@ export default function Header() {
 
     // redirige a /productos con el término de búsqueda
     if (busqueda.trim() !== '') {
-      router.push(`/productos?nombre=${encodeURIComponent(busqueda)}`);
+      router.push(`/busqueda?nombre=${encodeURIComponent(busqueda)}`);
     }
   };
   
@@ -49,7 +49,7 @@ export default function Header() {
             onChange={(e) => setBusqueda(e.target.value)}
             className="rounded-full px-4 py-1 text-black text-sm focus:outline-none w-32 md:w-48"
           />
-          <button type="submit" className="bg-white rounded-full p-1 cursor-pointer hover:bg-gray-200">
+          <button type="submit" className="bg-white rounded-full p-1 cursor-pointer hover:bg-gray-200" onClick={handleSubmit}>
             🔍
           </button>
         </div>
@@ -58,7 +58,7 @@ export default function Header() {
         <div className="flex items-center gap-10 font-medium flex-1 justify-center-safe">
           <Link href="guias">GUIAS</Link>
           <Link href="#" className="flex"><Image src={carritoIcon} alt="Carrito de compras" width={18} height={18} className="invert mr-2"/>CARRITO</Link>
-          <Link href="">FAQ</Link> 
+          <Link href="faq">FAQ</Link> 
         </div>
         <div className="bg-white text-black rounded-full w-8 h-8 flex items-center justify-center">
             <Link href="login" className="flex justify-start"> 
