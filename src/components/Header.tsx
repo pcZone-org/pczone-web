@@ -17,7 +17,7 @@ export default function Header() {
 
     // redirige a /productos con el término de búsqueda
     if (busqueda.trim() !== '') {
-      router.push(`/busqueda?nombre=${encodeURIComponent(busqueda)}`);
+      router.push(`/busqueda?nombre=${encodeURIComponent(busqueda)}&orden=precio_asc`);
     }
   };
   

@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function ResultBusqueda() {
         const searchParams = useSearchParams();
+        const componente = searchParams.get('componente') || '';
         const nombre = searchParams.get('nombre') || '';
         const [productos, setProductos] = useState<any[]>([]);
         const [page, setPage] = useState(1);
@@ -15,14 +16,13 @@ export default function ResultBusqueda() {
         //const componente = params.producto;
     
         useEffect(() => {
-            if (!nombre) return;
-            fetch(`/api/productos?componente=${nombre}&orden=${orden}&page=${page}&limit=12`)
+            fetch(`/api/productos?componente=${componente}&nombre=${nombre}&orden=${orden}&page=${page}&limit=12`)
             .then((res) => res.json())
             .then((data) => {
                 setProductos(data.productos);
                 setTotalPages(data.pages);
             });
-        }, [page, orden, nombre]);
+        }, [page, orden, componente, nombre]);
     
         if (!productos || productos.length === 0) {
             return (
@@ -39,7 +39,7 @@ export default function ResultBusqueda() {
     
                 {/* Resultados */}
                 <main className="flex-1 p-4 text-white">
-                    <h1 className="text-2xl font-semibold mt-6 capitalize">{nombre}</h1>
+                    <h1 className="text-2xl font-semibold mt-6 capitalize">{componente.replace("_", " ")}</h1>
     
                     <div className="flex justify-end mb-4">
                         <select value={orden} onChange={(e) => setOrden(e.target.value)} className="bg-[#4A89DC] text-white px-4 py-2 rounded">
