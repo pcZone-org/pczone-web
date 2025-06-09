@@ -69,4 +69,47 @@ export async function GET(request: Request) {
     } catch (error) {
         return NextResponse.json({ error: 'Error al obtener productos' }, { status: 500 });
     }
+
+    if (nombre) {
+    try {
+      const resultados = await Promise.all(
+        Object.entries(prismaModeloMap).map(async ([tipo, modelo]) => {
+          const items = await modelo.findMany({
+            where: {
+              name: {
+                contains: nombre,
+                mode: 'insensitive',
+              },
+            },
+          });
+
+          return items.map((item: any) => ({
+            ...item,
+            tipo, // 🏷️ agregamos de qué tabla viene
+          }));
+        })
+      );
+
+      const productos = resultados.flat();
+
+      // 🔢 Paginación manual sobre todos los resultados
+      const total = productos.length;
+      const paginados = productos
+        .sort((a, b) => {
+          if (orden === 'precio_asc') return a.price - b.price;
+          if (orden === 'precio_desc') return b.price - a.price;
+          return a.id - b.id;
+        })
+        .slice(skip, skip + limit);
+
+      return NextResponse.json({
+        productos: paginados,
+        total,
+        page,
+        pages: Math.ceil(total / limit),
+      });
+    } catch (error) {
+      return NextResponse.json({ error: 'Error en búsqueda global' }, { status: 500 });
+    }
+  }
 }
