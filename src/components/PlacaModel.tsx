@@ -1,4 +1,3 @@
-// components/PlacaModel.tsx
 "use client";
 
 import { ThreeEvent } from "@react-three/fiber";
@@ -9,12 +8,17 @@ export type PlacaModelProps = {
 };
 
 export default function PlacaModel({ onSeleccion }: PlacaModelProps) {
-  const { scene } = useGLTF("https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/placa-interactiva//moder.glb");
+  const { scene } = useGLTF(
+    "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/placa-interactiva/moder.glb"
+  );
 
-  // Ajustes de posición, rotación y escala
-  scene.position.set(0, -1.2, 0);
-  // Girar sobre X para que la placa quede de frente al iniciar
-  scene.rotation.set(-Math.PI / 2, 0, 0);
+  // posicion de la placa en la pantalla
+  scene.position.set(-5, -15, -20);
+
+  // posicion de la placa en el giroscopio
+  scene.rotation.set(-Math.PI / 2, Math.PI, -10);
+
+  // Escala uniforme
   scene.scale.set(2.5, 2.5, 2.5);
 
   return (

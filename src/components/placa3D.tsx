@@ -33,7 +33,7 @@ const partes: Part[] = [
     titulo: "Slot de RAM",
     descripcion:
       "Inserta el módulo en 45° y presiona hasta oír el clic de los seguros laterales.",
-    imagen: "/models/guias/slot_ram.png",
+    imagen: "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/placa-interactiva//instructivo-ram.png",
   },
   {
     objects: ["Object_28"],

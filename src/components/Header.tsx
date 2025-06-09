@@ -1,11 +1,26 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import logo_movile from "@/imagenes/logo-pcZone.png";
 import logo from "@/imagenes/PCZone_Horizntal.png";
 import carritoIcon from "@/imagenes/Icons/carritoIcon.svg";
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 
 export default function Header() {
+  const router = useRouter();
+  const [busqueda, setBusqueda] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // redirige a /productos con el término de búsqueda
+    if (busqueda.trim() !== '') {
+      router.push(`/busqueda?nombre=${encodeURIComponent(busqueda)}`);
+    }
+  };
+  
   return (
     <header className="bg-[#0E1C2F] text-white px-6 py-2">
       <div className="flex items-center justify-between w-full">
@@ -28,11 +43,13 @@ export default function Header() {
         <div className="flex items-center gap-2 bg-white rounded-full px-4 py-1">
           <input
             type="text"
-            placeholder="Buscar..."
+            placeholder="Buscar nombre del producto"
             aria-label="Buscar"
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
             className="rounded-full px-4 py-1 text-black text-sm focus:outline-none w-32 md:w-48"
           />
-          <button className="bg-white rounded-full p-1">
+          <button type="submit" className="bg-white rounded-full p-1 cursor-pointer hover:bg-gray-200" onClick={handleSubmit}>
             🔍
           </button>
         </div>
@@ -41,7 +58,7 @@ export default function Header() {
         <div className="flex items-center gap-10 font-medium flex-1 justify-center-safe">
           <Link href="guias">GUIAS</Link>
           <Link href="#" className="flex"><Image src={carritoIcon} alt="Carrito de compras" width={18} height={18} className="invert mr-2"/>CARRITO</Link>
-          <Link href="">FAQ</Link> 
+          <Link href="faq">FAQ</Link> 
         </div>
         <div className="bg-white text-black rounded-full w-8 h-8 flex items-center justify-center">
             <Link href="login" className="flex justify-start"> 
