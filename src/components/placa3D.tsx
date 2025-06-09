@@ -1,10 +1,12 @@
 // components/Placa3D.tsx
 "use client";
 
+
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Suspense, useState } from "react";
 import PlacaModel from "@/components/PlacaModel";
+
 
 type Part = {
   objects: string[];
@@ -12,6 +14,7 @@ type Part = {
   descripcion: string;
   imagen?: string;
 };
+
 
 const partes: Part[] = [
   {
@@ -146,13 +149,16 @@ const partes: Part[] = [
   },
 ];
 
+
 export default function Placa3D() {
   const [selectedPart, setSelectedPart] = useState<Part | null>(null);
+
 
   function handleSeleccion(nombre: string) {
     const part = partes.find((p) => p.objects.includes(nombre)) || null;
     setSelectedPart(part);
   }
+
 
   return (
     <div className="relative w-full h-[700px]">
@@ -160,9 +166,11 @@ export default function Placa3D() {
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
 
+
         <Suspense fallback={null}>
           <PlacaModel onSeleccion={handleSeleccion} />
         </Suspense>
+
 
         <OrbitControls
           enableZoom
@@ -171,6 +179,7 @@ export default function Placa3D() {
           target={[0, 0, 0]}
         />
       </Canvas>
+
 
       {selectedPart && (
         <div className="absolute top-16 left-16 bg-white p-4 rounded shadow-md max-w-sm z-20 text-black">
