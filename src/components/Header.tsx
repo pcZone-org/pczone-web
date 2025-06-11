@@ -34,7 +34,7 @@ export default function Header() {
           <nav className="flex gap-10 font-medium">
             <Link href="/">INICIO</Link>
             <Link href="productos">PRODUCTOS</Link>
-            <Link href="#">ARMA TU PC</Link>
+            <Link href="arma-pc">ARMA TU PC</Link>
             <Link href="compra-x-zona">COMPRA EN TU ZONA</Link>
           </nav>
         </div>

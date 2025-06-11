@@ -23,7 +23,7 @@ export default function Home() {
           </Link>
 
           <Link
-            href="#"
+            href="arma-pc"
             className="bg-white hover:bg-blue-200 text-black font-semibold px-25 py-10 text-5xl rounded-xl text-center transition min-w-[300px]"
           >
             Arma tu PC
