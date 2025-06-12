@@ -376,8 +376,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.9.0
+   * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
    */
   export type PrismaVersion = {
     client: string
@@ -12963,6 +12963,8 @@ export namespace Prisma {
     contrasenia: string | null
     fecha_nacimiento: Date | null
     permisos: boolean | null
+    imagen_url: string | null
+    direccion: string | null
   }
 
   export type UsusariosMaxAggregateOutputType = {
@@ -12973,6 +12975,8 @@ export namespace Prisma {
     contrasenia: string | null
     fecha_nacimiento: Date | null
     permisos: boolean | null
+    imagen_url: string | null
+    direccion: string | null
   }
 
   export type UsusariosCountAggregateOutputType = {
@@ -12983,6 +12987,8 @@ export namespace Prisma {
     contrasenia: number
     fecha_nacimiento: number
     permisos: number
+    imagen_url: number
+    direccion: number
     _all: number
   }
 
@@ -13003,6 +13009,8 @@ export namespace Prisma {
     contrasenia?: true
     fecha_nacimiento?: true
     permisos?: true
+    imagen_url?: true
+    direccion?: true
   }
 
   export type UsusariosMaxAggregateInputType = {
@@ -13013,6 +13021,8 @@ export namespace Prisma {
     contrasenia?: true
     fecha_nacimiento?: true
     permisos?: true
+    imagen_url?: true
+    direccion?: true
   }
 
   export type UsusariosCountAggregateInputType = {
@@ -13023,6 +13033,8 @@ export namespace Prisma {
     contrasenia?: true
     fecha_nacimiento?: true
     permisos?: true
+    imagen_url?: true
+    direccion?: true
     _all?: true
   }
 
@@ -13120,6 +13132,8 @@ export namespace Prisma {
     contrasenia: string
     fecha_nacimiento: Date
     permisos: boolean | null
+    imagen_url: string | null
+    direccion: string | null
     _count: UsusariosCountAggregateOutputType | null
     _avg: UsusariosAvgAggregateOutputType | null
     _sum: UsusariosSumAggregateOutputType | null
@@ -13149,6 +13163,8 @@ export namespace Prisma {
     contrasenia?: boolean
     fecha_nacimiento?: boolean
     permisos?: boolean
+    imagen_url?: boolean
+    direccion?: boolean
   }, ExtArgs["result"]["ususarios"]>
 
   export type ususariosSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13159,6 +13175,8 @@ export namespace Prisma {
     contrasenia?: boolean
     fecha_nacimiento?: boolean
     permisos?: boolean
+    imagen_url?: boolean
+    direccion?: boolean
   }, ExtArgs["result"]["ususarios"]>
 
   export type ususariosSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13169,6 +13187,8 @@ export namespace Prisma {
     contrasenia?: boolean
     fecha_nacimiento?: boolean
     permisos?: boolean
+    imagen_url?: boolean
+    direccion?: boolean
   }, ExtArgs["result"]["ususarios"]>
 
   export type ususariosSelectScalar = {
@@ -13179,9 +13199,11 @@ export namespace Prisma {
     contrasenia?: boolean
     fecha_nacimiento?: boolean
     permisos?: boolean
+    imagen_url?: boolean
+    direccion?: boolean
   }
 
-  export type ususariosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_user" | "nombre" | "apellido" | "mail" | "contrasenia" | "fecha_nacimiento" | "permisos", ExtArgs["result"]["ususarios"]>
+  export type ususariosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_user" | "nombre" | "apellido" | "mail" | "contrasenia" | "fecha_nacimiento" | "permisos" | "imagen_url" | "direccion", ExtArgs["result"]["ususarios"]>
 
   export type $ususariosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ususarios"
@@ -13194,6 +13216,8 @@ export namespace Prisma {
       contrasenia: string
       fecha_nacimiento: Date
       permisos: boolean | null
+      imagen_url: string | null
+      direccion: string | null
     }, ExtArgs["result"]["ususarios"]>
     composites: {}
   }
@@ -13624,6 +13648,8 @@ export namespace Prisma {
     readonly contrasenia: FieldRef<"ususarios", 'String'>
     readonly fecha_nacimiento: FieldRef<"ususarios", 'DateTime'>
     readonly permisos: FieldRef<"ususarios", 'Boolean'>
+    readonly imagen_url: FieldRef<"ususarios", 'String'>
+    readonly direccion: FieldRef<"ususarios", 'String'>
   }
     
 
@@ -14022,6 +14048,7 @@ export namespace Prisma {
     cuil: Decimal | null
     direccion: string | null
     descripcion: string | null
+    nombre_comercio: string | null
   }
 
   export type VendedoresMaxAggregateOutputType = {
@@ -14034,6 +14061,7 @@ export namespace Prisma {
     cuil: Decimal | null
     direccion: string | null
     descripcion: string | null
+    nombre_comercio: string | null
   }
 
   export type VendedoresCountAggregateOutputType = {
@@ -14046,6 +14074,7 @@ export namespace Prisma {
     cuil: number
     direccion: number
     descripcion: number
+    nombre_comercio: number
     _all: number
   }
 
@@ -14070,6 +14099,7 @@ export namespace Prisma {
     cuil?: true
     direccion?: true
     descripcion?: true
+    nombre_comercio?: true
   }
 
   export type VendedoresMaxAggregateInputType = {
@@ -14082,6 +14112,7 @@ export namespace Prisma {
     cuil?: true
     direccion?: true
     descripcion?: true
+    nombre_comercio?: true
   }
 
   export type VendedoresCountAggregateInputType = {
@@ -14094,6 +14125,7 @@ export namespace Prisma {
     cuil?: true
     direccion?: true
     descripcion?: true
+    nombre_comercio?: true
     _all?: true
   }
 
@@ -14193,6 +14225,7 @@ export namespace Prisma {
     cuil: Decimal
     direccion: string
     descripcion: string | null
+    nombre_comercio: string | null
     _count: VendedoresCountAggregateOutputType | null
     _avg: VendedoresAvgAggregateOutputType | null
     _sum: VendedoresSumAggregateOutputType | null
@@ -14224,6 +14257,7 @@ export namespace Prisma {
     cuil?: boolean
     direccion?: boolean
     descripcion?: boolean
+    nombre_comercio?: boolean
   }, ExtArgs["result"]["vendedores"]>
 
   export type vendedoresSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -14236,6 +14270,7 @@ export namespace Prisma {
     cuil?: boolean
     direccion?: boolean
     descripcion?: boolean
+    nombre_comercio?: boolean
   }, ExtArgs["result"]["vendedores"]>
 
   export type vendedoresSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -14248,6 +14283,7 @@ export namespace Prisma {
     cuil?: boolean
     direccion?: boolean
     descripcion?: boolean
+    nombre_comercio?: boolean
   }, ExtArgs["result"]["vendedores"]>
 
   export type vendedoresSelectScalar = {
@@ -14260,9 +14296,10 @@ export namespace Prisma {
     cuil?: boolean
     direccion?: boolean
     descripcion?: boolean
+    nombre_comercio?: boolean
   }
 
-  export type vendedoresOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_vendedor" | "nombre" | "apellido" | "mail" | "contrasenia" | "fecha_nacimiento" | "cuil" | "direccion" | "descripcion", ExtArgs["result"]["vendedores"]>
+  export type vendedoresOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_vendedor" | "nombre" | "apellido" | "mail" | "contrasenia" | "fecha_nacimiento" | "cuil" | "direccion" | "descripcion" | "nombre_comercio", ExtArgs["result"]["vendedores"]>
 
   export type $vendedoresPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "vendedores"
@@ -14277,6 +14314,7 @@ export namespace Prisma {
       cuil: Prisma.Decimal
       direccion: string
       descripcion: string | null
+      nombre_comercio: string | null
     }, ExtArgs["result"]["vendedores"]>
     composites: {}
   }
@@ -14709,6 +14747,7 @@ export namespace Prisma {
     readonly cuil: FieldRef<"vendedores", 'Decimal'>
     readonly direccion: FieldRef<"vendedores", 'String'>
     readonly descripcion: FieldRef<"vendedores", 'String'>
+    readonly nombre_comercio: FieldRef<"vendedores", 'String'>
   }
     
 
@@ -15253,7 +15292,9 @@ export namespace Prisma {
     mail: 'mail',
     contrasenia: 'contrasenia',
     fecha_nacimiento: 'fecha_nacimiento',
-    permisos: 'permisos'
+    permisos: 'permisos',
+    imagen_url: 'imagen_url',
+    direccion: 'direccion'
   };
 
   export type UsusariosScalarFieldEnum = (typeof UsusariosScalarFieldEnum)[keyof typeof UsusariosScalarFieldEnum]
@@ -15268,7 +15309,8 @@ export namespace Prisma {
     fecha_nacimiento: 'fecha_nacimiento',
     cuil: 'cuil',
     direccion: 'direccion',
-    descripcion: 'descripcion'
+    descripcion: 'descripcion',
+    nombre_comercio: 'nombre_comercio'
   };
 
   export type VendedoresScalarFieldEnum = (typeof VendedoresScalarFieldEnum)[keyof typeof VendedoresScalarFieldEnum]
@@ -16169,6 +16211,8 @@ export namespace Prisma {
     contrasenia?: StringFilter<"ususarios"> | string
     fecha_nacimiento?: DateTimeFilter<"ususarios"> | Date | string
     permisos?: BoolNullableFilter<"ususarios"> | boolean | null
+    imagen_url?: StringNullableFilter<"ususarios"> | string | null
+    direccion?: StringNullableFilter<"ususarios"> | string | null
   }
 
   export type ususariosOrderByWithRelationInput = {
@@ -16179,6 +16223,8 @@ export namespace Prisma {
     contrasenia?: SortOrder
     fecha_nacimiento?: SortOrder
     permisos?: SortOrderInput | SortOrder
+    imagen_url?: SortOrderInput | SortOrder
+    direccion?: SortOrderInput | SortOrder
   }
 
   export type ususariosWhereUniqueInput = Prisma.AtLeast<{
@@ -16192,6 +16238,8 @@ export namespace Prisma {
     contrasenia?: StringFilter<"ususarios"> | string
     fecha_nacimiento?: DateTimeFilter<"ususarios"> | Date | string
     permisos?: BoolNullableFilter<"ususarios"> | boolean | null
+    imagen_url?: StringNullableFilter<"ususarios"> | string | null
+    direccion?: StringNullableFilter<"ususarios"> | string | null
   }, "id_user">
 
   export type ususariosOrderByWithAggregationInput = {
@@ -16202,6 +16250,8 @@ export namespace Prisma {
     contrasenia?: SortOrder
     fecha_nacimiento?: SortOrder
     permisos?: SortOrderInput | SortOrder
+    imagen_url?: SortOrderInput | SortOrder
+    direccion?: SortOrderInput | SortOrder
     _count?: ususariosCountOrderByAggregateInput
     _avg?: ususariosAvgOrderByAggregateInput
     _max?: ususariosMaxOrderByAggregateInput
@@ -16220,6 +16270,8 @@ export namespace Prisma {
     contrasenia?: StringWithAggregatesFilter<"ususarios"> | string
     fecha_nacimiento?: DateTimeWithAggregatesFilter<"ususarios"> | Date | string
     permisos?: BoolNullableWithAggregatesFilter<"ususarios"> | boolean | null
+    imagen_url?: StringNullableWithAggregatesFilter<"ususarios"> | string | null
+    direccion?: StringNullableWithAggregatesFilter<"ususarios"> | string | null
   }
 
   export type vendedoresWhereInput = {
@@ -16235,6 +16287,7 @@ export namespace Prisma {
     cuil?: DecimalFilter<"vendedores"> | Decimal | DecimalJsLike | number | string
     direccion?: StringFilter<"vendedores"> | string
     descripcion?: StringNullableFilter<"vendedores"> | string | null
+    nombre_comercio?: StringNullableFilter<"vendedores"> | string | null
   }
 
   export type vendedoresOrderByWithRelationInput = {
@@ -16247,6 +16300,7 @@ export namespace Prisma {
     cuil?: SortOrder
     direccion?: SortOrder
     descripcion?: SortOrderInput | SortOrder
+    nombre_comercio?: SortOrderInput | SortOrder
   }
 
   export type vendedoresWhereUniqueInput = Prisma.AtLeast<{
@@ -16262,6 +16316,7 @@ export namespace Prisma {
     cuil?: DecimalFilter<"vendedores"> | Decimal | DecimalJsLike | number | string
     direccion?: StringFilter<"vendedores"> | string
     descripcion?: StringNullableFilter<"vendedores"> | string | null
+    nombre_comercio?: StringNullableFilter<"vendedores"> | string | null
   }, "id_vendedor">
 
   export type vendedoresOrderByWithAggregationInput = {
@@ -16274,6 +16329,7 @@ export namespace Prisma {
     cuil?: SortOrder
     direccion?: SortOrder
     descripcion?: SortOrderInput | SortOrder
+    nombre_comercio?: SortOrderInput | SortOrder
     _count?: vendedoresCountOrderByAggregateInput
     _avg?: vendedoresAvgOrderByAggregateInput
     _max?: vendedoresMaxOrderByAggregateInput
@@ -16294,6 +16350,7 @@ export namespace Prisma {
     cuil?: DecimalWithAggregatesFilter<"vendedores"> | Decimal | DecimalJsLike | number | string
     direccion?: StringWithAggregatesFilter<"vendedores"> | string
     descripcion?: StringNullableWithAggregatesFilter<"vendedores"> | string | null
+    nombre_comercio?: StringNullableWithAggregatesFilter<"vendedores"> | string | null
   }
 
   export type coolersCreateInput = {
@@ -17162,6 +17219,8 @@ export namespace Prisma {
     contrasenia: string
     fecha_nacimiento: Date | string
     permisos?: boolean | null
+    imagen_url?: string | null
+    direccion?: string | null
   }
 
   export type ususariosUncheckedCreateInput = {
@@ -17172,6 +17231,8 @@ export namespace Prisma {
     contrasenia: string
     fecha_nacimiento: Date | string
     permisos?: boolean | null
+    imagen_url?: string | null
+    direccion?: string | null
   }
 
   export type ususariosUpdateInput = {
@@ -17181,6 +17242,8 @@ export namespace Prisma {
     contrasenia?: StringFieldUpdateOperationsInput | string
     fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
     permisos?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ususariosUncheckedUpdateInput = {
@@ -17191,6 +17254,8 @@ export namespace Prisma {
     contrasenia?: StringFieldUpdateOperationsInput | string
     fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
     permisos?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ususariosCreateManyInput = {
@@ -17201,6 +17266,8 @@ export namespace Prisma {
     contrasenia: string
     fecha_nacimiento: Date | string
     permisos?: boolean | null
+    imagen_url?: string | null
+    direccion?: string | null
   }
 
   export type ususariosUpdateManyMutationInput = {
@@ -17210,6 +17277,8 @@ export namespace Prisma {
     contrasenia?: StringFieldUpdateOperationsInput | string
     fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
     permisos?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ususariosUncheckedUpdateManyInput = {
@@ -17220,6 +17289,8 @@ export namespace Prisma {
     contrasenia?: StringFieldUpdateOperationsInput | string
     fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
     permisos?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type vendedoresCreateInput = {
@@ -17231,6 +17302,7 @@ export namespace Prisma {
     cuil: Decimal | DecimalJsLike | number | string
     direccion: string
     descripcion?: string | null
+    nombre_comercio?: string | null
   }
 
   export type vendedoresUncheckedCreateInput = {
@@ -17243,6 +17315,7 @@ export namespace Prisma {
     cuil: Decimal | DecimalJsLike | number | string
     direccion: string
     descripcion?: string | null
+    nombre_comercio?: string | null
   }
 
   export type vendedoresUpdateInput = {
@@ -17254,6 +17327,7 @@ export namespace Prisma {
     cuil?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     direccion?: StringFieldUpdateOperationsInput | string
     descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    nombre_comercio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type vendedoresUncheckedUpdateInput = {
@@ -17266,6 +17340,7 @@ export namespace Prisma {
     cuil?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     direccion?: StringFieldUpdateOperationsInput | string
     descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    nombre_comercio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type vendedoresCreateManyInput = {
@@ -17278,6 +17353,7 @@ export namespace Prisma {
     cuil: Decimal | DecimalJsLike | number | string
     direccion: string
     descripcion?: string | null
+    nombre_comercio?: string | null
   }
 
   export type vendedoresUpdateManyMutationInput = {
@@ -17289,6 +17365,7 @@ export namespace Prisma {
     cuil?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     direccion?: StringFieldUpdateOperationsInput | string
     descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    nombre_comercio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type vendedoresUncheckedUpdateManyInput = {
@@ -17301,6 +17378,7 @@ export namespace Prisma {
     cuil?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     direccion?: StringFieldUpdateOperationsInput | string
     descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    nombre_comercio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -18062,6 +18140,8 @@ export namespace Prisma {
     contrasenia?: SortOrder
     fecha_nacimiento?: SortOrder
     permisos?: SortOrder
+    imagen_url?: SortOrder
+    direccion?: SortOrder
   }
 
   export type ususariosAvgOrderByAggregateInput = {
@@ -18076,6 +18156,8 @@ export namespace Prisma {
     contrasenia?: SortOrder
     fecha_nacimiento?: SortOrder
     permisos?: SortOrder
+    imagen_url?: SortOrder
+    direccion?: SortOrder
   }
 
   export type ususariosMinOrderByAggregateInput = {
@@ -18086,6 +18168,8 @@ export namespace Prisma {
     contrasenia?: SortOrder
     fecha_nacimiento?: SortOrder
     permisos?: SortOrder
+    imagen_url?: SortOrder
+    direccion?: SortOrder
   }
 
   export type ususariosSumOrderByAggregateInput = {
@@ -18124,6 +18208,7 @@ export namespace Prisma {
     cuil?: SortOrder
     direccion?: SortOrder
     descripcion?: SortOrder
+    nombre_comercio?: SortOrder
   }
 
   export type vendedoresAvgOrderByAggregateInput = {
@@ -18141,6 +18226,7 @@ export namespace Prisma {
     cuil?: SortOrder
     direccion?: SortOrder
     descripcion?: SortOrder
+    nombre_comercio?: SortOrder
   }
 
   export type vendedoresMinOrderByAggregateInput = {
@@ -18153,6 +18239,7 @@ export namespace Prisma {
     cuil?: SortOrder
     direccion?: SortOrder
     descripcion?: SortOrder
+    nombre_comercio?: SortOrder
   }
 
   export type vendedoresSumOrderByAggregateInput = {

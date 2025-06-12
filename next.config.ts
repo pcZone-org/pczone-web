@@ -4,8 +4,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: [
       'pcsupptnitvozhbhfxiu.supabase.co', // tu proyecto en Supabase
-      'i.imgur.com', 
-
+      'i.imgur.com',
     ],
   },
 };

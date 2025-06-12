@@ -138,10 +138,10 @@ model sounds {
 
 model ususarios {
   id_user          Int      @id @default(autoincrement())
-  nombre           String   @db.Char(20)
-  apellido         String   @db.Char(20)
-  mail             String   @db.Char(20)
-  contrasenia      String   @db.Char(20)
+  nombre           String   @db.VarChar
+  apellido         String   @db.VarChar
+  mail             String   @db.VarChar
+  contrasenia      String   @db.VarChar
   fecha_nacimiento DateTime @db.Date
   permisos         Boolean?
   imagen_url       String?
@@ -150,12 +150,13 @@ model ususarios {
 
 model vendedores {
   id_vendedor      Int      @id @default(autoincrement())
-  nombre           String   @db.Char(20)
-  apellido         String   @db.Char(20)
-  mail             String   @db.Char(20)
-  contrasenia      String   @db.Char(20)
+  nombre           String   @db.VarChar
+  apellido         String   @db.VarChar
+  mail             String   @db.VarChar
+  contrasenia      String   @db.VarChar(50)
   fecha_nacimiento DateTime @db.Date
   cuil             Decimal  @db.Decimal(11, 0)
   direccion        String
   descripcion      String?
+  nombre_comercio  String?
 }
