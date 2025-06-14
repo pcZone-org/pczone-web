@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     nombre_comercio: body.nombre_comercio?.trim() || null,
     nombre: body.nombre.trim(),
     apellido: body.apellido.trim(),
-    mail: body.mail.trim(),
+    mail: body.email.trim(),
     contrasenia: body.contrasenia.trim(),
     cuil: Number(body.cuil), 
     direccion: body.direccion.trim(),

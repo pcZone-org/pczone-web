@@ -31,7 +31,7 @@ export default function CompraZonaCliente({ productos }: Props) {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {productos.map((p) => (
             <Producto
-              key={p.id}
+              id={p.id}
               nombre={p.name}
               precio={Number(p.price ?? 0)}
               imagen_url={p.imagen_url ?? ""}

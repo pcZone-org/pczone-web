@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="flex items-center justify-around w-full">
                 {/* FOOTER: logo */}
                 <div className="flex justify-start my-4">
-                    <Link href="#">
+                    <Link href="/">
                         <Image src={logo_movile} alt="logo PCZone footer" width={120} height={120} className="rounded-2x1" />
                     </Link>
                 </div>
@@ -21,7 +21,7 @@ export default function Footer() {
                     <Link href={"#"} className="font-bold">
                         Boton Sorpresa
                     </Link>
-                    <Link href={"#"} className="font-bold">
+                    <Link href={"faq"} className="font-bold">
                         Preguntas Frecuentes
                     </Link>
                 </div>

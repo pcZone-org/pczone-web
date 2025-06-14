@@ -54,7 +54,7 @@ export default function ResultBusqueda() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {productos.map((p: any) => (
                             <Producto
-                                key={p.id}
+                                id={p.id}
                                 nombre={p.name}
                                 precio={Number(p.price ?? 0)}
                                 imagen_url={p.imagen_url ?? ""}
