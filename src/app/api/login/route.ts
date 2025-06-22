@@ -1,35 +1,42 @@
+// src/app/api/login/route.ts
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
 export async function POST(request: Request) {
   const { email, contrasenia } = await request.json();
 
-  // Limpiar espacios extra
-  const cleanedEmail = email.trim();
-  const cleanedPassword = contrasenia.trim();
+  // 1) Limpiar espacios extra
+  const cleanedEmail = (email ?? "").trim();
+  const cleanedPassword = (contrasenia ?? "").trim();
 
   try {
-    // Buscar en usuarios
+    // 2) Intentar encontrar en tabla usuarios
     const usuario = await prisma.ususarios.findFirst({
       where: { mail: cleanedEmail }
     });
 
     if (usuario && usuario.contrasenia.trim() === cleanedPassword) {
-      // Podrías guardar en sessionStorage o similar el tipo si querés
-      return NextResponse.json({ ok: true, user: usuario, tipo: "usuario" });
+      // OK → usuario normal
+      return NextResponse.json(
+        { ok: true, user: { id: usuario.id_user, nombre: usuario.nombre }, tipo: "usuario" },
+        { status: 200 }
+      );
     }
 
-    // Buscar en vendedores
+    // 3) Intentar encontrar en tabla vendedores
     const vendedor = await prisma.vendedores.findFirst({
       where: { mail: cleanedEmail }
     });
 
     if (vendedor && vendedor.contrasenia.trim() === cleanedPassword) {
-      return NextResponse.json({ ok: true, user: vendedor, tipo: "vendedor" });
+      // OK → vendedor
+      return NextResponse.json(
+        { ok: true, user: { id: vendedor.id_vendedor, nombre: vendedor.nombre }, tipo: "vendedor" },
+        { status: 200 }
+      );
     }
 
-  
-    // Si no encontró en ninguna tabla
+    // 4) No encontrado en ninguna → credenciales incorrectas
     return NextResponse.json(
       { ok: false, error: "Credenciales incorrectas" },
       { status: 401 }

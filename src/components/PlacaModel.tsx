@@ -12,7 +12,7 @@ export type PlacaModelProps = {
 
 export default function PlacaModel({ onSeleccion }: PlacaModelProps) {
   const { scene } = useGLTF(
-    "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/placa-interactiva/moder.glb"
+    "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/placa-interactiva//moder.glb"
   );
 
 

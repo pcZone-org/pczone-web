@@ -10,7 +10,6 @@ import "@/app/globals.css";
 
 export default function Login() {
   const router = useRouter();
-
   const [email, setEmail] = useState("");
   const [contrasenia, setContrasenia] = useState("");
   const [error, setError] = useState("");
@@ -21,16 +20,15 @@ export default function Login() {
     const res = await fetch("/api/login", {
       method: "POST",
       body: JSON.stringify({ email, contrasenia }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
     });
-
     const data = await res.json();
 
-    if (res.ok) {
-      alert("✅ ¡Inicio de sesión exitoso!");
-      router.push("/"); // Redirige al index
+    if (res.ok && data.ok) {
+      // Guardamos el rol
+      localStorage.setItem("role", data.tipo);
+      localStorage.setItem("userName", data.user.nombre);
+      router.push("/"); // Redirige al home
     } else {
       setError(data.error || "Error al iniciar sesión");
     }
@@ -42,9 +40,8 @@ export default function Login() {
         <Image
           src={banner2}
           alt="Componentes"
-          layout="fill"
-          objectFit="cover"
-          className="clip-diagonal"
+          fill
+          className="object-cover clip-diagonal"
         />
       </div>
 
