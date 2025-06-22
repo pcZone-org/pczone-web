@@ -5,20 +5,46 @@ import logo_movile from "@/imagenes/logo-pcZone.png";
 import logo from "@/imagenes/PCZone_Horizntal.png";
 import carritoIcon from "@/imagenes/Icons/carritoIcon.svg";
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 export default function Header() {
   const router = useRouter();
   const [busqueda, setBusqueda] = useState('');
+  const [sugerencias, setSugerencias] = useState<any[]>([]);
+  const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
+
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      if (busqueda.trim().length > 1) {
+        fetch(`/api/productos?nombre=${encodeURIComponent(busqueda)}&limit=5`)
+          .then((res) => res.json())
+          .then((data) => {
+            setSugerencias(data.productos || []);
+            setMostrarSugerencias(true);
+          });
+      } else {
+        setSugerencias([]);
+        setMostrarSugerencias(false);
+      }
+    }, 300);
+
+    return () => clearTimeout(delay);
+  }, [busqueda]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // redirige a /productos con el término de búsqueda
+    
     if (busqueda.trim() !== '') {
       router.push(`/busqueda?nombre=${encodeURIComponent(busqueda)}&orden=precio_asc`);
+      setBusqueda('');
     }
+  };
+
+  const handleClickSugerencia = (nombre: string) => {
+    router.push(`/busqueda?nombre=${encodeURIComponent(nombre)}`);
+    setBusqueda('');
+    setMostrarSugerencias(false);
   };
   
   return (
@@ -41,18 +67,34 @@ export default function Header() {
 
         {/* CENTRO: buscador */}
         <div className="flex items-center gap-2 bg-white rounded-full px-4 py-1">
-          <input
-            type="text"
-            placeholder="Buscar nombre del producto"
-            aria-label="Buscar"
-            value={busqueda}
-            onChange={(e) => setBusqueda(e.target.value)}
-            className="rounded-full px-4 py-1 text-black text-sm focus:outline-none w-32 md:w-48"
-          />
-          <button type="submit" className="bg-white rounded-full p-1 cursor-pointer hover:bg-gray-200" onClick={handleSubmit}>
-            🔍
-          </button>
+          <form onSubmit={handleSubmit} className="relative flex items-center">
+            <input
+              type="text"
+              placeholder="Buscar nombre del producto"
+              aria-label="Buscar"
+              value={busqueda}
+              onChange={(e) => setBusqueda(e.target.value)}
+              className="rounded-full px-4 py-1 text-black text-sm focus:outline-none w-32 md:w-48"
+            />
+            <button type="submit" className="bg-white rounded-full p-1 cursor-pointer hover:bg-gray-200" >
+              🔍
+            </button>
+          </form>
+          
         </div>
+          {mostrarSugerencias && sugerencias.length > 0 && (
+            <ul className="absolute bg-white text-black rounded-lg shadow-lg z-10 top-11 left-1/2 -translate-x-1/2  max-h-60 overflow-y-auto">
+              {sugerencias.map((sug) => (
+                <li
+                  key={`${sug.tipo}-${sug.id}`}
+                  onClick={() => handleClickSugerencia(sug.name)}
+                  className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                >
+                  {sug.name} - <span className="font-semibold capitalize">{sug.tipo.replace("_", " ")}</span>
+                </li>
+              ))}
+            </ul>
+          )}
 
         {/* DERECHA: enlaces extra */}
         <div className="flex items-center gap-10 font-medium flex-1 justify-center-safe">

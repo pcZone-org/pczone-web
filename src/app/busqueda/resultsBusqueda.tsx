@@ -2,6 +2,7 @@ import Producto from "@/components/producto";
 import SidebarMenu from '@/components/Sidebar';
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { div } from "three/tsl";
 
 export default function ResultBusqueda() {
         const searchParams = useSearchParams();
@@ -26,10 +27,15 @@ export default function ResultBusqueda() {
     
         if (!productos || productos.length === 0) {
             return (
-                <div className="flex flex-col items-center justify-center max-h-full text-center text-white">
-                    <h2 className="text-xl font-semibold">No se encontraron productos</h2>
-                    <p className="text-gray-300 mt-1">Probá con otro nombre o categoría</p>
+                <>
+                <div className="flex gap-x-[40rem] md:max-md:gap-x-[20rem] sm:gap-x-[10rem] min-h-screen">
+                    <SidebarMenu />
+                    <div className="flex flex-col items-center justify-center text-center text-white">
+                        <h2 className="text-xl font-semibold">No se encontraron productos</h2>
+                        <p className="text-gray-300 mt-1">Probá con otro nombre o categoría</p>
+                    </div>
                 </div>
+                </>
             );
         }
     

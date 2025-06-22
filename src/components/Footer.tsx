@@ -1,10 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import {Linkedin, Instagram, Twitter, PhoneIcon} from "lucide-react"
 import logo_movile from "@/imagenes/logo-pcZone.png";
-import logo_whats from "@/imagenes/Icons/whatsappIcon.png";
-import logo_link from "@/imagenes/Icons/LinkedinIcon.png";
-import logo_insta from "@/imagenes/Icons/InstagramIcon.png";
-import logo_x from "@/imagenes/Icons/TwitterIcon.png";
 
 export default function Footer() {
     return (
@@ -27,18 +24,18 @@ export default function Footer() {
                 </div>
                 {/* FOOTER: Redes sociales */}
                 <div className="grid grid-cols-2 gap-4">
-                    <Link href={"#"}>
-                        <Image src={logo_insta} alt="Instagram" width={30} height={30}/>
+                    <Link href={"https://www.instagram.com/pczoneoficial/"}>
+                        <Instagram/>
                     </Link>
-                    <Link href={"#"}>
-                        <Image src={logo_x} alt="X, Twitter" width={30} height={30}/>
+                    <Link href={"https://x.com/PCZoneOficial"}>
+                        <Twitter/>
                     </Link>
-                    <Link href={"#"}>
-                        <Image src={logo_whats} alt="Whatsapp" width={30} height={30}/>
+                    <Link href={"https://api.whatsapp.com/send?phone=2257635213"}>
+                        <PhoneIcon/>
                         
                     </Link>
-                    <Link href={"#"}>
-                        <Image src={logo_link} alt="Linkedin" width={30} height={30}/>
+                    <Link href={"https://www.linkedin.com/in/tobias-alfonso-37a51926b/"}>
+                        <Linkedin/>
                     </Link>
                 </div>
             </div>

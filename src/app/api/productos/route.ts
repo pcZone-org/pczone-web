@@ -11,6 +11,7 @@ export async function GET(request: Request) {
     const orden = searchParams.get('orden') || 'id';
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '12');
+    const skip = (page - 1) * limit;
     
     const prismaModeloMap: Record<string, {
         findMany: Function;
@@ -28,13 +29,93 @@ export async function GET(request: Request) {
         sounds: prisma.sounds
         } as const;
 
+      if (nombre && !componente) {
+        try {
+          const resultados = await Promise.all(
+            Object.entries(prismaModeloMap).map(async ([tipo, modelo]) => {
+              const items = await modelo.findMany({
+                where: {
+                  name: {
+                    contains: nombre,
+                    mode: 'insensitive',
+                  },
+                },
+              });
+              return items.map((item: any) => ({ ...item, tipo }));
+            })
+          );
+
+          const productos = resultados.flat();
+
+          // Ordenar
+          productos.sort((a, b) => {
+            if (orden === 'precio_asc') return a.price - b.price;
+            if (orden === 'precio_desc') return b.price - a.price;
+            return a.id - b.id;
+          });
+
+          const paginados = productos.slice(skip, skip + limit);
+
+          return NextResponse.json({
+            productos: paginados,
+            total: productos.length,
+            page,
+            pages: Math.ceil(productos.length / limit),
+          });
+        } catch (error) {
+          return NextResponse.json({ error: 'Error en búsqueda global' }, { status: 500 });
+        }
+      }
+
+      if (componente && componente in prismaModeloMap) {
+        const modelo = prismaModeloMap[componente];
+
+        const where: any = {};
+        if (nombre) {
+          where.name = {
+            contains: nombre,
+            mode: 'insensitive',
+          };
+        }
+
+        let orderBy: any = {};
+        if (orden === 'precio_asc') orderBy = { price: 'asc' };
+        else if (orden === 'precio_desc') orderBy = { price: 'desc' };
+        else orderBy = { id: 'asc' };
+
+        try {
+          const productos = await modelo.findMany({
+            where,
+            orderBy,
+            skip,
+            take: limit,
+          });
+
+          const total = await modelo.count({ where });
+
+          return NextResponse.json({
+            productos,
+            total,
+            page,
+            pages: Math.ceil(total / limit),
+          });
+        } catch (error) {
+          return NextResponse.json({ error: 'Error al obtener productos' }, { status: 500 });
+        }
+      }
+
+    
+    return NextResponse.json({ error: 'Parámetros inválidos' }, { status: 400 });
+
+    /*
     if (!componente || !(componente in prismaModeloMap)) {
     return NextResponse.json({ error: 'Categoría inválida' }, { status: 400 });
     }
+    
 
-    const modelo = prismaModeloMap[componente];
+    const modelo = prismaModeloMap[componente : 'graficas'];
 
-    const skip = (page - 1) * limit;
+    
 
     const where: any = {};
     if (nombre) {
@@ -112,4 +193,5 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'Error en búsqueda global' }, { status: 500 });
     }
   }
+    */
 }
