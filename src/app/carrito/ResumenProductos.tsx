@@ -40,9 +40,11 @@ export default function ResumenProductos() {
     }, []);
 
     // Guardar en localStorage cada vez que se modifica el carrito
+    /*
     useEffect(() => {
         localStorage.setItem("carrito", JSON.stringify(productos));
     }, [productos]);
+    */
 
     const aumentarCantidad = (id: number) => {
         setProductos((prev) =>

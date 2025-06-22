@@ -28,7 +28,6 @@ export default function ArmaTuPcPage() {
     const handleSeleccionar = (tipo: string, producto: any) => {
     setBuild((prev) => ({ ...prev, [tipo]: producto }));
 
-    // Opcional: avanzar automáticamente al siguiente paso
 
     const index = CATEGORIAS.findIndex((c) => c.tipo === tipo);
     const siguiente = CATEGORIAS[index + 1];
@@ -39,6 +38,28 @@ export default function ArmaTuPcPage() {
 
     const seleccionados = Object.keys(build).length;
     const puedeIrAlCarrito = seleccionados >= 2;
+    const productosBuild = Object.entries(build);
+
+    const handleAgregarTodosAlCarrito = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
+
+        productosBuild.forEach(([_, prod]: any) => {
+            if (!carrito.find((p: any) => p.id === prod.id)) {
+                carrito.push({
+                    id: prod.id,
+                    nombre: prod.name,
+                    precio: prod.price,
+                    imagen: prod.imagen_url,
+                    cantidad: 1,
+                });
+            }
+        });
+
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        router.push("/carrito");
+    };
 
     return (
     <div className="flex min-h-screen text-white">
@@ -79,17 +100,21 @@ export default function ArmaTuPcPage() {
 
             <ResumenBuild build={build} />
             
-            {Object.keys(build).length >= 2 && (
-                <button className="bg-white text-blue-500 hover:bg-blue-600 hover:text-white rounded-full px-4 py-2 mt-6 flex items-center gap-2 transition-colors" 
-                onClick={() => router.push('/carrito')}>
-                    <Image 
-                    src={"https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/imagenes//carritoIcon.svg"} 
-                    alt='carrito' 
-                    width={24} 
-                    height={24} />
 
-                    Ir al carrito
-                </button>)}
+            {Object.keys(build).length >= 2 && (
+                    <form onSubmit={handleAgregarTodosAlCarrito}>
+                    <button type='submit'
+                    className="bg-white text-blue-500 hover:bg-blue-600 hover:text-white rounded-full px-4 py-2 mt-6 flex items-center gap-2 transition-colors cursor-pointer" >
+                        <Image 
+                        src={"https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/imagenes//carritoIcon.svg"} 
+                        alt='carrito' 
+                        width={24} 
+                        height={24} />
+
+                        Ir al carrito
+                    </button>
+                </form>
+                )}
             
         </main>
         </div>

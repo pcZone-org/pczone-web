@@ -114,7 +114,7 @@ export default function Header() {
                   onClick={() => handleClickSugerencia(sug.name)}
                   className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
                 >
-                  {sug.name} –{" "}
+                  {sug.name} –
                   <span className="font-semibold capitalize">
                     {sug.tipo.replace("_", " ")}
                   </span>
@@ -140,7 +140,7 @@ export default function Header() {
         </div>
 
         {/* Icono de perfil */}
-       
+      
         <button
           type="button"
           onClick={handleProfileClick}
