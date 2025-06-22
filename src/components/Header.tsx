@@ -1,16 +1,17 @@
+// src/components/Header.tsx
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import logo_movile from "@/imagenes/logo-pcZone.png";
 import logo from "@/imagenes/PCZone_Horizntal.png";
 import carritoIcon from "@/imagenes/Icons/carritoIcon.svg";
 
-
 export default function Header() {
   const router = useRouter();
-  const [busqueda, setBusqueda] = useState('');
+  const [busqueda, setBusqueda] = useState("");
   const [sugerencias, setSugerencias] = useState<any[]>([]);
   const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
 
@@ -28,28 +29,36 @@ export default function Header() {
         setMostrarSugerencias(false);
       }
     }, 300);
-
     return () => clearTimeout(delay);
   }, [busqueda]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (busqueda.trim() !== '') {
-      router.push(`/busqueda?nombre=${encodeURIComponent(busqueda)}&orden=precio_asc`);
-      setBusqueda('');
+    if (busqueda.trim() !== "") {
+      router.push(
+        `/busqueda?nombre=${encodeURIComponent(busqueda)}&orden=precio_asc`
+      );
+      setBusqueda("");
     }
   };
 
   const handleClickSugerencia = (nombre: string) => {
     router.push(`/busqueda?nombre=${encodeURIComponent(nombre)}`);
-    setBusqueda('');
+    setBusqueda("");
     setMostrarSugerencias(false);
   };
-  
-  function handleProfileClick(event: React.MouseEvent<HTMLButtonElement>): void {
-    throw new Error("Function not implemented.");
-  }
+
+  // Aquí va la navegación condicional según role
+  const handleProfileClick = () => {
+    const role = localStorage.getItem("role");
+    if (role === "usuario") {
+      router.push("/perfil-user");
+    } else if (role === "vendedor") {
+      router.push("/perfil-vendedor");
+    } else {
+      router.push("/login");
+    }
+  };
 
   return (
     <header className="bg-[#0E1C2F] text-white px-6 py-2">
@@ -79,8 +88,9 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className="flex items-center gap-2 bg-white rounded-full px-4 py-1">
-          <form onSubmit={handleSubmit} className="relative flex items-center">
+        {/* Buscador con sugerencias */}
+        <div className="relative flex items-center gap-2 bg-white rounded-full px-4 py-1">
+          <form onSubmit={handleSubmit} className="flex items-center">
             <input
               type="text"
               placeholder="Buscar nombre del producto"
@@ -89,36 +99,50 @@ export default function Header() {
               onChange={(e) => setBusqueda(e.target.value)}
               className="rounded-full px-4 py-1 text-black text-sm focus:outline-none w-32 md:w-48"
             />
-            <button type="submit" className="bg-white rounded-full p-1 cursor-pointer hover:bg-gray-200" >
+            <button
+              type="submit"
+              className="bg-white rounded-full p-1 cursor-pointer hover:bg-gray-200"
+            >
               🔍
             </button>
           </form>
-          
-        </div>
           {mostrarSugerencias && sugerencias.length > 0 && (
-            <ul className="absolute bg-white text-black rounded-lg shadow-lg z-10 top-11 left-1/2 -translate-x-1/2  max-h-60 overflow-y-auto">
+            <ul className="absolute bg-white text-black rounded-lg shadow-lg z-10 top-11 left-1/2 -translate-x-1/2  max-h-60 overflow-y-auto w-48">
               {sugerencias.map((sug) => (
                 <li
                   key={`${sug.tipo}-${sug.id}`}
                   onClick={() => handleClickSugerencia(sug.name)}
                   className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
                 >
-                  {sug.name} - <span className="font-semibold capitalize">{sug.tipo.replace("_", " ")}</span>
+                  {sug.name} –{" "}
+                  <span className="font-semibold capitalize">
+                    {sug.tipo.replace("_", " ")}
+                  </span>
                 </li>
               ))}
             </ul>
           )}
+        </div>
 
         <div className="flex items-center gap-10 font-medium">
           <Link href="/guias">GUIAS</Link>
           <Link href="/carrito" className="flex items-center gap-1">
-            <Image src={carritoIcon} alt="Carrito" width={18} height={18} className="invert" />
+            <Image
+              src={carritoIcon}
+              alt="Carrito"
+              width={18}
+              height={18}
+              className="invert"
+            />
             CARRITO
           </Link>
           <Link href="/faq">FAQ</Link>
         </div>
 
+        {/* Icono de perfil */}
+       
         <button
+          type="button"
           onClick={handleProfileClick}
           className="bg-white text-black w-8 h-8 rounded-full flex items-center justify-center"
         >
