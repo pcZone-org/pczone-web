@@ -18,6 +18,8 @@
 /out/
 .next/
 
+#.env.local
+.env.local
 
 
 # production
