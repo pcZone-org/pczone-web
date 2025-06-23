@@ -27,7 +27,11 @@ type Producto = {
     cantidad: number;
 };
 
-export default function ResumenProductos() {
+type ResumenProductosProps = {
+    onTotalChange: (total: number) => void;
+};
+
+export default function ResumenProductos({ onTotalChange }: ResumenProductosProps) {
     
     const [productos, setProductos] = useState<Producto[]>([]);
 
@@ -38,6 +42,11 @@ export default function ResumenProductos() {
             setProductos(JSON.parse(guardados));
         }
     }, []);
+
+    useEffect(() => {
+        const total = productos.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
+        onTotalChange(total);
+    }, [productos, onTotalChange]);
 
     // Guardar en localStorage cada vez que se modifica el carrito
     /*

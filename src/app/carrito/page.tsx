@@ -1,11 +1,14 @@
 "use client";
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import ResumenProductos from '@/app/carrito/ResumenProductos';
 
 
 export default function Carrito() {
     const [codigoPostal, setCodigoPostal] = useState('');
     const [costoEnvio, setCostoEnvio] = useState<number | null>(null);
+    const router = useRouter();
+    const [totalProductos, setTotalProductos] = useState(0);
 
     const calcularEnvio = () => {
         const codigoPostalTrim = Number(codigoPostal.trim());
@@ -17,10 +20,12 @@ export default function Carrito() {
             setCostoEnvio(costo);
         }
     };
+
+    const totalFinal = totalProductos + (costoEnvio ?? 0);
     
     return(
         <main className="min-h-screen p-6">
-            <h1 className="text-3xl font-bold mb-4 text-center underline">Carrito</h1>
+            <h1 className="text-5xl font-bold mb-4 text-center underline">Carrito</h1>
             <div className="flex flex-row items-center">
                 <div className="static basis-2/3  rounded-lg bg-[#102647] shadow-lg p-4 m-4 ">
                     <div className="relative min-h-80 text-black bg-white rounded-lg p-3">
@@ -58,12 +63,16 @@ export default function Carrito() {
                     </div>
                 </div>
                 
-                <ResumenProductos />
+                <ResumenProductos onTotalChange={setTotalProductos}/>
+                
             </div>
-            <div className="flex flex-col md:flex-row justify-center gap-4 mt-8">
+            
+            <div className="flex flex-row justify-center gap-4 mt-8">
                 <button
-                className="bg-blue-500 px-4 py-2 w-50 h-auto rounded-lg hover:bg-blue-600 transition duration-300 cursor-pointer">
-                    Ir a Pagar
+                type="submit"
+                className="bg-blue-500 px-4 py-2 w-50 h-auto rounded-lg hover:bg-blue-600 transition duration-300 cursor-pointer"
+                onClick={() => router.push("/pago?monto=" + totalFinal)}>
+                    Ir a Pagar (${totalFinal.toFixed(2)})
                 </button>
             </div>
         </main>
