@@ -13,24 +13,41 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [contrasenia, setContrasenia] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
 
-    const res = await fetch("/api/login", {
-      method: "POST",
-      body: JSON.stringify({ email, contrasenia }),
-      headers: { "Content-Type": "application/json" },
-    });
-    const data = await res.json();
+    const cleanedEmail = email.trim();
+    const cleanedPassword = contrasenia.trim();
 
-    if (res.ok && data.ok) {
-      // Guardamos el rol
-      localStorage.setItem("role", data.tipo);
-      localStorage.setItem("userName", data.user.nombre);
-      router.push("/"); // Redirige al home
-    } else {
-      setError(data.error || "Error al iniciar sesión");
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: cleanedEmail,
+          contrasenia: cleanedPassword,
+        }),
+      });
+      const data = await res.json();
+
+      if (res.ok && data.ok) {
+        // Guardamos rol, id y nombre
+        localStorage.setItem("role", data.tipo);
+        localStorage.setItem("userId", String(data.userId));
+        localStorage.setItem("userName", data.userName);
+        router.push("/");
+      } else {
+        setError(data.error || "Credenciales incorrectas");
+      }
+    } catch (err) {
+      console.error("Error de red al iniciar sesión:", err);
+      setError("Error de red, por favor inténtalo de nuevo.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -44,15 +61,24 @@ export default function Login() {
           className="object-cover clip-diagonal"
         />
       </div>
-
-      <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-10 z-12">
-        <Image src={logo} alt="PCZone Logo" className="w-60 mb-12 rounded-2xl" />
-        <form className="w-full max-w-sm space-y-4" onSubmit={handleLogin}>
+      <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-10 z-12 ">
+        <Image
+          src={logo}
+          alt="PCZone Logo"
+          className="w-60 mb-12 rounded-2xl shadow-lg"
+        />
+        <form
+          className="w-full max-w-sm space-y-4"
+          onSubmit={handleLogin}
+        >
           <input
             type="email"
             placeholder="Email..."
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setError("");
+              setEmail(e.target.value);
+            }}
             className="w-full p-3 rounded-md bg-white text-black placeholder-gray-500"
             required
           />
@@ -60,16 +86,22 @@ export default function Login() {
             type="password"
             placeholder="Contraseña"
             value={contrasenia}
-            onChange={(e) => setContrasenia(e.target.value)}
+            onChange={(e) => {
+              setError("");
+              setContrasenia(e.target.value);
+            }}
             className="w-full p-3 rounded-md bg-white text-black placeholder-gray-500"
             required
           />
-          {error && <p className="text-red-600 text-sm">{error}</p>}
+          {error && <p className="text-red-500 text-sm">{error}</p>}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition"
+            disabled={loading}
+            className={`w-full ${
+              loading ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
+            } text-white font-semibold py-2 rounded-md transition`}
           >
-            Iniciar sesión
+            {loading ? "Entrando..." : "Iniciar sesión"}
           </button>
           <div className="text-center text-white">¿Aún no tienes cuenta?</div>
           <Link

@@ -73,6 +73,11 @@ export type ususarios = $Result.DefaultSelection<Prisma.$ususariosPayload>
  * 
  */
 export type vendedores = $Result.DefaultSelection<Prisma.$vendedoresPayload>
+/**
+ * Model PublicacionProducto
+ * 
+ */
+export type PublicacionProducto = $Result.DefaultSelection<Prisma.$PublicacionProductoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -318,6 +323,16 @@ export class PrismaClient<
     * ```
     */
   get vendedores(): Prisma.vendedoresDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.publicacionProducto`: Exposes CRUD operations for the **PublicacionProducto** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PublicacionProductos
+    * const publicacionProductos = await prisma.publicacionProducto.findMany()
+    * ```
+    */
+  get publicacionProducto(): Prisma.PublicacionProductoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -769,7 +784,8 @@ export namespace Prisma {
     rams: 'rams',
     sounds: 'sounds',
     ususarios: 'ususarios',
-    vendedores: 'vendedores'
+    vendedores: 'vendedores',
+    PublicacionProducto: 'PublicacionProducto'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -788,7 +804,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "coolers" | "cpus" | "fuentes" | "gabinetes" | "graficas" | "memorias_externas" | "memorias_internas" | "mothers" | "rams" | "sounds" | "ususarios" | "vendedores"
+      modelProps: "coolers" | "cpus" | "fuentes" | "gabinetes" | "graficas" | "memorias_externas" | "memorias_internas" | "mothers" | "rams" | "sounds" | "ususarios" | "vendedores" | "publicacionProducto"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1680,6 +1696,80 @@ export namespace Prisma {
           }
         }
       }
+      PublicacionProducto: {
+        payload: Prisma.$PublicacionProductoPayload<ExtArgs>
+        fields: Prisma.PublicacionProductoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PublicacionProductoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicacionProductoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PublicacionProductoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicacionProductoPayload>
+          }
+          findFirst: {
+            args: Prisma.PublicacionProductoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicacionProductoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PublicacionProductoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicacionProductoPayload>
+          }
+          findMany: {
+            args: Prisma.PublicacionProductoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicacionProductoPayload>[]
+          }
+          create: {
+            args: Prisma.PublicacionProductoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicacionProductoPayload>
+          }
+          createMany: {
+            args: Prisma.PublicacionProductoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PublicacionProductoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicacionProductoPayload>[]
+          }
+          delete: {
+            args: Prisma.PublicacionProductoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicacionProductoPayload>
+          }
+          update: {
+            args: Prisma.PublicacionProductoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicacionProductoPayload>
+          }
+          deleteMany: {
+            args: Prisma.PublicacionProductoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PublicacionProductoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PublicacionProductoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicacionProductoPayload>[]
+          }
+          upsert: {
+            args: Prisma.PublicacionProductoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicacionProductoPayload>
+          }
+          aggregate: {
+            args: Prisma.PublicacionProductoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePublicacionProducto>
+          }
+          groupBy: {
+            args: Prisma.PublicacionProductoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PublicacionProductoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PublicacionProductoCountArgs<ExtArgs>
+            result: $Utils.Optional<PublicacionProductoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1776,6 +1866,7 @@ export namespace Prisma {
     sounds?: soundsOmit
     ususarios?: ususariosOmit
     vendedores?: vendedoresOmit
+    publicacionProducto?: PublicacionProductoOmit
   }
 
   /* Types for Logging */
@@ -1865,6 +1956,377 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type CoolersCountOutputType
+   */
+
+  export type CoolersCountOutputType = {
+    publicaciones: number
+  }
+
+  export type CoolersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | CoolersCountOutputTypeCountPublicacionesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CoolersCountOutputType without action
+   */
+  export type CoolersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoolersCountOutputType
+     */
+    select?: CoolersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CoolersCountOutputType without action
+   */
+  export type CoolersCountOutputTypeCountPublicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
+
+  /**
+   * Count Type CpusCountOutputType
+   */
+
+  export type CpusCountOutputType = {
+    publicaciones: number
+  }
+
+  export type CpusCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | CpusCountOutputTypeCountPublicacionesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CpusCountOutputType without action
+   */
+  export type CpusCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CpusCountOutputType
+     */
+    select?: CpusCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CpusCountOutputType without action
+   */
+  export type CpusCountOutputTypeCountPublicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
+
+  /**
+   * Count Type FuentesCountOutputType
+   */
+
+  export type FuentesCountOutputType = {
+    publicaciones: number
+  }
+
+  export type FuentesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | FuentesCountOutputTypeCountPublicacionesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FuentesCountOutputType without action
+   */
+  export type FuentesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuentesCountOutputType
+     */
+    select?: FuentesCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FuentesCountOutputType without action
+   */
+  export type FuentesCountOutputTypeCountPublicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
+
+  /**
+   * Count Type GabinetesCountOutputType
+   */
+
+  export type GabinetesCountOutputType = {
+    publicaciones: number
+  }
+
+  export type GabinetesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | GabinetesCountOutputTypeCountPublicacionesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GabinetesCountOutputType without action
+   */
+  export type GabinetesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GabinetesCountOutputType
+     */
+    select?: GabinetesCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GabinetesCountOutputType without action
+   */
+  export type GabinetesCountOutputTypeCountPublicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
+
+  /**
+   * Count Type GraficasCountOutputType
+   */
+
+  export type GraficasCountOutputType = {
+    publicaciones: number
+  }
+
+  export type GraficasCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | GraficasCountOutputTypeCountPublicacionesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GraficasCountOutputType without action
+   */
+  export type GraficasCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GraficasCountOutputType
+     */
+    select?: GraficasCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GraficasCountOutputType without action
+   */
+  export type GraficasCountOutputTypeCountPublicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
+
+  /**
+   * Count Type Memorias_externasCountOutputType
+   */
+
+  export type Memorias_externasCountOutputType = {
+    publicaciones: number
+  }
+
+  export type Memorias_externasCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | Memorias_externasCountOutputTypeCountPublicacionesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Memorias_externasCountOutputType without action
+   */
+  export type Memorias_externasCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Memorias_externasCountOutputType
+     */
+    select?: Memorias_externasCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Memorias_externasCountOutputType without action
+   */
+  export type Memorias_externasCountOutputTypeCountPublicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
+
+  /**
+   * Count Type Memorias_internasCountOutputType
+   */
+
+  export type Memorias_internasCountOutputType = {
+    publicaciones: number
+  }
+
+  export type Memorias_internasCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | Memorias_internasCountOutputTypeCountPublicacionesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Memorias_internasCountOutputType without action
+   */
+  export type Memorias_internasCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Memorias_internasCountOutputType
+     */
+    select?: Memorias_internasCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Memorias_internasCountOutputType without action
+   */
+  export type Memorias_internasCountOutputTypeCountPublicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
+
+  /**
+   * Count Type MothersCountOutputType
+   */
+
+  export type MothersCountOutputType = {
+    publicaciones: number
+  }
+
+  export type MothersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | MothersCountOutputTypeCountPublicacionesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MothersCountOutputType without action
+   */
+  export type MothersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MothersCountOutputType
+     */
+    select?: MothersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MothersCountOutputType without action
+   */
+  export type MothersCountOutputTypeCountPublicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
+
+  /**
+   * Count Type RamsCountOutputType
+   */
+
+  export type RamsCountOutputType = {
+    publicaciones: number
+  }
+
+  export type RamsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | RamsCountOutputTypeCountPublicacionesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * RamsCountOutputType without action
+   */
+  export type RamsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RamsCountOutputType
+     */
+    select?: RamsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * RamsCountOutputType without action
+   */
+  export type RamsCountOutputTypeCountPublicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
+
+  /**
+   * Count Type SoundsCountOutputType
+   */
+
+  export type SoundsCountOutputType = {
+    publicaciones: number
+  }
+
+  export type SoundsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | SoundsCountOutputTypeCountPublicacionesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SoundsCountOutputType without action
+   */
+  export type SoundsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SoundsCountOutputType
+     */
+    select?: SoundsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SoundsCountOutputType without action
+   */
+  export type SoundsCountOutputTypeCountPublicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
+
+  /**
+   * Count Type UsusariosCountOutputType
+   */
+
+  export type UsusariosCountOutputType = {
+    publicacionesUsuario: number
+  }
+
+  export type UsusariosCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicacionesUsuario?: boolean | UsusariosCountOutputTypeCountPublicacionesUsuarioArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UsusariosCountOutputType without action
+   */
+  export type UsusariosCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UsusariosCountOutputType
+     */
+    select?: UsusariosCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UsusariosCountOutputType without action
+   */
+  export type UsusariosCountOutputTypeCountPublicacionesUsuarioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
+
+  /**
+   * Count Type VendedoresCountOutputType
+   */
+
+  export type VendedoresCountOutputType = {
+    publicacionesVendedor: number
+  }
+
+  export type VendedoresCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicacionesVendedor?: boolean | VendedoresCountOutputTypeCountPublicacionesVendedorArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * VendedoresCountOutputType without action
+   */
+  export type VendedoresCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VendedoresCountOutputType
+     */
+    select?: VendedoresCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * VendedoresCountOutputType without action
+   */
+  export type VendedoresCountOutputTypeCountPublicacionesVendedorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+  }
+
 
   /**
    * Models
@@ -1907,6 +2369,7 @@ export namespace Prisma {
     color: string | null
     size: number | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type CoolersMaxAggregateOutputType = {
@@ -1918,6 +2381,7 @@ export namespace Prisma {
     color: string | null
     size: number | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type CoolersCountAggregateOutputType = {
@@ -1929,6 +2393,7 @@ export namespace Prisma {
     color: number
     size: number
     imagen_url: number
+    tipo: number
     _all: number
   }
 
@@ -1958,6 +2423,7 @@ export namespace Prisma {
     color?: true
     size?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type CoolersMaxAggregateInputType = {
@@ -1969,6 +2435,7 @@ export namespace Prisma {
     color?: true
     size?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type CoolersCountAggregateInputType = {
@@ -1980,6 +2447,7 @@ export namespace Prisma {
     color?: true
     size?: true
     imagen_url?: true
+    tipo?: true
     _all?: true
   }
 
@@ -2078,6 +2546,7 @@ export namespace Prisma {
     color: string | null
     size: number | null
     imagen_url: string | null
+    tipo: string | null
     _count: CoolersCountAggregateOutputType | null
     _avg: CoolersAvgAggregateOutputType | null
     _sum: CoolersSumAggregateOutputType | null
@@ -2108,6 +2577,9 @@ export namespace Prisma {
     color?: boolean
     size?: boolean
     imagen_url?: boolean
+    tipo?: boolean
+    publicaciones?: boolean | coolers$publicacionesArgs<ExtArgs>
+    _count?: boolean | CoolersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["coolers"]>
 
   export type coolersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2119,6 +2591,7 @@ export namespace Prisma {
     color?: boolean
     size?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["coolers"]>
 
   export type coolersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2130,6 +2603,7 @@ export namespace Prisma {
     color?: boolean
     size?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["coolers"]>
 
   export type coolersSelectScalar = {
@@ -2141,13 +2615,22 @@ export namespace Prisma {
     color?: boolean
     size?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }
 
-  export type coolersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "rpm" | "noise" | "color" | "size" | "imagen_url", ExtArgs["result"]["coolers"]>
+  export type coolersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "rpm" | "noise" | "color" | "size" | "imagen_url" | "tipo", ExtArgs["result"]["coolers"]>
+  export type coolersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | coolers$publicacionesArgs<ExtArgs>
+    _count?: boolean | CoolersCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type coolersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type coolersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $coolersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "coolers"
-    objects: {}
+    objects: {
+      publicaciones: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -2157,6 +2640,7 @@ export namespace Prisma {
       color: string | null
       size: number | null
       imagen_url: string | null
+      tipo: string | null
     }, ExtArgs["result"]["coolers"]>
     composites: {}
   }
@@ -2551,6 +3035,7 @@ export namespace Prisma {
    */
   export interface Prisma__coolersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicaciones<T extends coolers$publicacionesArgs<ExtArgs> = {}>(args?: Subset<T, coolers$publicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2588,6 +3073,7 @@ export namespace Prisma {
     readonly color: FieldRef<"coolers", 'String'>
     readonly size: FieldRef<"coolers", 'Int'>
     readonly imagen_url: FieldRef<"coolers", 'String'>
+    readonly tipo: FieldRef<"coolers", 'String'>
   }
     
 
@@ -2604,6 +3090,10 @@ export namespace Prisma {
      * Omit specific fields from the coolers
      */
     omit?: coolersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: coolersInclude<ExtArgs> | null
     /**
      * Filter, which coolers to fetch.
      */
@@ -2623,6 +3113,10 @@ export namespace Prisma {
      */
     omit?: coolersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: coolersInclude<ExtArgs> | null
+    /**
      * Filter, which coolers to fetch.
      */
     where: coolersWhereUniqueInput
@@ -2640,6 +3134,10 @@ export namespace Prisma {
      * Omit specific fields from the coolers
      */
     omit?: coolersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: coolersInclude<ExtArgs> | null
     /**
      * Filter, which coolers to fetch.
      */
@@ -2689,6 +3187,10 @@ export namespace Prisma {
      */
     omit?: coolersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: coolersInclude<ExtArgs> | null
+    /**
      * Filter, which coolers to fetch.
      */
     where?: coolersWhereInput
@@ -2737,6 +3239,10 @@ export namespace Prisma {
      */
     omit?: coolersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: coolersInclude<ExtArgs> | null
+    /**
      * Filter, which coolers to fetch.
      */
     where?: coolersWhereInput
@@ -2779,6 +3285,10 @@ export namespace Prisma {
      * Omit specific fields from the coolers
      */
     omit?: coolersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: coolersInclude<ExtArgs> | null
     /**
      * The data needed to create a coolers.
      */
@@ -2827,6 +3337,10 @@ export namespace Prisma {
      * Omit specific fields from the coolers
      */
     omit?: coolersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: coolersInclude<ExtArgs> | null
     /**
      * The data needed to update a coolers.
      */
@@ -2894,6 +3408,10 @@ export namespace Prisma {
      */
     omit?: coolersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: coolersInclude<ExtArgs> | null
+    /**
      * The filter to search for the coolers to update in case it exists.
      */
     where: coolersWhereUniqueInput
@@ -2920,6 +3438,10 @@ export namespace Prisma {
      */
     omit?: coolersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: coolersInclude<ExtArgs> | null
+    /**
      * Filter which coolers to delete.
      */
     where: coolersWhereUniqueInput
@@ -2940,6 +3462,30 @@ export namespace Prisma {
   }
 
   /**
+   * coolers.publicaciones
+   */
+  export type coolers$publicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * coolers without action
    */
   export type coolersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2951,6 +3497,10 @@ export namespace Prisma {
      * Omit specific fields from the coolers
      */
     omit?: coolersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: coolersInclude<ExtArgs> | null
   }
 
 
@@ -2995,6 +3545,7 @@ export namespace Prisma {
     graphics: string | null
     smt: boolean | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type CpusMaxAggregateOutputType = {
@@ -3008,6 +3559,7 @@ export namespace Prisma {
     graphics: string | null
     smt: boolean | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type CpusCountAggregateOutputType = {
@@ -3021,6 +3573,7 @@ export namespace Prisma {
     graphics: number
     smt: number
     imagen_url: number
+    tipo: number
     _all: number
   }
 
@@ -3054,6 +3607,7 @@ export namespace Prisma {
     graphics?: true
     smt?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type CpusMaxAggregateInputType = {
@@ -3067,6 +3621,7 @@ export namespace Prisma {
     graphics?: true
     smt?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type CpusCountAggregateInputType = {
@@ -3080,6 +3635,7 @@ export namespace Prisma {
     graphics?: true
     smt?: true
     imagen_url?: true
+    tipo?: true
     _all?: true
   }
 
@@ -3180,6 +3736,7 @@ export namespace Prisma {
     graphics: string | null
     smt: boolean
     imagen_url: string | null
+    tipo: string | null
     _count: CpusCountAggregateOutputType | null
     _avg: CpusAvgAggregateOutputType | null
     _sum: CpusSumAggregateOutputType | null
@@ -3212,6 +3769,9 @@ export namespace Prisma {
     graphics?: boolean
     smt?: boolean
     imagen_url?: boolean
+    tipo?: boolean
+    publicaciones?: boolean | cpus$publicacionesArgs<ExtArgs>
+    _count?: boolean | CpusCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cpus"]>
 
   export type cpusSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3225,6 +3785,7 @@ export namespace Prisma {
     graphics?: boolean
     smt?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["cpus"]>
 
   export type cpusSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3238,6 +3799,7 @@ export namespace Prisma {
     graphics?: boolean
     smt?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["cpus"]>
 
   export type cpusSelectScalar = {
@@ -3251,13 +3813,22 @@ export namespace Prisma {
     graphics?: boolean
     smt?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }
 
-  export type cpusOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "core_count" | "core_clock" | "boost_clock" | "tdp" | "graphics" | "smt" | "imagen_url", ExtArgs["result"]["cpus"]>
+  export type cpusOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "core_count" | "core_clock" | "boost_clock" | "tdp" | "graphics" | "smt" | "imagen_url" | "tipo", ExtArgs["result"]["cpus"]>
+  export type cpusInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | cpus$publicacionesArgs<ExtArgs>
+    _count?: boolean | CpusCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type cpusIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type cpusIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $cpusPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "cpus"
-    objects: {}
+    objects: {
+      publicaciones: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -3269,6 +3840,7 @@ export namespace Prisma {
       graphics: string | null
       smt: boolean
       imagen_url: string | null
+      tipo: string | null
     }, ExtArgs["result"]["cpus"]>
     composites: {}
   }
@@ -3663,6 +4235,7 @@ export namespace Prisma {
    */
   export interface Prisma__cpusClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicaciones<T extends cpus$publicacionesArgs<ExtArgs> = {}>(args?: Subset<T, cpus$publicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3702,6 +4275,7 @@ export namespace Prisma {
     readonly graphics: FieldRef<"cpus", 'String'>
     readonly smt: FieldRef<"cpus", 'Boolean'>
     readonly imagen_url: FieldRef<"cpus", 'String'>
+    readonly tipo: FieldRef<"cpus", 'String'>
   }
     
 
@@ -3718,6 +4292,10 @@ export namespace Prisma {
      * Omit specific fields from the cpus
      */
     omit?: cpusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cpusInclude<ExtArgs> | null
     /**
      * Filter, which cpus to fetch.
      */
@@ -3737,6 +4315,10 @@ export namespace Prisma {
      */
     omit?: cpusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cpusInclude<ExtArgs> | null
+    /**
      * Filter, which cpus to fetch.
      */
     where: cpusWhereUniqueInput
@@ -3754,6 +4336,10 @@ export namespace Prisma {
      * Omit specific fields from the cpus
      */
     omit?: cpusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cpusInclude<ExtArgs> | null
     /**
      * Filter, which cpus to fetch.
      */
@@ -3803,6 +4389,10 @@ export namespace Prisma {
      */
     omit?: cpusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cpusInclude<ExtArgs> | null
+    /**
      * Filter, which cpus to fetch.
      */
     where?: cpusWhereInput
@@ -3851,6 +4441,10 @@ export namespace Prisma {
      */
     omit?: cpusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cpusInclude<ExtArgs> | null
+    /**
      * Filter, which cpuses to fetch.
      */
     where?: cpusWhereInput
@@ -3893,6 +4487,10 @@ export namespace Prisma {
      * Omit specific fields from the cpus
      */
     omit?: cpusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cpusInclude<ExtArgs> | null
     /**
      * The data needed to create a cpus.
      */
@@ -3941,6 +4539,10 @@ export namespace Prisma {
      * Omit specific fields from the cpus
      */
     omit?: cpusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cpusInclude<ExtArgs> | null
     /**
      * The data needed to update a cpus.
      */
@@ -4008,6 +4610,10 @@ export namespace Prisma {
      */
     omit?: cpusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cpusInclude<ExtArgs> | null
+    /**
      * The filter to search for the cpus to update in case it exists.
      */
     where: cpusWhereUniqueInput
@@ -4034,6 +4640,10 @@ export namespace Prisma {
      */
     omit?: cpusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cpusInclude<ExtArgs> | null
+    /**
      * Filter which cpus to delete.
      */
     where: cpusWhereUniqueInput
@@ -4054,6 +4664,30 @@ export namespace Prisma {
   }
 
   /**
+   * cpus.publicaciones
+   */
+  export type cpus$publicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * cpus without action
    */
   export type cpusDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4065,6 +4699,10 @@ export namespace Prisma {
      * Omit specific fields from the cpus
      */
     omit?: cpusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cpusInclude<ExtArgs> | null
   }
 
 
@@ -4102,6 +4740,7 @@ export namespace Prisma {
     modular: string | null
     color: string | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type FuentesMaxAggregateOutputType = {
@@ -4114,6 +4753,7 @@ export namespace Prisma {
     modular: string | null
     color: string | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type FuentesCountAggregateOutputType = {
@@ -4126,6 +4766,7 @@ export namespace Prisma {
     modular: number
     color: number
     imagen_url: number
+    tipo: number
     _all: number
   }
 
@@ -4152,6 +4793,7 @@ export namespace Prisma {
     modular?: true
     color?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type FuentesMaxAggregateInputType = {
@@ -4164,6 +4806,7 @@ export namespace Prisma {
     modular?: true
     color?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type FuentesCountAggregateInputType = {
@@ -4176,6 +4819,7 @@ export namespace Prisma {
     modular?: true
     color?: true
     imagen_url?: true
+    tipo?: true
     _all?: true
   }
 
@@ -4275,6 +4919,7 @@ export namespace Prisma {
     modular: string | null
     color: string | null
     imagen_url: string | null
+    tipo: string | null
     _count: FuentesCountAggregateOutputType | null
     _avg: FuentesAvgAggregateOutputType | null
     _sum: FuentesSumAggregateOutputType | null
@@ -4306,6 +4951,9 @@ export namespace Prisma {
     modular?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
+    publicaciones?: boolean | fuentes$publicacionesArgs<ExtArgs>
+    _count?: boolean | FuentesCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["fuentes"]>
 
   export type fuentesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4318,6 +4966,7 @@ export namespace Prisma {
     modular?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["fuentes"]>
 
   export type fuentesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4330,6 +4979,7 @@ export namespace Prisma {
     modular?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["fuentes"]>
 
   export type fuentesSelectScalar = {
@@ -4342,13 +4992,22 @@ export namespace Prisma {
     modular?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }
 
-  export type fuentesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "type" | "efficiency" | "wattage" | "modular" | "color" | "imagen_url", ExtArgs["result"]["fuentes"]>
+  export type fuentesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "type" | "efficiency" | "wattage" | "modular" | "color" | "imagen_url" | "tipo", ExtArgs["result"]["fuentes"]>
+  export type fuentesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | fuentes$publicacionesArgs<ExtArgs>
+    _count?: boolean | FuentesCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type fuentesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type fuentesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $fuentesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "fuentes"
-    objects: {}
+    objects: {
+      publicaciones: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -4359,6 +5018,7 @@ export namespace Prisma {
       modular: string | null
       color: string | null
       imagen_url: string | null
+      tipo: string | null
     }, ExtArgs["result"]["fuentes"]>
     composites: {}
   }
@@ -4753,6 +5413,7 @@ export namespace Prisma {
    */
   export interface Prisma__fuentesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicaciones<T extends fuentes$publicacionesArgs<ExtArgs> = {}>(args?: Subset<T, fuentes$publicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4791,6 +5452,7 @@ export namespace Prisma {
     readonly modular: FieldRef<"fuentes", 'String'>
     readonly color: FieldRef<"fuentes", 'String'>
     readonly imagen_url: FieldRef<"fuentes", 'String'>
+    readonly tipo: FieldRef<"fuentes", 'String'>
   }
     
 
@@ -4807,6 +5469,10 @@ export namespace Prisma {
      * Omit specific fields from the fuentes
      */
     omit?: fuentesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fuentesInclude<ExtArgs> | null
     /**
      * Filter, which fuentes to fetch.
      */
@@ -4826,6 +5492,10 @@ export namespace Prisma {
      */
     omit?: fuentesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fuentesInclude<ExtArgs> | null
+    /**
      * Filter, which fuentes to fetch.
      */
     where: fuentesWhereUniqueInput
@@ -4843,6 +5513,10 @@ export namespace Prisma {
      * Omit specific fields from the fuentes
      */
     omit?: fuentesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fuentesInclude<ExtArgs> | null
     /**
      * Filter, which fuentes to fetch.
      */
@@ -4892,6 +5566,10 @@ export namespace Prisma {
      */
     omit?: fuentesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fuentesInclude<ExtArgs> | null
+    /**
      * Filter, which fuentes to fetch.
      */
     where?: fuentesWhereInput
@@ -4940,6 +5618,10 @@ export namespace Prisma {
      */
     omit?: fuentesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fuentesInclude<ExtArgs> | null
+    /**
      * Filter, which fuentes to fetch.
      */
     where?: fuentesWhereInput
@@ -4982,6 +5664,10 @@ export namespace Prisma {
      * Omit specific fields from the fuentes
      */
     omit?: fuentesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fuentesInclude<ExtArgs> | null
     /**
      * The data needed to create a fuentes.
      */
@@ -5030,6 +5716,10 @@ export namespace Prisma {
      * Omit specific fields from the fuentes
      */
     omit?: fuentesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fuentesInclude<ExtArgs> | null
     /**
      * The data needed to update a fuentes.
      */
@@ -5097,6 +5787,10 @@ export namespace Prisma {
      */
     omit?: fuentesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fuentesInclude<ExtArgs> | null
+    /**
      * The filter to search for the fuentes to update in case it exists.
      */
     where: fuentesWhereUniqueInput
@@ -5123,6 +5817,10 @@ export namespace Prisma {
      */
     omit?: fuentesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fuentesInclude<ExtArgs> | null
+    /**
      * Filter which fuentes to delete.
      */
     where: fuentesWhereUniqueInput
@@ -5143,6 +5841,30 @@ export namespace Prisma {
   }
 
   /**
+   * fuentes.publicaciones
+   */
+  export type fuentes$publicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * fuentes without action
    */
   export type fuentesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5154,6 +5876,10 @@ export namespace Prisma {
      * Omit specific fields from the fuentes
      */
     omit?: fuentesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fuentesInclude<ExtArgs> | null
   }
 
 
@@ -5194,6 +5920,7 @@ export namespace Prisma {
     external_volume: Decimal | null
     internal_35_bays: number | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type GabinetesMaxAggregateOutputType = {
@@ -5207,6 +5934,7 @@ export namespace Prisma {
     external_volume: Decimal | null
     internal_35_bays: number | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type GabinetesCountAggregateOutputType = {
@@ -5220,6 +5948,7 @@ export namespace Prisma {
     external_volume: number
     internal_35_bays: number
     imagen_url: number
+    tipo: number
     _all: number
   }
 
@@ -5249,6 +5978,7 @@ export namespace Prisma {
     external_volume?: true
     internal_35_bays?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type GabinetesMaxAggregateInputType = {
@@ -5262,6 +5992,7 @@ export namespace Prisma {
     external_volume?: true
     internal_35_bays?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type GabinetesCountAggregateInputType = {
@@ -5275,6 +6006,7 @@ export namespace Prisma {
     external_volume?: true
     internal_35_bays?: true
     imagen_url?: true
+    tipo?: true
     _all?: true
   }
 
@@ -5375,6 +6107,7 @@ export namespace Prisma {
     external_volume: Decimal | null
     internal_35_bays: number | null
     imagen_url: string | null
+    tipo: string | null
     _count: GabinetesCountAggregateOutputType | null
     _avg: GabinetesAvgAggregateOutputType | null
     _sum: GabinetesSumAggregateOutputType | null
@@ -5407,6 +6140,9 @@ export namespace Prisma {
     external_volume?: boolean
     internal_35_bays?: boolean
     imagen_url?: boolean
+    tipo?: boolean
+    publicaciones?: boolean | gabinetes$publicacionesArgs<ExtArgs>
+    _count?: boolean | GabinetesCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gabinetes"]>
 
   export type gabinetesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5420,6 +6156,7 @@ export namespace Prisma {
     external_volume?: boolean
     internal_35_bays?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["gabinetes"]>
 
   export type gabinetesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5433,6 +6170,7 @@ export namespace Prisma {
     external_volume?: boolean
     internal_35_bays?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["gabinetes"]>
 
   export type gabinetesSelectScalar = {
@@ -5446,13 +6184,22 @@ export namespace Prisma {
     external_volume?: boolean
     internal_35_bays?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }
 
-  export type gabinetesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "type" | "color" | "psu" | "side_panel" | "external_volume" | "internal_35_bays" | "imagen_url", ExtArgs["result"]["gabinetes"]>
+  export type gabinetesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "type" | "color" | "psu" | "side_panel" | "external_volume" | "internal_35_bays" | "imagen_url" | "tipo", ExtArgs["result"]["gabinetes"]>
+  export type gabinetesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | gabinetes$publicacionesArgs<ExtArgs>
+    _count?: boolean | GabinetesCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type gabinetesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type gabinetesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $gabinetesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "gabinetes"
-    objects: {}
+    objects: {
+      publicaciones: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -5464,6 +6211,7 @@ export namespace Prisma {
       external_volume: Prisma.Decimal | null
       internal_35_bays: number | null
       imagen_url: string | null
+      tipo: string | null
     }, ExtArgs["result"]["gabinetes"]>
     composites: {}
   }
@@ -5858,6 +6606,7 @@ export namespace Prisma {
    */
   export interface Prisma__gabinetesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicaciones<T extends gabinetes$publicacionesArgs<ExtArgs> = {}>(args?: Subset<T, gabinetes$publicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5897,6 +6646,7 @@ export namespace Prisma {
     readonly external_volume: FieldRef<"gabinetes", 'Decimal'>
     readonly internal_35_bays: FieldRef<"gabinetes", 'Int'>
     readonly imagen_url: FieldRef<"gabinetes", 'String'>
+    readonly tipo: FieldRef<"gabinetes", 'String'>
   }
     
 
@@ -5913,6 +6663,10 @@ export namespace Prisma {
      * Omit specific fields from the gabinetes
      */
     omit?: gabinetesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gabinetesInclude<ExtArgs> | null
     /**
      * Filter, which gabinetes to fetch.
      */
@@ -5932,6 +6686,10 @@ export namespace Prisma {
      */
     omit?: gabinetesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gabinetesInclude<ExtArgs> | null
+    /**
      * Filter, which gabinetes to fetch.
      */
     where: gabinetesWhereUniqueInput
@@ -5949,6 +6707,10 @@ export namespace Prisma {
      * Omit specific fields from the gabinetes
      */
     omit?: gabinetesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gabinetesInclude<ExtArgs> | null
     /**
      * Filter, which gabinetes to fetch.
      */
@@ -5998,6 +6760,10 @@ export namespace Prisma {
      */
     omit?: gabinetesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gabinetesInclude<ExtArgs> | null
+    /**
      * Filter, which gabinetes to fetch.
      */
     where?: gabinetesWhereInput
@@ -6046,6 +6812,10 @@ export namespace Prisma {
      */
     omit?: gabinetesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gabinetesInclude<ExtArgs> | null
+    /**
      * Filter, which gabinetes to fetch.
      */
     where?: gabinetesWhereInput
@@ -6088,6 +6858,10 @@ export namespace Prisma {
      * Omit specific fields from the gabinetes
      */
     omit?: gabinetesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gabinetesInclude<ExtArgs> | null
     /**
      * The data needed to create a gabinetes.
      */
@@ -6136,6 +6910,10 @@ export namespace Prisma {
      * Omit specific fields from the gabinetes
      */
     omit?: gabinetesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gabinetesInclude<ExtArgs> | null
     /**
      * The data needed to update a gabinetes.
      */
@@ -6203,6 +6981,10 @@ export namespace Prisma {
      */
     omit?: gabinetesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gabinetesInclude<ExtArgs> | null
+    /**
      * The filter to search for the gabinetes to update in case it exists.
      */
     where: gabinetesWhereUniqueInput
@@ -6229,6 +7011,10 @@ export namespace Prisma {
      */
     omit?: gabinetesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gabinetesInclude<ExtArgs> | null
+    /**
      * Filter which gabinetes to delete.
      */
     where: gabinetesWhereUniqueInput
@@ -6249,6 +7035,30 @@ export namespace Prisma {
   }
 
   /**
+   * gabinetes.publicaciones
+   */
+  export type gabinetes$publicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * gabinetes without action
    */
   export type gabinetesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6260,6 +7070,10 @@ export namespace Prisma {
      * Omit specific fields from the gabinetes
      */
     omit?: gabinetesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gabinetesInclude<ExtArgs> | null
   }
 
 
@@ -6304,6 +7118,7 @@ export namespace Prisma {
     color: string | null
     length: number | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type GraficasMaxAggregateOutputType = {
@@ -6317,6 +7132,7 @@ export namespace Prisma {
     color: string | null
     length: number | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type GraficasCountAggregateOutputType = {
@@ -6330,6 +7146,7 @@ export namespace Prisma {
     color: number
     length: number
     imagen_url: number
+    tipo: number
     _all: number
   }
 
@@ -6363,6 +7180,7 @@ export namespace Prisma {
     color?: true
     length?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type GraficasMaxAggregateInputType = {
@@ -6376,6 +7194,7 @@ export namespace Prisma {
     color?: true
     length?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type GraficasCountAggregateInputType = {
@@ -6389,6 +7208,7 @@ export namespace Prisma {
     color?: true
     length?: true
     imagen_url?: true
+    tipo?: true
     _all?: true
   }
 
@@ -6489,6 +7309,7 @@ export namespace Prisma {
     color: string | null
     length: number | null
     imagen_url: string | null
+    tipo: string | null
     _count: GraficasCountAggregateOutputType | null
     _avg: GraficasAvgAggregateOutputType | null
     _sum: GraficasSumAggregateOutputType | null
@@ -6521,6 +7342,9 @@ export namespace Prisma {
     color?: boolean
     length?: boolean
     imagen_url?: boolean
+    tipo?: boolean
+    publicaciones?: boolean | graficas$publicacionesArgs<ExtArgs>
+    _count?: boolean | GraficasCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["graficas"]>
 
   export type graficasSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6534,6 +7358,7 @@ export namespace Prisma {
     color?: boolean
     length?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["graficas"]>
 
   export type graficasSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6547,6 +7372,7 @@ export namespace Prisma {
     color?: boolean
     length?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["graficas"]>
 
   export type graficasSelectScalar = {
@@ -6560,13 +7386,22 @@ export namespace Prisma {
     color?: boolean
     length?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }
 
-  export type graficasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "chipset" | "memory" | "core_clock" | "boost_clock" | "color" | "length" | "imagen_url", ExtArgs["result"]["graficas"]>
+  export type graficasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "chipset" | "memory" | "core_clock" | "boost_clock" | "color" | "length" | "imagen_url" | "tipo", ExtArgs["result"]["graficas"]>
+  export type graficasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | graficas$publicacionesArgs<ExtArgs>
+    _count?: boolean | GraficasCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type graficasIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type graficasIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $graficasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "graficas"
-    objects: {}
+    objects: {
+      publicaciones: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -6578,6 +7413,7 @@ export namespace Prisma {
       color: string | null
       length: number | null
       imagen_url: string | null
+      tipo: string | null
     }, ExtArgs["result"]["graficas"]>
     composites: {}
   }
@@ -6972,6 +7808,7 @@ export namespace Prisma {
    */
   export interface Prisma__graficasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicaciones<T extends graficas$publicacionesArgs<ExtArgs> = {}>(args?: Subset<T, graficas$publicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7011,6 +7848,7 @@ export namespace Prisma {
     readonly color: FieldRef<"graficas", 'String'>
     readonly length: FieldRef<"graficas", 'Int'>
     readonly imagen_url: FieldRef<"graficas", 'String'>
+    readonly tipo: FieldRef<"graficas", 'String'>
   }
     
 
@@ -7027,6 +7865,10 @@ export namespace Prisma {
      * Omit specific fields from the graficas
      */
     omit?: graficasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: graficasInclude<ExtArgs> | null
     /**
      * Filter, which graficas to fetch.
      */
@@ -7046,6 +7888,10 @@ export namespace Prisma {
      */
     omit?: graficasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: graficasInclude<ExtArgs> | null
+    /**
      * Filter, which graficas to fetch.
      */
     where: graficasWhereUniqueInput
@@ -7063,6 +7909,10 @@ export namespace Prisma {
      * Omit specific fields from the graficas
      */
     omit?: graficasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: graficasInclude<ExtArgs> | null
     /**
      * Filter, which graficas to fetch.
      */
@@ -7112,6 +7962,10 @@ export namespace Prisma {
      */
     omit?: graficasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: graficasInclude<ExtArgs> | null
+    /**
      * Filter, which graficas to fetch.
      */
     where?: graficasWhereInput
@@ -7160,6 +8014,10 @@ export namespace Prisma {
      */
     omit?: graficasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: graficasInclude<ExtArgs> | null
+    /**
      * Filter, which graficas to fetch.
      */
     where?: graficasWhereInput
@@ -7202,6 +8060,10 @@ export namespace Prisma {
      * Omit specific fields from the graficas
      */
     omit?: graficasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: graficasInclude<ExtArgs> | null
     /**
      * The data needed to create a graficas.
      */
@@ -7250,6 +8112,10 @@ export namespace Prisma {
      * Omit specific fields from the graficas
      */
     omit?: graficasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: graficasInclude<ExtArgs> | null
     /**
      * The data needed to update a graficas.
      */
@@ -7317,6 +8183,10 @@ export namespace Prisma {
      */
     omit?: graficasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: graficasInclude<ExtArgs> | null
+    /**
      * The filter to search for the graficas to update in case it exists.
      */
     where: graficasWhereUniqueInput
@@ -7343,6 +8213,10 @@ export namespace Prisma {
      */
     omit?: graficasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: graficasInclude<ExtArgs> | null
+    /**
      * Filter which graficas to delete.
      */
     where: graficasWhereUniqueInput
@@ -7363,6 +8237,30 @@ export namespace Prisma {
   }
 
   /**
+   * graficas.publicaciones
+   */
+  export type graficas$publicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * graficas without action
    */
   export type graficasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7374,6 +8272,10 @@ export namespace Prisma {
      * Omit specific fields from the graficas
      */
     omit?: graficasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: graficasInclude<ExtArgs> | null
   }
 
 
@@ -7413,6 +8315,7 @@ export namespace Prisma {
     price_per_gb: Decimal | null
     color: string | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type Memorias_externasMaxAggregateOutputType = {
@@ -7425,6 +8328,7 @@ export namespace Prisma {
     price_per_gb: Decimal | null
     color: string | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type Memorias_externasCountAggregateOutputType = {
@@ -7437,6 +8341,7 @@ export namespace Prisma {
     price_per_gb: number
     color: number
     imagen_url: number
+    tipo: number
     _all: number
   }
 
@@ -7465,6 +8370,7 @@ export namespace Prisma {
     price_per_gb?: true
     color?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type Memorias_externasMaxAggregateInputType = {
@@ -7477,6 +8383,7 @@ export namespace Prisma {
     price_per_gb?: true
     color?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type Memorias_externasCountAggregateInputType = {
@@ -7489,6 +8396,7 @@ export namespace Prisma {
     price_per_gb?: true
     color?: true
     imagen_url?: true
+    tipo?: true
     _all?: true
   }
 
@@ -7588,6 +8496,7 @@ export namespace Prisma {
     price_per_gb: Decimal | null
     color: string | null
     imagen_url: string | null
+    tipo: string | null
     _count: Memorias_externasCountAggregateOutputType | null
     _avg: Memorias_externasAvgAggregateOutputType | null
     _sum: Memorias_externasSumAggregateOutputType | null
@@ -7619,6 +8528,9 @@ export namespace Prisma {
     price_per_gb?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
+    publicaciones?: boolean | memorias_externas$publicacionesArgs<ExtArgs>
+    _count?: boolean | Memorias_externasCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["memorias_externas"]>
 
   export type memorias_externasSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7631,6 +8543,7 @@ export namespace Prisma {
     price_per_gb?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["memorias_externas"]>
 
   export type memorias_externasSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7643,6 +8556,7 @@ export namespace Prisma {
     price_per_gb?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["memorias_externas"]>
 
   export type memorias_externasSelectScalar = {
@@ -7655,13 +8569,22 @@ export namespace Prisma {
     price_per_gb?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }
 
-  export type memorias_externasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "type" | "interface" | "capacity" | "price_per_gb" | "color" | "imagen_url", ExtArgs["result"]["memorias_externas"]>
+  export type memorias_externasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "type" | "interface" | "capacity" | "price_per_gb" | "color" | "imagen_url" | "tipo", ExtArgs["result"]["memorias_externas"]>
+  export type memorias_externasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | memorias_externas$publicacionesArgs<ExtArgs>
+    _count?: boolean | Memorias_externasCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type memorias_externasIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type memorias_externasIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $memorias_externasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "memorias_externas"
-    objects: {}
+    objects: {
+      publicaciones: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -7672,6 +8595,7 @@ export namespace Prisma {
       price_per_gb: Prisma.Decimal | null
       color: string | null
       imagen_url: string | null
+      tipo: string | null
     }, ExtArgs["result"]["memorias_externas"]>
     composites: {}
   }
@@ -8066,6 +8990,7 @@ export namespace Prisma {
    */
   export interface Prisma__memorias_externasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicaciones<T extends memorias_externas$publicacionesArgs<ExtArgs> = {}>(args?: Subset<T, memorias_externas$publicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8104,6 +9029,7 @@ export namespace Prisma {
     readonly price_per_gb: FieldRef<"memorias_externas", 'Decimal'>
     readonly color: FieldRef<"memorias_externas", 'String'>
     readonly imagen_url: FieldRef<"memorias_externas", 'String'>
+    readonly tipo: FieldRef<"memorias_externas", 'String'>
   }
     
 
@@ -8120,6 +9046,10 @@ export namespace Prisma {
      * Omit specific fields from the memorias_externas
      */
     omit?: memorias_externasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_externasInclude<ExtArgs> | null
     /**
      * Filter, which memorias_externas to fetch.
      */
@@ -8139,6 +9069,10 @@ export namespace Prisma {
      */
     omit?: memorias_externasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_externasInclude<ExtArgs> | null
+    /**
      * Filter, which memorias_externas to fetch.
      */
     where: memorias_externasWhereUniqueInput
@@ -8156,6 +9090,10 @@ export namespace Prisma {
      * Omit specific fields from the memorias_externas
      */
     omit?: memorias_externasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_externasInclude<ExtArgs> | null
     /**
      * Filter, which memorias_externas to fetch.
      */
@@ -8205,6 +9143,10 @@ export namespace Prisma {
      */
     omit?: memorias_externasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_externasInclude<ExtArgs> | null
+    /**
      * Filter, which memorias_externas to fetch.
      */
     where?: memorias_externasWhereInput
@@ -8253,6 +9195,10 @@ export namespace Prisma {
      */
     omit?: memorias_externasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_externasInclude<ExtArgs> | null
+    /**
      * Filter, which memorias_externas to fetch.
      */
     where?: memorias_externasWhereInput
@@ -8295,6 +9241,10 @@ export namespace Prisma {
      * Omit specific fields from the memorias_externas
      */
     omit?: memorias_externasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_externasInclude<ExtArgs> | null
     /**
      * The data needed to create a memorias_externas.
      */
@@ -8343,6 +9293,10 @@ export namespace Prisma {
      * Omit specific fields from the memorias_externas
      */
     omit?: memorias_externasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_externasInclude<ExtArgs> | null
     /**
      * The data needed to update a memorias_externas.
      */
@@ -8410,6 +9364,10 @@ export namespace Prisma {
      */
     omit?: memorias_externasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_externasInclude<ExtArgs> | null
+    /**
      * The filter to search for the memorias_externas to update in case it exists.
      */
     where: memorias_externasWhereUniqueInput
@@ -8436,6 +9394,10 @@ export namespace Prisma {
      */
     omit?: memorias_externasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_externasInclude<ExtArgs> | null
+    /**
      * Filter which memorias_externas to delete.
      */
     where: memorias_externasWhereUniqueInput
@@ -8456,6 +9418,30 @@ export namespace Prisma {
   }
 
   /**
+   * memorias_externas.publicaciones
+   */
+  export type memorias_externas$publicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * memorias_externas without action
    */
   export type memorias_externasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8467,6 +9453,10 @@ export namespace Prisma {
      * Omit specific fields from the memorias_externas
      */
     omit?: memorias_externasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_externasInclude<ExtArgs> | null
   }
 
 
@@ -8509,6 +9499,7 @@ export namespace Prisma {
     form_factor: string | null
     interface: string | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type Memorias_internasMaxAggregateOutputType = {
@@ -8522,6 +9513,7 @@ export namespace Prisma {
     form_factor: string | null
     interface: string | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type Memorias_internasCountAggregateOutputType = {
@@ -8535,6 +9527,7 @@ export namespace Prisma {
     form_factor: number
     interface: number
     imagen_url: number
+    tipo: number
     _all: number
   }
 
@@ -8566,6 +9559,7 @@ export namespace Prisma {
     form_factor?: true
     interface?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type Memorias_internasMaxAggregateInputType = {
@@ -8579,6 +9573,7 @@ export namespace Prisma {
     form_factor?: true
     interface?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type Memorias_internasCountAggregateInputType = {
@@ -8592,6 +9587,7 @@ export namespace Prisma {
     form_factor?: true
     interface?: true
     imagen_url?: true
+    tipo?: true
     _all?: true
   }
 
@@ -8692,6 +9688,7 @@ export namespace Prisma {
     form_factor: string | null
     interface: string | null
     imagen_url: string | null
+    tipo: string | null
     _count: Memorias_internasCountAggregateOutputType | null
     _avg: Memorias_internasAvgAggregateOutputType | null
     _sum: Memorias_internasSumAggregateOutputType | null
@@ -8724,6 +9721,9 @@ export namespace Prisma {
     form_factor?: boolean
     interface?: boolean
     imagen_url?: boolean
+    tipo?: boolean
+    publicaciones?: boolean | memorias_internas$publicacionesArgs<ExtArgs>
+    _count?: boolean | Memorias_internasCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["memorias_internas"]>
 
   export type memorias_internasSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8737,6 +9737,7 @@ export namespace Prisma {
     form_factor?: boolean
     interface?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["memorias_internas"]>
 
   export type memorias_internasSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8750,6 +9751,7 @@ export namespace Prisma {
     form_factor?: boolean
     interface?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["memorias_internas"]>
 
   export type memorias_internasSelectScalar = {
@@ -8763,13 +9765,22 @@ export namespace Prisma {
     form_factor?: boolean
     interface?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }
 
-  export type memorias_internasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "capacity" | "price_per_gb" | "type" | "cache" | "form_factor" | "interface" | "imagen_url", ExtArgs["result"]["memorias_internas"]>
+  export type memorias_internasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "capacity" | "price_per_gb" | "type" | "cache" | "form_factor" | "interface" | "imagen_url" | "tipo", ExtArgs["result"]["memorias_internas"]>
+  export type memorias_internasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | memorias_internas$publicacionesArgs<ExtArgs>
+    _count?: boolean | Memorias_internasCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type memorias_internasIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type memorias_internasIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $memorias_internasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "memorias_internas"
-    objects: {}
+    objects: {
+      publicaciones: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -8781,6 +9792,7 @@ export namespace Prisma {
       form_factor: string | null
       interface: string | null
       imagen_url: string | null
+      tipo: string | null
     }, ExtArgs["result"]["memorias_internas"]>
     composites: {}
   }
@@ -9175,6 +10187,7 @@ export namespace Prisma {
    */
   export interface Prisma__memorias_internasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicaciones<T extends memorias_internas$publicacionesArgs<ExtArgs> = {}>(args?: Subset<T, memorias_internas$publicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9214,6 +10227,7 @@ export namespace Prisma {
     readonly form_factor: FieldRef<"memorias_internas", 'String'>
     readonly interface: FieldRef<"memorias_internas", 'String'>
     readonly imagen_url: FieldRef<"memorias_internas", 'String'>
+    readonly tipo: FieldRef<"memorias_internas", 'String'>
   }
     
 
@@ -9230,6 +10244,10 @@ export namespace Prisma {
      * Omit specific fields from the memorias_internas
      */
     omit?: memorias_internasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_internasInclude<ExtArgs> | null
     /**
      * Filter, which memorias_internas to fetch.
      */
@@ -9249,6 +10267,10 @@ export namespace Prisma {
      */
     omit?: memorias_internasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_internasInclude<ExtArgs> | null
+    /**
      * Filter, which memorias_internas to fetch.
      */
     where: memorias_internasWhereUniqueInput
@@ -9266,6 +10288,10 @@ export namespace Prisma {
      * Omit specific fields from the memorias_internas
      */
     omit?: memorias_internasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_internasInclude<ExtArgs> | null
     /**
      * Filter, which memorias_internas to fetch.
      */
@@ -9315,6 +10341,10 @@ export namespace Prisma {
      */
     omit?: memorias_internasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_internasInclude<ExtArgs> | null
+    /**
      * Filter, which memorias_internas to fetch.
      */
     where?: memorias_internasWhereInput
@@ -9363,6 +10393,10 @@ export namespace Prisma {
      */
     omit?: memorias_internasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_internasInclude<ExtArgs> | null
+    /**
      * Filter, which memorias_internas to fetch.
      */
     where?: memorias_internasWhereInput
@@ -9405,6 +10439,10 @@ export namespace Prisma {
      * Omit specific fields from the memorias_internas
      */
     omit?: memorias_internasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_internasInclude<ExtArgs> | null
     /**
      * The data needed to create a memorias_internas.
      */
@@ -9453,6 +10491,10 @@ export namespace Prisma {
      * Omit specific fields from the memorias_internas
      */
     omit?: memorias_internasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_internasInclude<ExtArgs> | null
     /**
      * The data needed to update a memorias_internas.
      */
@@ -9520,6 +10562,10 @@ export namespace Prisma {
      */
     omit?: memorias_internasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_internasInclude<ExtArgs> | null
+    /**
      * The filter to search for the memorias_internas to update in case it exists.
      */
     where: memorias_internasWhereUniqueInput
@@ -9546,6 +10592,10 @@ export namespace Prisma {
      */
     omit?: memorias_internasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_internasInclude<ExtArgs> | null
+    /**
      * Filter which memorias_internas to delete.
      */
     where: memorias_internasWhereUniqueInput
@@ -9566,6 +10616,30 @@ export namespace Prisma {
   }
 
   /**
+   * memorias_internas.publicaciones
+   */
+  export type memorias_internas$publicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * memorias_internas without action
    */
   export type memorias_internasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9577,6 +10651,10 @@ export namespace Prisma {
      * Omit specific fields from the memorias_internas
      */
     omit?: memorias_internasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_internasInclude<ExtArgs> | null
   }
 
 
@@ -9616,6 +10694,7 @@ export namespace Prisma {
     memory_slots: number | null
     color: string | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type MothersMaxAggregateOutputType = {
@@ -9628,6 +10707,7 @@ export namespace Prisma {
     memory_slots: number | null
     color: string | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type MothersCountAggregateOutputType = {
@@ -9640,6 +10720,7 @@ export namespace Prisma {
     memory_slots: number
     color: number
     imagen_url: number
+    tipo: number
     _all: number
   }
 
@@ -9668,6 +10749,7 @@ export namespace Prisma {
     memory_slots?: true
     color?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type MothersMaxAggregateInputType = {
@@ -9680,6 +10762,7 @@ export namespace Prisma {
     memory_slots?: true
     color?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type MothersCountAggregateInputType = {
@@ -9692,6 +10775,7 @@ export namespace Prisma {
     memory_slots?: true
     color?: true
     imagen_url?: true
+    tipo?: true
     _all?: true
   }
 
@@ -9791,6 +10875,7 @@ export namespace Prisma {
     memory_slots: number | null
     color: string | null
     imagen_url: string | null
+    tipo: string | null
     _count: MothersCountAggregateOutputType | null
     _avg: MothersAvgAggregateOutputType | null
     _sum: MothersSumAggregateOutputType | null
@@ -9822,6 +10907,9 @@ export namespace Prisma {
     memory_slots?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
+    publicaciones?: boolean | mothers$publicacionesArgs<ExtArgs>
+    _count?: boolean | MothersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["mothers"]>
 
   export type mothersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -9834,6 +10922,7 @@ export namespace Prisma {
     memory_slots?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["mothers"]>
 
   export type mothersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -9846,6 +10935,7 @@ export namespace Prisma {
     memory_slots?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["mothers"]>
 
   export type mothersSelectScalar = {
@@ -9858,13 +10948,22 @@ export namespace Prisma {
     memory_slots?: boolean
     color?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }
 
-  export type mothersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "socket" | "form_factor" | "max_memory" | "memory_slots" | "color" | "imagen_url", ExtArgs["result"]["mothers"]>
+  export type mothersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "socket" | "form_factor" | "max_memory" | "memory_slots" | "color" | "imagen_url" | "tipo", ExtArgs["result"]["mothers"]>
+  export type mothersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | mothers$publicacionesArgs<ExtArgs>
+    _count?: boolean | MothersCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type mothersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type mothersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $mothersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "mothers"
-    objects: {}
+    objects: {
+      publicaciones: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -9875,6 +10974,7 @@ export namespace Prisma {
       memory_slots: number | null
       color: string | null
       imagen_url: string | null
+      tipo: string | null
     }, ExtArgs["result"]["mothers"]>
     composites: {}
   }
@@ -10269,6 +11369,7 @@ export namespace Prisma {
    */
   export interface Prisma__mothersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicaciones<T extends mothers$publicacionesArgs<ExtArgs> = {}>(args?: Subset<T, mothers$publicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10307,6 +11408,7 @@ export namespace Prisma {
     readonly memory_slots: FieldRef<"mothers", 'Int'>
     readonly color: FieldRef<"mothers", 'String'>
     readonly imagen_url: FieldRef<"mothers", 'String'>
+    readonly tipo: FieldRef<"mothers", 'String'>
   }
     
 
@@ -10323,6 +11425,10 @@ export namespace Prisma {
      * Omit specific fields from the mothers
      */
     omit?: mothersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mothersInclude<ExtArgs> | null
     /**
      * Filter, which mothers to fetch.
      */
@@ -10342,6 +11448,10 @@ export namespace Prisma {
      */
     omit?: mothersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mothersInclude<ExtArgs> | null
+    /**
      * Filter, which mothers to fetch.
      */
     where: mothersWhereUniqueInput
@@ -10359,6 +11469,10 @@ export namespace Prisma {
      * Omit specific fields from the mothers
      */
     omit?: mothersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mothersInclude<ExtArgs> | null
     /**
      * Filter, which mothers to fetch.
      */
@@ -10408,6 +11522,10 @@ export namespace Prisma {
      */
     omit?: mothersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mothersInclude<ExtArgs> | null
+    /**
      * Filter, which mothers to fetch.
      */
     where?: mothersWhereInput
@@ -10456,6 +11574,10 @@ export namespace Prisma {
      */
     omit?: mothersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mothersInclude<ExtArgs> | null
+    /**
      * Filter, which mothers to fetch.
      */
     where?: mothersWhereInput
@@ -10498,6 +11620,10 @@ export namespace Prisma {
      * Omit specific fields from the mothers
      */
     omit?: mothersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mothersInclude<ExtArgs> | null
     /**
      * The data needed to create a mothers.
      */
@@ -10546,6 +11672,10 @@ export namespace Prisma {
      * Omit specific fields from the mothers
      */
     omit?: mothersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mothersInclude<ExtArgs> | null
     /**
      * The data needed to update a mothers.
      */
@@ -10613,6 +11743,10 @@ export namespace Prisma {
      */
     omit?: mothersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mothersInclude<ExtArgs> | null
+    /**
      * The filter to search for the mothers to update in case it exists.
      */
     where: mothersWhereUniqueInput
@@ -10639,6 +11773,10 @@ export namespace Prisma {
      */
     omit?: mothersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mothersInclude<ExtArgs> | null
+    /**
      * Filter which mothers to delete.
      */
     where: mothersWhereUniqueInput
@@ -10659,6 +11797,30 @@ export namespace Prisma {
   }
 
   /**
+   * mothers.publicaciones
+   */
+  export type mothers$publicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * mothers without action
    */
   export type mothersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10670,6 +11832,10 @@ export namespace Prisma {
      * Omit specific fields from the mothers
      */
     omit?: mothersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mothersInclude<ExtArgs> | null
   }
 
 
@@ -10722,6 +11888,7 @@ export namespace Prisma {
     first_word_latency: number | null
     cas_latency: number | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type RamsMaxAggregateOutputType = {
@@ -10737,6 +11904,7 @@ export namespace Prisma {
     first_word_latency: number | null
     cas_latency: number | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type RamsCountAggregateOutputType = {
@@ -10752,6 +11920,7 @@ export namespace Prisma {
     first_word_latency: number
     cas_latency: number
     imagen_url: number
+    tipo: number
     _all: number
   }
 
@@ -10793,6 +11962,7 @@ export namespace Prisma {
     first_word_latency?: true
     cas_latency?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type RamsMaxAggregateInputType = {
@@ -10808,6 +11978,7 @@ export namespace Prisma {
     first_word_latency?: true
     cas_latency?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type RamsCountAggregateInputType = {
@@ -10823,6 +11994,7 @@ export namespace Prisma {
     first_word_latency?: true
     cas_latency?: true
     imagen_url?: true
+    tipo?: true
     _all?: true
   }
 
@@ -10925,6 +12097,7 @@ export namespace Prisma {
     first_word_latency: number | null
     cas_latency: number | null
     imagen_url: string | null
+    tipo: string | null
     _count: RamsCountAggregateOutputType | null
     _avg: RamsAvgAggregateOutputType | null
     _sum: RamsSumAggregateOutputType | null
@@ -10959,6 +12132,9 @@ export namespace Prisma {
     first_word_latency?: boolean
     cas_latency?: boolean
     imagen_url?: boolean
+    tipo?: boolean
+    publicaciones?: boolean | rams$publicacionesArgs<ExtArgs>
+    _count?: boolean | RamsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["rams"]>
 
   export type ramsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10974,6 +12150,7 @@ export namespace Prisma {
     first_word_latency?: boolean
     cas_latency?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["rams"]>
 
   export type ramsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10989,6 +12166,7 @@ export namespace Prisma {
     first_word_latency?: boolean
     cas_latency?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["rams"]>
 
   export type ramsSelectScalar = {
@@ -11004,13 +12182,22 @@ export namespace Prisma {
     first_word_latency?: boolean
     cas_latency?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }
 
-  export type ramsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "speed_channels" | "speed_mhz" | "modules_qty" | "module_capacity" | "price_per_gb" | "color" | "first_word_latency" | "cas_latency" | "imagen_url", ExtArgs["result"]["rams"]>
+  export type ramsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "speed_channels" | "speed_mhz" | "modules_qty" | "module_capacity" | "price_per_gb" | "color" | "first_word_latency" | "cas_latency" | "imagen_url" | "tipo", ExtArgs["result"]["rams"]>
+  export type ramsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | rams$publicacionesArgs<ExtArgs>
+    _count?: boolean | RamsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ramsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ramsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $ramsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "rams"
-    objects: {}
+    objects: {
+      publicaciones: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -11024,6 +12211,7 @@ export namespace Prisma {
       first_word_latency: number | null
       cas_latency: number | null
       imagen_url: string | null
+      tipo: string | null
     }, ExtArgs["result"]["rams"]>
     composites: {}
   }
@@ -11418,6 +12606,7 @@ export namespace Prisma {
    */
   export interface Prisma__ramsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicaciones<T extends rams$publicacionesArgs<ExtArgs> = {}>(args?: Subset<T, rams$publicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11459,6 +12648,7 @@ export namespace Prisma {
     readonly first_word_latency: FieldRef<"rams", 'Int'>
     readonly cas_latency: FieldRef<"rams", 'Int'>
     readonly imagen_url: FieldRef<"rams", 'String'>
+    readonly tipo: FieldRef<"rams", 'String'>
   }
     
 
@@ -11475,6 +12665,10 @@ export namespace Prisma {
      * Omit specific fields from the rams
      */
     omit?: ramsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ramsInclude<ExtArgs> | null
     /**
      * Filter, which rams to fetch.
      */
@@ -11494,6 +12688,10 @@ export namespace Prisma {
      */
     omit?: ramsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ramsInclude<ExtArgs> | null
+    /**
      * Filter, which rams to fetch.
      */
     where: ramsWhereUniqueInput
@@ -11511,6 +12709,10 @@ export namespace Prisma {
      * Omit specific fields from the rams
      */
     omit?: ramsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ramsInclude<ExtArgs> | null
     /**
      * Filter, which rams to fetch.
      */
@@ -11560,6 +12762,10 @@ export namespace Prisma {
      */
     omit?: ramsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ramsInclude<ExtArgs> | null
+    /**
      * Filter, which rams to fetch.
      */
     where?: ramsWhereInput
@@ -11608,6 +12814,10 @@ export namespace Prisma {
      */
     omit?: ramsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ramsInclude<ExtArgs> | null
+    /**
      * Filter, which rams to fetch.
      */
     where?: ramsWhereInput
@@ -11650,6 +12860,10 @@ export namespace Prisma {
      * Omit specific fields from the rams
      */
     omit?: ramsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ramsInclude<ExtArgs> | null
     /**
      * The data needed to create a rams.
      */
@@ -11698,6 +12912,10 @@ export namespace Prisma {
      * Omit specific fields from the rams
      */
     omit?: ramsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ramsInclude<ExtArgs> | null
     /**
      * The data needed to update a rams.
      */
@@ -11765,6 +12983,10 @@ export namespace Prisma {
      */
     omit?: ramsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ramsInclude<ExtArgs> | null
+    /**
      * The filter to search for the rams to update in case it exists.
      */
     where: ramsWhereUniqueInput
@@ -11791,6 +13013,10 @@ export namespace Prisma {
      */
     omit?: ramsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ramsInclude<ExtArgs> | null
+    /**
      * Filter which rams to delete.
      */
     where: ramsWhereUniqueInput
@@ -11811,6 +13037,30 @@ export namespace Prisma {
   }
 
   /**
+   * rams.publicaciones
+   */
+  export type rams$publicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * rams without action
    */
   export type ramsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11822,6 +13072,10 @@ export namespace Prisma {
      * Omit specific fields from the rams
      */
     omit?: ramsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ramsInclude<ExtArgs> | null
   }
 
 
@@ -11864,6 +13118,7 @@ export namespace Prisma {
     chipset: string | null
     interface: string | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type SoundsMaxAggregateOutputType = {
@@ -11877,6 +13132,7 @@ export namespace Prisma {
     chipset: string | null
     interface: string | null
     imagen_url: string | null
+    tipo: string | null
   }
 
   export type SoundsCountAggregateOutputType = {
@@ -11890,6 +13146,7 @@ export namespace Prisma {
     chipset: number
     interface: number
     imagen_url: number
+    tipo: number
     _all: number
   }
 
@@ -11921,6 +13178,7 @@ export namespace Prisma {
     chipset?: true
     interface?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type SoundsMaxAggregateInputType = {
@@ -11934,6 +13192,7 @@ export namespace Prisma {
     chipset?: true
     interface?: true
     imagen_url?: true
+    tipo?: true
   }
 
   export type SoundsCountAggregateInputType = {
@@ -11947,6 +13206,7 @@ export namespace Prisma {
     chipset?: true
     interface?: true
     imagen_url?: true
+    tipo?: true
     _all?: true
   }
 
@@ -12047,6 +13307,7 @@ export namespace Prisma {
     chipset: string | null
     interface: string | null
     imagen_url: string | null
+    tipo: string | null
     _count: SoundsCountAggregateOutputType | null
     _avg: SoundsAvgAggregateOutputType | null
     _sum: SoundsSumAggregateOutputType | null
@@ -12079,6 +13340,9 @@ export namespace Prisma {
     chipset?: boolean
     interface?: boolean
     imagen_url?: boolean
+    tipo?: boolean
+    publicaciones?: boolean | sounds$publicacionesArgs<ExtArgs>
+    _count?: boolean | SoundsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["sounds"]>
 
   export type soundsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -12092,6 +13356,7 @@ export namespace Prisma {
     chipset?: boolean
     interface?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["sounds"]>
 
   export type soundsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -12105,6 +13370,7 @@ export namespace Prisma {
     chipset?: boolean
     interface?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }, ExtArgs["result"]["sounds"]>
 
   export type soundsSelectScalar = {
@@ -12118,13 +13384,22 @@ export namespace Prisma {
     chipset?: boolean
     interface?: boolean
     imagen_url?: boolean
+    tipo?: boolean
   }
 
-  export type soundsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "channels" | "digital_audio" | "snr" | "sample_rate" | "chipset" | "interface" | "imagen_url", ExtArgs["result"]["sounds"]>
+  export type soundsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "channels" | "digital_audio" | "snr" | "sample_rate" | "chipset" | "interface" | "imagen_url" | "tipo", ExtArgs["result"]["sounds"]>
+  export type soundsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicaciones?: boolean | sounds$publicacionesArgs<ExtArgs>
+    _count?: boolean | SoundsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type soundsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type soundsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $soundsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "sounds"
-    objects: {}
+    objects: {
+      publicaciones: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -12136,6 +13411,7 @@ export namespace Prisma {
       chipset: string | null
       interface: string | null
       imagen_url: string | null
+      tipo: string | null
     }, ExtArgs["result"]["sounds"]>
     composites: {}
   }
@@ -12530,6 +13806,7 @@ export namespace Prisma {
    */
   export interface Prisma__soundsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicaciones<T extends sounds$publicacionesArgs<ExtArgs> = {}>(args?: Subset<T, sounds$publicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12569,6 +13846,7 @@ export namespace Prisma {
     readonly chipset: FieldRef<"sounds", 'String'>
     readonly interface: FieldRef<"sounds", 'String'>
     readonly imagen_url: FieldRef<"sounds", 'String'>
+    readonly tipo: FieldRef<"sounds", 'String'>
   }
     
 
@@ -12585,6 +13863,10 @@ export namespace Prisma {
      * Omit specific fields from the sounds
      */
     omit?: soundsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: soundsInclude<ExtArgs> | null
     /**
      * Filter, which sounds to fetch.
      */
@@ -12604,6 +13886,10 @@ export namespace Prisma {
      */
     omit?: soundsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: soundsInclude<ExtArgs> | null
+    /**
      * Filter, which sounds to fetch.
      */
     where: soundsWhereUniqueInput
@@ -12621,6 +13907,10 @@ export namespace Prisma {
      * Omit specific fields from the sounds
      */
     omit?: soundsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: soundsInclude<ExtArgs> | null
     /**
      * Filter, which sounds to fetch.
      */
@@ -12670,6 +13960,10 @@ export namespace Prisma {
      */
     omit?: soundsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: soundsInclude<ExtArgs> | null
+    /**
      * Filter, which sounds to fetch.
      */
     where?: soundsWhereInput
@@ -12718,6 +14012,10 @@ export namespace Prisma {
      */
     omit?: soundsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: soundsInclude<ExtArgs> | null
+    /**
      * Filter, which sounds to fetch.
      */
     where?: soundsWhereInput
@@ -12760,6 +14058,10 @@ export namespace Prisma {
      * Omit specific fields from the sounds
      */
     omit?: soundsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: soundsInclude<ExtArgs> | null
     /**
      * The data needed to create a sounds.
      */
@@ -12808,6 +14110,10 @@ export namespace Prisma {
      * Omit specific fields from the sounds
      */
     omit?: soundsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: soundsInclude<ExtArgs> | null
     /**
      * The data needed to update a sounds.
      */
@@ -12875,6 +14181,10 @@ export namespace Prisma {
      */
     omit?: soundsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: soundsInclude<ExtArgs> | null
+    /**
      * The filter to search for the sounds to update in case it exists.
      */
     where: soundsWhereUniqueInput
@@ -12901,6 +14211,10 @@ export namespace Prisma {
      */
     omit?: soundsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: soundsInclude<ExtArgs> | null
+    /**
      * Filter which sounds to delete.
      */
     where: soundsWhereUniqueInput
@@ -12921,6 +14235,30 @@ export namespace Prisma {
   }
 
   /**
+   * sounds.publicaciones
+   */
+  export type sounds$publicacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * sounds without action
    */
   export type soundsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12932,6 +14270,10 @@ export namespace Prisma {
      * Omit specific fields from the sounds
      */
     omit?: soundsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: soundsInclude<ExtArgs> | null
   }
 
 
@@ -13165,6 +14507,8 @@ export namespace Prisma {
     permisos?: boolean
     imagen_url?: boolean
     direccion?: boolean
+    publicacionesUsuario?: boolean | ususarios$publicacionesUsuarioArgs<ExtArgs>
+    _count?: boolean | UsusariosCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ususarios"]>
 
   export type ususariosSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13204,10 +14548,18 @@ export namespace Prisma {
   }
 
   export type ususariosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_user" | "nombre" | "apellido" | "mail" | "contrasenia" | "fecha_nacimiento" | "permisos" | "imagen_url" | "direccion", ExtArgs["result"]["ususarios"]>
+  export type ususariosInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicacionesUsuario?: boolean | ususarios$publicacionesUsuarioArgs<ExtArgs>
+    _count?: boolean | UsusariosCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ususariosIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ususariosIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $ususariosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ususarios"
-    objects: {}
+    objects: {
+      publicacionesUsuario: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id_user: number
       nombre: string
@@ -13612,6 +14964,7 @@ export namespace Prisma {
    */
   export interface Prisma__ususariosClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicacionesUsuario<T extends ususarios$publicacionesUsuarioArgs<ExtArgs> = {}>(args?: Subset<T, ususarios$publicacionesUsuarioArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13667,6 +15020,10 @@ export namespace Prisma {
      */
     omit?: ususariosOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ususariosInclude<ExtArgs> | null
+    /**
      * Filter, which ususarios to fetch.
      */
     where: ususariosWhereUniqueInput
@@ -13685,6 +15042,10 @@ export namespace Prisma {
      */
     omit?: ususariosOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ususariosInclude<ExtArgs> | null
+    /**
      * Filter, which ususarios to fetch.
      */
     where: ususariosWhereUniqueInput
@@ -13702,6 +15063,10 @@ export namespace Prisma {
      * Omit specific fields from the ususarios
      */
     omit?: ususariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ususariosInclude<ExtArgs> | null
     /**
      * Filter, which ususarios to fetch.
      */
@@ -13751,6 +15116,10 @@ export namespace Prisma {
      */
     omit?: ususariosOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ususariosInclude<ExtArgs> | null
+    /**
      * Filter, which ususarios to fetch.
      */
     where?: ususariosWhereInput
@@ -13799,6 +15168,10 @@ export namespace Prisma {
      */
     omit?: ususariosOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ususariosInclude<ExtArgs> | null
+    /**
      * Filter, which ususarios to fetch.
      */
     where?: ususariosWhereInput
@@ -13841,6 +15214,10 @@ export namespace Prisma {
      * Omit specific fields from the ususarios
      */
     omit?: ususariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ususariosInclude<ExtArgs> | null
     /**
      * The data needed to create a ususarios.
      */
@@ -13889,6 +15266,10 @@ export namespace Prisma {
      * Omit specific fields from the ususarios
      */
     omit?: ususariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ususariosInclude<ExtArgs> | null
     /**
      * The data needed to update a ususarios.
      */
@@ -13956,6 +15337,10 @@ export namespace Prisma {
      */
     omit?: ususariosOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ususariosInclude<ExtArgs> | null
+    /**
      * The filter to search for the ususarios to update in case it exists.
      */
     where: ususariosWhereUniqueInput
@@ -13982,6 +15367,10 @@ export namespace Prisma {
      */
     omit?: ususariosOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ususariosInclude<ExtArgs> | null
+    /**
      * Filter which ususarios to delete.
      */
     where: ususariosWhereUniqueInput
@@ -14002,6 +15391,30 @@ export namespace Prisma {
   }
 
   /**
+   * ususarios.publicacionesUsuario
+   */
+  export type ususarios$publicacionesUsuarioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * ususarios without action
    */
   export type ususariosDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14013,6 +15426,10 @@ export namespace Prisma {
      * Omit specific fields from the ususarios
      */
     omit?: ususariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ususariosInclude<ExtArgs> | null
   }
 
 
@@ -14030,12 +15447,12 @@ export namespace Prisma {
 
   export type VendedoresAvgAggregateOutputType = {
     id_vendedor: number | null
-    cuil: Decimal | null
+    cuil: number | null
   }
 
   export type VendedoresSumAggregateOutputType = {
     id_vendedor: number | null
-    cuil: Decimal | null
+    cuil: bigint | null
   }
 
   export type VendedoresMinAggregateOutputType = {
@@ -14045,7 +15462,7 @@ export namespace Prisma {
     mail: string | null
     contrasenia: string | null
     fecha_nacimiento: Date | null
-    cuil: Decimal | null
+    cuil: bigint | null
     direccion: string | null
     descripcion: string | null
     nombre_comercio: string | null
@@ -14058,7 +15475,7 @@ export namespace Prisma {
     mail: string | null
     contrasenia: string | null
     fecha_nacimiento: Date | null
-    cuil: Decimal | null
+    cuil: bigint | null
     direccion: string | null
     descripcion: string | null
     nombre_comercio: string | null
@@ -14222,7 +15639,7 @@ export namespace Prisma {
     mail: string
     contrasenia: string
     fecha_nacimiento: Date
-    cuil: Decimal
+    cuil: bigint | null
     direccion: string
     descripcion: string | null
     nombre_comercio: string | null
@@ -14258,6 +15675,8 @@ export namespace Prisma {
     direccion?: boolean
     descripcion?: boolean
     nombre_comercio?: boolean
+    publicacionesVendedor?: boolean | vendedores$publicacionesVendedorArgs<ExtArgs>
+    _count?: boolean | VendedoresCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vendedores"]>
 
   export type vendedoresSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -14300,10 +15719,18 @@ export namespace Prisma {
   }
 
   export type vendedoresOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_vendedor" | "nombre" | "apellido" | "mail" | "contrasenia" | "fecha_nacimiento" | "cuil" | "direccion" | "descripcion" | "nombre_comercio", ExtArgs["result"]["vendedores"]>
+  export type vendedoresInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    publicacionesVendedor?: boolean | vendedores$publicacionesVendedorArgs<ExtArgs>
+    _count?: boolean | VendedoresCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type vendedoresIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type vendedoresIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $vendedoresPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "vendedores"
-    objects: {}
+    objects: {
+      publicacionesVendedor: Prisma.$PublicacionProductoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id_vendedor: number
       nombre: string
@@ -14311,7 +15738,7 @@ export namespace Prisma {
       mail: string
       contrasenia: string
       fecha_nacimiento: Date
-      cuil: Prisma.Decimal
+      cuil: bigint | null
       direccion: string
       descripcion: string | null
       nombre_comercio: string | null
@@ -14709,6 +16136,7 @@ export namespace Prisma {
    */
   export interface Prisma__vendedoresClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    publicacionesVendedor<T extends vendedores$publicacionesVendedorArgs<ExtArgs> = {}>(args?: Subset<T, vendedores$publicacionesVendedorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14744,7 +16172,7 @@ export namespace Prisma {
     readonly mail: FieldRef<"vendedores", 'String'>
     readonly contrasenia: FieldRef<"vendedores", 'String'>
     readonly fecha_nacimiento: FieldRef<"vendedores", 'DateTime'>
-    readonly cuil: FieldRef<"vendedores", 'Decimal'>
+    readonly cuil: FieldRef<"vendedores", 'BigInt'>
     readonly direccion: FieldRef<"vendedores", 'String'>
     readonly descripcion: FieldRef<"vendedores", 'String'>
     readonly nombre_comercio: FieldRef<"vendedores", 'String'>
@@ -14765,6 +16193,10 @@ export namespace Prisma {
      */
     omit?: vendedoresOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vendedoresInclude<ExtArgs> | null
+    /**
      * Filter, which vendedores to fetch.
      */
     where: vendedoresWhereUniqueInput
@@ -14783,6 +16215,10 @@ export namespace Prisma {
      */
     omit?: vendedoresOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vendedoresInclude<ExtArgs> | null
+    /**
      * Filter, which vendedores to fetch.
      */
     where: vendedoresWhereUniqueInput
@@ -14800,6 +16236,10 @@ export namespace Prisma {
      * Omit specific fields from the vendedores
      */
     omit?: vendedoresOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vendedoresInclude<ExtArgs> | null
     /**
      * Filter, which vendedores to fetch.
      */
@@ -14849,6 +16289,10 @@ export namespace Prisma {
      */
     omit?: vendedoresOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vendedoresInclude<ExtArgs> | null
+    /**
      * Filter, which vendedores to fetch.
      */
     where?: vendedoresWhereInput
@@ -14897,6 +16341,10 @@ export namespace Prisma {
      */
     omit?: vendedoresOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vendedoresInclude<ExtArgs> | null
+    /**
      * Filter, which vendedores to fetch.
      */
     where?: vendedoresWhereInput
@@ -14939,6 +16387,10 @@ export namespace Prisma {
      * Omit specific fields from the vendedores
      */
     omit?: vendedoresOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vendedoresInclude<ExtArgs> | null
     /**
      * The data needed to create a vendedores.
      */
@@ -14987,6 +16439,10 @@ export namespace Prisma {
      * Omit specific fields from the vendedores
      */
     omit?: vendedoresOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vendedoresInclude<ExtArgs> | null
     /**
      * The data needed to update a vendedores.
      */
@@ -15054,6 +16510,10 @@ export namespace Prisma {
      */
     omit?: vendedoresOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vendedoresInclude<ExtArgs> | null
+    /**
      * The filter to search for the vendedores to update in case it exists.
      */
     where: vendedoresWhereUniqueInput
@@ -15080,6 +16540,10 @@ export namespace Prisma {
      */
     omit?: vendedoresOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vendedoresInclude<ExtArgs> | null
+    /**
      * Filter which vendedores to delete.
      */
     where: vendedoresWhereUniqueInput
@@ -15100,6 +16564,30 @@ export namespace Prisma {
   }
 
   /**
+   * vendedores.publicacionesVendedor
+   */
+  export type vendedores$publicacionesVendedorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    cursor?: PublicacionProductoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
    * vendedores without action
    */
   export type vendedoresDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15111,6 +16599,1596 @@ export namespace Prisma {
      * Omit specific fields from the vendedores
      */
     omit?: vendedoresOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vendedoresInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PublicacionProducto
+   */
+
+  export type AggregatePublicacionProducto = {
+    _count: PublicacionProductoCountAggregateOutputType | null
+    _avg: PublicacionProductoAvgAggregateOutputType | null
+    _sum: PublicacionProductoSumAggregateOutputType | null
+    _min: PublicacionProductoMinAggregateOutputType | null
+    _max: PublicacionProductoMaxAggregateOutputType | null
+  }
+
+  export type PublicacionProductoAvgAggregateOutputType = {
+    id: number | null
+    cooler_id: number | null
+    cpu_id: number | null
+    fuente_id: number | null
+    gabinete_id: number | null
+    grafica_id: number | null
+    memoria_externa_id: number | null
+    memoria_interna_id: number | null
+    mother_id: number | null
+    ram_id: number | null
+    sound_id: number | null
+    usuario_id: number | null
+    vendedor_id: number | null
+  }
+
+  export type PublicacionProductoSumAggregateOutputType = {
+    id: number | null
+    cooler_id: number | null
+    cpu_id: number | null
+    fuente_id: number | null
+    gabinete_id: number | null
+    grafica_id: number | null
+    memoria_externa_id: number | null
+    memoria_interna_id: number | null
+    mother_id: number | null
+    ram_id: number | null
+    sound_id: number | null
+    usuario_id: number | null
+    vendedor_id: number | null
+  }
+
+  export type PublicacionProductoMinAggregateOutputType = {
+    id: number | null
+    tipo_producto: string | null
+    cooler_id: number | null
+    cpu_id: number | null
+    fuente_id: number | null
+    gabinete_id: number | null
+    grafica_id: number | null
+    memoria_externa_id: number | null
+    memoria_interna_id: number | null
+    mother_id: number | null
+    ram_id: number | null
+    sound_id: number | null
+    usuario_id: number | null
+    vendedor_id: number | null
+    creado_en: Date | null
+  }
+
+  export type PublicacionProductoMaxAggregateOutputType = {
+    id: number | null
+    tipo_producto: string | null
+    cooler_id: number | null
+    cpu_id: number | null
+    fuente_id: number | null
+    gabinete_id: number | null
+    grafica_id: number | null
+    memoria_externa_id: number | null
+    memoria_interna_id: number | null
+    mother_id: number | null
+    ram_id: number | null
+    sound_id: number | null
+    usuario_id: number | null
+    vendedor_id: number | null
+    creado_en: Date | null
+  }
+
+  export type PublicacionProductoCountAggregateOutputType = {
+    id: number
+    tipo_producto: number
+    cooler_id: number
+    cpu_id: number
+    fuente_id: number
+    gabinete_id: number
+    grafica_id: number
+    memoria_externa_id: number
+    memoria_interna_id: number
+    mother_id: number
+    ram_id: number
+    sound_id: number
+    usuario_id: number
+    vendedor_id: number
+    creado_en: number
+    _all: number
+  }
+
+
+  export type PublicacionProductoAvgAggregateInputType = {
+    id?: true
+    cooler_id?: true
+    cpu_id?: true
+    fuente_id?: true
+    gabinete_id?: true
+    grafica_id?: true
+    memoria_externa_id?: true
+    memoria_interna_id?: true
+    mother_id?: true
+    ram_id?: true
+    sound_id?: true
+    usuario_id?: true
+    vendedor_id?: true
+  }
+
+  export type PublicacionProductoSumAggregateInputType = {
+    id?: true
+    cooler_id?: true
+    cpu_id?: true
+    fuente_id?: true
+    gabinete_id?: true
+    grafica_id?: true
+    memoria_externa_id?: true
+    memoria_interna_id?: true
+    mother_id?: true
+    ram_id?: true
+    sound_id?: true
+    usuario_id?: true
+    vendedor_id?: true
+  }
+
+  export type PublicacionProductoMinAggregateInputType = {
+    id?: true
+    tipo_producto?: true
+    cooler_id?: true
+    cpu_id?: true
+    fuente_id?: true
+    gabinete_id?: true
+    grafica_id?: true
+    memoria_externa_id?: true
+    memoria_interna_id?: true
+    mother_id?: true
+    ram_id?: true
+    sound_id?: true
+    usuario_id?: true
+    vendedor_id?: true
+    creado_en?: true
+  }
+
+  export type PublicacionProductoMaxAggregateInputType = {
+    id?: true
+    tipo_producto?: true
+    cooler_id?: true
+    cpu_id?: true
+    fuente_id?: true
+    gabinete_id?: true
+    grafica_id?: true
+    memoria_externa_id?: true
+    memoria_interna_id?: true
+    mother_id?: true
+    ram_id?: true
+    sound_id?: true
+    usuario_id?: true
+    vendedor_id?: true
+    creado_en?: true
+  }
+
+  export type PublicacionProductoCountAggregateInputType = {
+    id?: true
+    tipo_producto?: true
+    cooler_id?: true
+    cpu_id?: true
+    fuente_id?: true
+    gabinete_id?: true
+    grafica_id?: true
+    memoria_externa_id?: true
+    memoria_interna_id?: true
+    mother_id?: true
+    ram_id?: true
+    sound_id?: true
+    usuario_id?: true
+    vendedor_id?: true
+    creado_en?: true
+    _all?: true
+  }
+
+  export type PublicacionProductoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PublicacionProducto to aggregate.
+     */
+    where?: PublicacionProductoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PublicacionProductos to fetch.
+     */
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PublicacionProductoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PublicacionProductos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PublicacionProductos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PublicacionProductos
+    **/
+    _count?: true | PublicacionProductoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PublicacionProductoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PublicacionProductoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PublicacionProductoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PublicacionProductoMaxAggregateInputType
+  }
+
+  export type GetPublicacionProductoAggregateType<T extends PublicacionProductoAggregateArgs> = {
+        [P in keyof T & keyof AggregatePublicacionProducto]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePublicacionProducto[P]>
+      : GetScalarType<T[P], AggregatePublicacionProducto[P]>
+  }
+
+
+
+
+  export type PublicacionProductoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicacionProductoWhereInput
+    orderBy?: PublicacionProductoOrderByWithAggregationInput | PublicacionProductoOrderByWithAggregationInput[]
+    by: PublicacionProductoScalarFieldEnum[] | PublicacionProductoScalarFieldEnum
+    having?: PublicacionProductoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PublicacionProductoCountAggregateInputType | true
+    _avg?: PublicacionProductoAvgAggregateInputType
+    _sum?: PublicacionProductoSumAggregateInputType
+    _min?: PublicacionProductoMinAggregateInputType
+    _max?: PublicacionProductoMaxAggregateInputType
+  }
+
+  export type PublicacionProductoGroupByOutputType = {
+    id: number
+    tipo_producto: string
+    cooler_id: number | null
+    cpu_id: number | null
+    fuente_id: number | null
+    gabinete_id: number | null
+    grafica_id: number | null
+    memoria_externa_id: number | null
+    memoria_interna_id: number | null
+    mother_id: number | null
+    ram_id: number | null
+    sound_id: number | null
+    usuario_id: number | null
+    vendedor_id: number | null
+    creado_en: Date
+    _count: PublicacionProductoCountAggregateOutputType | null
+    _avg: PublicacionProductoAvgAggregateOutputType | null
+    _sum: PublicacionProductoSumAggregateOutputType | null
+    _min: PublicacionProductoMinAggregateOutputType | null
+    _max: PublicacionProductoMaxAggregateOutputType | null
+  }
+
+  type GetPublicacionProductoGroupByPayload<T extends PublicacionProductoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PublicacionProductoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PublicacionProductoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PublicacionProductoGroupByOutputType[P]>
+            : GetScalarType<T[P], PublicacionProductoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PublicacionProductoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tipo_producto?: boolean
+    cooler_id?: boolean
+    cpu_id?: boolean
+    fuente_id?: boolean
+    gabinete_id?: boolean
+    grafica_id?: boolean
+    memoria_externa_id?: boolean
+    memoria_interna_id?: boolean
+    mother_id?: boolean
+    ram_id?: boolean
+    sound_id?: boolean
+    usuario_id?: boolean
+    vendedor_id?: boolean
+    creado_en?: boolean
+    cooler?: boolean | PublicacionProducto$coolerArgs<ExtArgs>
+    cpu?: boolean | PublicacionProducto$cpuArgs<ExtArgs>
+    fuente?: boolean | PublicacionProducto$fuenteArgs<ExtArgs>
+    gabinete?: boolean | PublicacionProducto$gabineteArgs<ExtArgs>
+    grafica?: boolean | PublicacionProducto$graficaArgs<ExtArgs>
+    memoria_externa?: boolean | PublicacionProducto$memoria_externaArgs<ExtArgs>
+    memoria_interna?: boolean | PublicacionProducto$memoria_internaArgs<ExtArgs>
+    mother?: boolean | PublicacionProducto$motherArgs<ExtArgs>
+    ram?: boolean | PublicacionProducto$ramArgs<ExtArgs>
+    sound?: boolean | PublicacionProducto$soundArgs<ExtArgs>
+    usuario?: boolean | PublicacionProducto$usuarioArgs<ExtArgs>
+    vendedor?: boolean | PublicacionProducto$vendedorArgs<ExtArgs>
+  }, ExtArgs["result"]["publicacionProducto"]>
+
+  export type PublicacionProductoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tipo_producto?: boolean
+    cooler_id?: boolean
+    cpu_id?: boolean
+    fuente_id?: boolean
+    gabinete_id?: boolean
+    grafica_id?: boolean
+    memoria_externa_id?: boolean
+    memoria_interna_id?: boolean
+    mother_id?: boolean
+    ram_id?: boolean
+    sound_id?: boolean
+    usuario_id?: boolean
+    vendedor_id?: boolean
+    creado_en?: boolean
+    cooler?: boolean | PublicacionProducto$coolerArgs<ExtArgs>
+    cpu?: boolean | PublicacionProducto$cpuArgs<ExtArgs>
+    fuente?: boolean | PublicacionProducto$fuenteArgs<ExtArgs>
+    gabinete?: boolean | PublicacionProducto$gabineteArgs<ExtArgs>
+    grafica?: boolean | PublicacionProducto$graficaArgs<ExtArgs>
+    memoria_externa?: boolean | PublicacionProducto$memoria_externaArgs<ExtArgs>
+    memoria_interna?: boolean | PublicacionProducto$memoria_internaArgs<ExtArgs>
+    mother?: boolean | PublicacionProducto$motherArgs<ExtArgs>
+    ram?: boolean | PublicacionProducto$ramArgs<ExtArgs>
+    sound?: boolean | PublicacionProducto$soundArgs<ExtArgs>
+    usuario?: boolean | PublicacionProducto$usuarioArgs<ExtArgs>
+    vendedor?: boolean | PublicacionProducto$vendedorArgs<ExtArgs>
+  }, ExtArgs["result"]["publicacionProducto"]>
+
+  export type PublicacionProductoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tipo_producto?: boolean
+    cooler_id?: boolean
+    cpu_id?: boolean
+    fuente_id?: boolean
+    gabinete_id?: boolean
+    grafica_id?: boolean
+    memoria_externa_id?: boolean
+    memoria_interna_id?: boolean
+    mother_id?: boolean
+    ram_id?: boolean
+    sound_id?: boolean
+    usuario_id?: boolean
+    vendedor_id?: boolean
+    creado_en?: boolean
+    cooler?: boolean | PublicacionProducto$coolerArgs<ExtArgs>
+    cpu?: boolean | PublicacionProducto$cpuArgs<ExtArgs>
+    fuente?: boolean | PublicacionProducto$fuenteArgs<ExtArgs>
+    gabinete?: boolean | PublicacionProducto$gabineteArgs<ExtArgs>
+    grafica?: boolean | PublicacionProducto$graficaArgs<ExtArgs>
+    memoria_externa?: boolean | PublicacionProducto$memoria_externaArgs<ExtArgs>
+    memoria_interna?: boolean | PublicacionProducto$memoria_internaArgs<ExtArgs>
+    mother?: boolean | PublicacionProducto$motherArgs<ExtArgs>
+    ram?: boolean | PublicacionProducto$ramArgs<ExtArgs>
+    sound?: boolean | PublicacionProducto$soundArgs<ExtArgs>
+    usuario?: boolean | PublicacionProducto$usuarioArgs<ExtArgs>
+    vendedor?: boolean | PublicacionProducto$vendedorArgs<ExtArgs>
+  }, ExtArgs["result"]["publicacionProducto"]>
+
+  export type PublicacionProductoSelectScalar = {
+    id?: boolean
+    tipo_producto?: boolean
+    cooler_id?: boolean
+    cpu_id?: boolean
+    fuente_id?: boolean
+    gabinete_id?: boolean
+    grafica_id?: boolean
+    memoria_externa_id?: boolean
+    memoria_interna_id?: boolean
+    mother_id?: boolean
+    ram_id?: boolean
+    sound_id?: boolean
+    usuario_id?: boolean
+    vendedor_id?: boolean
+    creado_en?: boolean
+  }
+
+  export type PublicacionProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tipo_producto" | "cooler_id" | "cpu_id" | "fuente_id" | "gabinete_id" | "grafica_id" | "memoria_externa_id" | "memoria_interna_id" | "mother_id" | "ram_id" | "sound_id" | "usuario_id" | "vendedor_id" | "creado_en", ExtArgs["result"]["publicacionProducto"]>
+  export type PublicacionProductoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cooler?: boolean | PublicacionProducto$coolerArgs<ExtArgs>
+    cpu?: boolean | PublicacionProducto$cpuArgs<ExtArgs>
+    fuente?: boolean | PublicacionProducto$fuenteArgs<ExtArgs>
+    gabinete?: boolean | PublicacionProducto$gabineteArgs<ExtArgs>
+    grafica?: boolean | PublicacionProducto$graficaArgs<ExtArgs>
+    memoria_externa?: boolean | PublicacionProducto$memoria_externaArgs<ExtArgs>
+    memoria_interna?: boolean | PublicacionProducto$memoria_internaArgs<ExtArgs>
+    mother?: boolean | PublicacionProducto$motherArgs<ExtArgs>
+    ram?: boolean | PublicacionProducto$ramArgs<ExtArgs>
+    sound?: boolean | PublicacionProducto$soundArgs<ExtArgs>
+    usuario?: boolean | PublicacionProducto$usuarioArgs<ExtArgs>
+    vendedor?: boolean | PublicacionProducto$vendedorArgs<ExtArgs>
+  }
+  export type PublicacionProductoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cooler?: boolean | PublicacionProducto$coolerArgs<ExtArgs>
+    cpu?: boolean | PublicacionProducto$cpuArgs<ExtArgs>
+    fuente?: boolean | PublicacionProducto$fuenteArgs<ExtArgs>
+    gabinete?: boolean | PublicacionProducto$gabineteArgs<ExtArgs>
+    grafica?: boolean | PublicacionProducto$graficaArgs<ExtArgs>
+    memoria_externa?: boolean | PublicacionProducto$memoria_externaArgs<ExtArgs>
+    memoria_interna?: boolean | PublicacionProducto$memoria_internaArgs<ExtArgs>
+    mother?: boolean | PublicacionProducto$motherArgs<ExtArgs>
+    ram?: boolean | PublicacionProducto$ramArgs<ExtArgs>
+    sound?: boolean | PublicacionProducto$soundArgs<ExtArgs>
+    usuario?: boolean | PublicacionProducto$usuarioArgs<ExtArgs>
+    vendedor?: boolean | PublicacionProducto$vendedorArgs<ExtArgs>
+  }
+  export type PublicacionProductoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cooler?: boolean | PublicacionProducto$coolerArgs<ExtArgs>
+    cpu?: boolean | PublicacionProducto$cpuArgs<ExtArgs>
+    fuente?: boolean | PublicacionProducto$fuenteArgs<ExtArgs>
+    gabinete?: boolean | PublicacionProducto$gabineteArgs<ExtArgs>
+    grafica?: boolean | PublicacionProducto$graficaArgs<ExtArgs>
+    memoria_externa?: boolean | PublicacionProducto$memoria_externaArgs<ExtArgs>
+    memoria_interna?: boolean | PublicacionProducto$memoria_internaArgs<ExtArgs>
+    mother?: boolean | PublicacionProducto$motherArgs<ExtArgs>
+    ram?: boolean | PublicacionProducto$ramArgs<ExtArgs>
+    sound?: boolean | PublicacionProducto$soundArgs<ExtArgs>
+    usuario?: boolean | PublicacionProducto$usuarioArgs<ExtArgs>
+    vendedor?: boolean | PublicacionProducto$vendedorArgs<ExtArgs>
+  }
+
+  export type $PublicacionProductoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PublicacionProducto"
+    objects: {
+      cooler: Prisma.$coolersPayload<ExtArgs> | null
+      cpu: Prisma.$cpusPayload<ExtArgs> | null
+      fuente: Prisma.$fuentesPayload<ExtArgs> | null
+      gabinete: Prisma.$gabinetesPayload<ExtArgs> | null
+      grafica: Prisma.$graficasPayload<ExtArgs> | null
+      memoria_externa: Prisma.$memorias_externasPayload<ExtArgs> | null
+      memoria_interna: Prisma.$memorias_internasPayload<ExtArgs> | null
+      mother: Prisma.$mothersPayload<ExtArgs> | null
+      ram: Prisma.$ramsPayload<ExtArgs> | null
+      sound: Prisma.$soundsPayload<ExtArgs> | null
+      usuario: Prisma.$ususariosPayload<ExtArgs> | null
+      vendedor: Prisma.$vendedoresPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      tipo_producto: string
+      cooler_id: number | null
+      cpu_id: number | null
+      fuente_id: number | null
+      gabinete_id: number | null
+      grafica_id: number | null
+      memoria_externa_id: number | null
+      memoria_interna_id: number | null
+      mother_id: number | null
+      ram_id: number | null
+      sound_id: number | null
+      usuario_id: number | null
+      vendedor_id: number | null
+      creado_en: Date
+    }, ExtArgs["result"]["publicacionProducto"]>
+    composites: {}
+  }
+
+  type PublicacionProductoGetPayload<S extends boolean | null | undefined | PublicacionProductoDefaultArgs> = $Result.GetResult<Prisma.$PublicacionProductoPayload, S>
+
+  type PublicacionProductoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PublicacionProductoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PublicacionProductoCountAggregateInputType | true
+    }
+
+  export interface PublicacionProductoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PublicacionProducto'], meta: { name: 'PublicacionProducto' } }
+    /**
+     * Find zero or one PublicacionProducto that matches the filter.
+     * @param {PublicacionProductoFindUniqueArgs} args - Arguments to find a PublicacionProducto
+     * @example
+     * // Get one PublicacionProducto
+     * const publicacionProducto = await prisma.publicacionProducto.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PublicacionProductoFindUniqueArgs>(args: SelectSubset<T, PublicacionProductoFindUniqueArgs<ExtArgs>>): Prisma__PublicacionProductoClient<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PublicacionProducto that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PublicacionProductoFindUniqueOrThrowArgs} args - Arguments to find a PublicacionProducto
+     * @example
+     * // Get one PublicacionProducto
+     * const publicacionProducto = await prisma.publicacionProducto.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PublicacionProductoFindUniqueOrThrowArgs>(args: SelectSubset<T, PublicacionProductoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PublicacionProductoClient<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PublicacionProducto that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicacionProductoFindFirstArgs} args - Arguments to find a PublicacionProducto
+     * @example
+     * // Get one PublicacionProducto
+     * const publicacionProducto = await prisma.publicacionProducto.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PublicacionProductoFindFirstArgs>(args?: SelectSubset<T, PublicacionProductoFindFirstArgs<ExtArgs>>): Prisma__PublicacionProductoClient<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PublicacionProducto that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicacionProductoFindFirstOrThrowArgs} args - Arguments to find a PublicacionProducto
+     * @example
+     * // Get one PublicacionProducto
+     * const publicacionProducto = await prisma.publicacionProducto.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PublicacionProductoFindFirstOrThrowArgs>(args?: SelectSubset<T, PublicacionProductoFindFirstOrThrowArgs<ExtArgs>>): Prisma__PublicacionProductoClient<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PublicacionProductos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicacionProductoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PublicacionProductos
+     * const publicacionProductos = await prisma.publicacionProducto.findMany()
+     * 
+     * // Get first 10 PublicacionProductos
+     * const publicacionProductos = await prisma.publicacionProducto.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const publicacionProductoWithIdOnly = await prisma.publicacionProducto.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PublicacionProductoFindManyArgs>(args?: SelectSubset<T, PublicacionProductoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PublicacionProducto.
+     * @param {PublicacionProductoCreateArgs} args - Arguments to create a PublicacionProducto.
+     * @example
+     * // Create one PublicacionProducto
+     * const PublicacionProducto = await prisma.publicacionProducto.create({
+     *   data: {
+     *     // ... data to create a PublicacionProducto
+     *   }
+     * })
+     * 
+     */
+    create<T extends PublicacionProductoCreateArgs>(args: SelectSubset<T, PublicacionProductoCreateArgs<ExtArgs>>): Prisma__PublicacionProductoClient<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PublicacionProductos.
+     * @param {PublicacionProductoCreateManyArgs} args - Arguments to create many PublicacionProductos.
+     * @example
+     * // Create many PublicacionProductos
+     * const publicacionProducto = await prisma.publicacionProducto.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PublicacionProductoCreateManyArgs>(args?: SelectSubset<T, PublicacionProductoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PublicacionProductos and returns the data saved in the database.
+     * @param {PublicacionProductoCreateManyAndReturnArgs} args - Arguments to create many PublicacionProductos.
+     * @example
+     * // Create many PublicacionProductos
+     * const publicacionProducto = await prisma.publicacionProducto.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PublicacionProductos and only return the `id`
+     * const publicacionProductoWithIdOnly = await prisma.publicacionProducto.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PublicacionProductoCreateManyAndReturnArgs>(args?: SelectSubset<T, PublicacionProductoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PublicacionProducto.
+     * @param {PublicacionProductoDeleteArgs} args - Arguments to delete one PublicacionProducto.
+     * @example
+     * // Delete one PublicacionProducto
+     * const PublicacionProducto = await prisma.publicacionProducto.delete({
+     *   where: {
+     *     // ... filter to delete one PublicacionProducto
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PublicacionProductoDeleteArgs>(args: SelectSubset<T, PublicacionProductoDeleteArgs<ExtArgs>>): Prisma__PublicacionProductoClient<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PublicacionProducto.
+     * @param {PublicacionProductoUpdateArgs} args - Arguments to update one PublicacionProducto.
+     * @example
+     * // Update one PublicacionProducto
+     * const publicacionProducto = await prisma.publicacionProducto.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PublicacionProductoUpdateArgs>(args: SelectSubset<T, PublicacionProductoUpdateArgs<ExtArgs>>): Prisma__PublicacionProductoClient<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PublicacionProductos.
+     * @param {PublicacionProductoDeleteManyArgs} args - Arguments to filter PublicacionProductos to delete.
+     * @example
+     * // Delete a few PublicacionProductos
+     * const { count } = await prisma.publicacionProducto.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PublicacionProductoDeleteManyArgs>(args?: SelectSubset<T, PublicacionProductoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PublicacionProductos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicacionProductoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PublicacionProductos
+     * const publicacionProducto = await prisma.publicacionProducto.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PublicacionProductoUpdateManyArgs>(args: SelectSubset<T, PublicacionProductoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PublicacionProductos and returns the data updated in the database.
+     * @param {PublicacionProductoUpdateManyAndReturnArgs} args - Arguments to update many PublicacionProductos.
+     * @example
+     * // Update many PublicacionProductos
+     * const publicacionProducto = await prisma.publicacionProducto.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PublicacionProductos and only return the `id`
+     * const publicacionProductoWithIdOnly = await prisma.publicacionProducto.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PublicacionProductoUpdateManyAndReturnArgs>(args: SelectSubset<T, PublicacionProductoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PublicacionProducto.
+     * @param {PublicacionProductoUpsertArgs} args - Arguments to update or create a PublicacionProducto.
+     * @example
+     * // Update or create a PublicacionProducto
+     * const publicacionProducto = await prisma.publicacionProducto.upsert({
+     *   create: {
+     *     // ... data to create a PublicacionProducto
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PublicacionProducto we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PublicacionProductoUpsertArgs>(args: SelectSubset<T, PublicacionProductoUpsertArgs<ExtArgs>>): Prisma__PublicacionProductoClient<$Result.GetResult<Prisma.$PublicacionProductoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PublicacionProductos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicacionProductoCountArgs} args - Arguments to filter PublicacionProductos to count.
+     * @example
+     * // Count the number of PublicacionProductos
+     * const count = await prisma.publicacionProducto.count({
+     *   where: {
+     *     // ... the filter for the PublicacionProductos we want to count
+     *   }
+     * })
+    **/
+    count<T extends PublicacionProductoCountArgs>(
+      args?: Subset<T, PublicacionProductoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PublicacionProductoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PublicacionProducto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicacionProductoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PublicacionProductoAggregateArgs>(args: Subset<T, PublicacionProductoAggregateArgs>): Prisma.PrismaPromise<GetPublicacionProductoAggregateType<T>>
+
+    /**
+     * Group by PublicacionProducto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicacionProductoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PublicacionProductoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PublicacionProductoGroupByArgs['orderBy'] }
+        : { orderBy?: PublicacionProductoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PublicacionProductoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPublicacionProductoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PublicacionProducto model
+   */
+  readonly fields: PublicacionProductoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PublicacionProducto.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PublicacionProductoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    cooler<T extends PublicacionProducto$coolerArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$coolerArgs<ExtArgs>>): Prisma__coolersClient<$Result.GetResult<Prisma.$coolersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    cpu<T extends PublicacionProducto$cpuArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$cpuArgs<ExtArgs>>): Prisma__cpusClient<$Result.GetResult<Prisma.$cpusPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    fuente<T extends PublicacionProducto$fuenteArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$fuenteArgs<ExtArgs>>): Prisma__fuentesClient<$Result.GetResult<Prisma.$fuentesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    gabinete<T extends PublicacionProducto$gabineteArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$gabineteArgs<ExtArgs>>): Prisma__gabinetesClient<$Result.GetResult<Prisma.$gabinetesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    grafica<T extends PublicacionProducto$graficaArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$graficaArgs<ExtArgs>>): Prisma__graficasClient<$Result.GetResult<Prisma.$graficasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    memoria_externa<T extends PublicacionProducto$memoria_externaArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$memoria_externaArgs<ExtArgs>>): Prisma__memorias_externasClient<$Result.GetResult<Prisma.$memorias_externasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    memoria_interna<T extends PublicacionProducto$memoria_internaArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$memoria_internaArgs<ExtArgs>>): Prisma__memorias_internasClient<$Result.GetResult<Prisma.$memorias_internasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    mother<T extends PublicacionProducto$motherArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$motherArgs<ExtArgs>>): Prisma__mothersClient<$Result.GetResult<Prisma.$mothersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    ram<T extends PublicacionProducto$ramArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$ramArgs<ExtArgs>>): Prisma__ramsClient<$Result.GetResult<Prisma.$ramsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    sound<T extends PublicacionProducto$soundArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$soundArgs<ExtArgs>>): Prisma__soundsClient<$Result.GetResult<Prisma.$soundsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    usuario<T extends PublicacionProducto$usuarioArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$usuarioArgs<ExtArgs>>): Prisma__ususariosClient<$Result.GetResult<Prisma.$ususariosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    vendedor<T extends PublicacionProducto$vendedorArgs<ExtArgs> = {}>(args?: Subset<T, PublicacionProducto$vendedorArgs<ExtArgs>>): Prisma__vendedoresClient<$Result.GetResult<Prisma.$vendedoresPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PublicacionProducto model
+   */
+  interface PublicacionProductoFieldRefs {
+    readonly id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly tipo_producto: FieldRef<"PublicacionProducto", 'String'>
+    readonly cooler_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly cpu_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly fuente_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly gabinete_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly grafica_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly memoria_externa_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly memoria_interna_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly mother_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly ram_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly sound_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly usuario_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly vendedor_id: FieldRef<"PublicacionProducto", 'Int'>
+    readonly creado_en: FieldRef<"PublicacionProducto", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PublicacionProducto findUnique
+   */
+  export type PublicacionProductoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicacionProducto to fetch.
+     */
+    where: PublicacionProductoWhereUniqueInput
+  }
+
+  /**
+   * PublicacionProducto findUniqueOrThrow
+   */
+  export type PublicacionProductoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicacionProducto to fetch.
+     */
+    where: PublicacionProductoWhereUniqueInput
+  }
+
+  /**
+   * PublicacionProducto findFirst
+   */
+  export type PublicacionProductoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicacionProducto to fetch.
+     */
+    where?: PublicacionProductoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PublicacionProductos to fetch.
+     */
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PublicacionProductos.
+     */
+    cursor?: PublicacionProductoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PublicacionProductos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PublicacionProductos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PublicacionProductos.
+     */
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
+   * PublicacionProducto findFirstOrThrow
+   */
+  export type PublicacionProductoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicacionProducto to fetch.
+     */
+    where?: PublicacionProductoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PublicacionProductos to fetch.
+     */
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PublicacionProductos.
+     */
+    cursor?: PublicacionProductoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PublicacionProductos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PublicacionProductos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PublicacionProductos.
+     */
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
+   * PublicacionProducto findMany
+   */
+  export type PublicacionProductoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicacionProductos to fetch.
+     */
+    where?: PublicacionProductoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PublicacionProductos to fetch.
+     */
+    orderBy?: PublicacionProductoOrderByWithRelationInput | PublicacionProductoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PublicacionProductos.
+     */
+    cursor?: PublicacionProductoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PublicacionProductos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PublicacionProductos.
+     */
+    skip?: number
+    distinct?: PublicacionProductoScalarFieldEnum | PublicacionProductoScalarFieldEnum[]
+  }
+
+  /**
+   * PublicacionProducto create
+   */
+  export type PublicacionProductoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PublicacionProducto.
+     */
+    data: XOR<PublicacionProductoCreateInput, PublicacionProductoUncheckedCreateInput>
+  }
+
+  /**
+   * PublicacionProducto createMany
+   */
+  export type PublicacionProductoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PublicacionProductos.
+     */
+    data: PublicacionProductoCreateManyInput | PublicacionProductoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PublicacionProducto createManyAndReturn
+   */
+  export type PublicacionProductoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * The data used to create many PublicacionProductos.
+     */
+    data: PublicacionProductoCreateManyInput | PublicacionProductoCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PublicacionProducto update
+   */
+  export type PublicacionProductoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PublicacionProducto.
+     */
+    data: XOR<PublicacionProductoUpdateInput, PublicacionProductoUncheckedUpdateInput>
+    /**
+     * Choose, which PublicacionProducto to update.
+     */
+    where: PublicacionProductoWhereUniqueInput
+  }
+
+  /**
+   * PublicacionProducto updateMany
+   */
+  export type PublicacionProductoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PublicacionProductos.
+     */
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyInput>
+    /**
+     * Filter which PublicacionProductos to update
+     */
+    where?: PublicacionProductoWhereInput
+    /**
+     * Limit how many PublicacionProductos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PublicacionProducto updateManyAndReturn
+   */
+  export type PublicacionProductoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * The data used to update PublicacionProductos.
+     */
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyInput>
+    /**
+     * Filter which PublicacionProductos to update
+     */
+    where?: PublicacionProductoWhereInput
+    /**
+     * Limit how many PublicacionProductos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PublicacionProducto upsert
+   */
+  export type PublicacionProductoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PublicacionProducto to update in case it exists.
+     */
+    where: PublicacionProductoWhereUniqueInput
+    /**
+     * In case the PublicacionProducto found by the `where` argument doesn't exist, create a new PublicacionProducto with this data.
+     */
+    create: XOR<PublicacionProductoCreateInput, PublicacionProductoUncheckedCreateInput>
+    /**
+     * In case the PublicacionProducto was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PublicacionProductoUpdateInput, PublicacionProductoUncheckedUpdateInput>
+  }
+
+  /**
+   * PublicacionProducto delete
+   */
+  export type PublicacionProductoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
+    /**
+     * Filter which PublicacionProducto to delete.
+     */
+    where: PublicacionProductoWhereUniqueInput
+  }
+
+  /**
+   * PublicacionProducto deleteMany
+   */
+  export type PublicacionProductoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PublicacionProductos to delete
+     */
+    where?: PublicacionProductoWhereInput
+    /**
+     * Limit how many PublicacionProductos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PublicacionProducto.cooler
+   */
+  export type PublicacionProducto$coolerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the coolers
+     */
+    select?: coolersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the coolers
+     */
+    omit?: coolersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: coolersInclude<ExtArgs> | null
+    where?: coolersWhereInput
+  }
+
+  /**
+   * PublicacionProducto.cpu
+   */
+  export type PublicacionProducto$cpuArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cpus
+     */
+    select?: cpusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the cpus
+     */
+    omit?: cpusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cpusInclude<ExtArgs> | null
+    where?: cpusWhereInput
+  }
+
+  /**
+   * PublicacionProducto.fuente
+   */
+  export type PublicacionProducto$fuenteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fuentes
+     */
+    select?: fuentesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fuentes
+     */
+    omit?: fuentesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fuentesInclude<ExtArgs> | null
+    where?: fuentesWhereInput
+  }
+
+  /**
+   * PublicacionProducto.gabinete
+   */
+  export type PublicacionProducto$gabineteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gabinetes
+     */
+    select?: gabinetesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the gabinetes
+     */
+    omit?: gabinetesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gabinetesInclude<ExtArgs> | null
+    where?: gabinetesWhereInput
+  }
+
+  /**
+   * PublicacionProducto.grafica
+   */
+  export type PublicacionProducto$graficaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the graficas
+     */
+    select?: graficasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the graficas
+     */
+    omit?: graficasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: graficasInclude<ExtArgs> | null
+    where?: graficasWhereInput
+  }
+
+  /**
+   * PublicacionProducto.memoria_externa
+   */
+  export type PublicacionProducto$memoria_externaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the memorias_externas
+     */
+    select?: memorias_externasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the memorias_externas
+     */
+    omit?: memorias_externasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_externasInclude<ExtArgs> | null
+    where?: memorias_externasWhereInput
+  }
+
+  /**
+   * PublicacionProducto.memoria_interna
+   */
+  export type PublicacionProducto$memoria_internaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the memorias_internas
+     */
+    select?: memorias_internasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the memorias_internas
+     */
+    omit?: memorias_internasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: memorias_internasInclude<ExtArgs> | null
+    where?: memorias_internasWhereInput
+  }
+
+  /**
+   * PublicacionProducto.mother
+   */
+  export type PublicacionProducto$motherArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mothers
+     */
+    select?: mothersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mothers
+     */
+    omit?: mothersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mothersInclude<ExtArgs> | null
+    where?: mothersWhereInput
+  }
+
+  /**
+   * PublicacionProducto.ram
+   */
+  export type PublicacionProducto$ramArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rams
+     */
+    select?: ramsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the rams
+     */
+    omit?: ramsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ramsInclude<ExtArgs> | null
+    where?: ramsWhereInput
+  }
+
+  /**
+   * PublicacionProducto.sound
+   */
+  export type PublicacionProducto$soundArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sounds
+     */
+    select?: soundsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sounds
+     */
+    omit?: soundsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: soundsInclude<ExtArgs> | null
+    where?: soundsWhereInput
+  }
+
+  /**
+   * PublicacionProducto.usuario
+   */
+  export type PublicacionProducto$usuarioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ususarios
+     */
+    select?: ususariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ususarios
+     */
+    omit?: ususariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ususariosInclude<ExtArgs> | null
+    where?: ususariosWhereInput
+  }
+
+  /**
+   * PublicacionProducto.vendedor
+   */
+  export type PublicacionProducto$vendedorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the vendedores
+     */
+    select?: vendedoresSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the vendedores
+     */
+    omit?: vendedoresOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vendedoresInclude<ExtArgs> | null
+    where?: vendedoresWhereInput
+  }
+
+  /**
+   * PublicacionProducto without action
+   */
+  export type PublicacionProductoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicacionProducto
+     */
+    select?: PublicacionProductoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicacionProducto
+     */
+    omit?: PublicacionProductoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicacionProductoInclude<ExtArgs> | null
   }
 
 
@@ -15136,7 +18214,8 @@ export namespace Prisma {
     noise: 'noise',
     color: 'color',
     size: 'size',
-    imagen_url: 'imagen_url'
+    imagen_url: 'imagen_url',
+    tipo: 'tipo'
   };
 
   export type CoolersScalarFieldEnum = (typeof CoolersScalarFieldEnum)[keyof typeof CoolersScalarFieldEnum]
@@ -15152,7 +18231,8 @@ export namespace Prisma {
     tdp: 'tdp',
     graphics: 'graphics',
     smt: 'smt',
-    imagen_url: 'imagen_url'
+    imagen_url: 'imagen_url',
+    tipo: 'tipo'
   };
 
   export type CpusScalarFieldEnum = (typeof CpusScalarFieldEnum)[keyof typeof CpusScalarFieldEnum]
@@ -15167,7 +18247,8 @@ export namespace Prisma {
     wattage: 'wattage',
     modular: 'modular',
     color: 'color',
-    imagen_url: 'imagen_url'
+    imagen_url: 'imagen_url',
+    tipo: 'tipo'
   };
 
   export type FuentesScalarFieldEnum = (typeof FuentesScalarFieldEnum)[keyof typeof FuentesScalarFieldEnum]
@@ -15183,7 +18264,8 @@ export namespace Prisma {
     side_panel: 'side_panel',
     external_volume: 'external_volume',
     internal_35_bays: 'internal_35_bays',
-    imagen_url: 'imagen_url'
+    imagen_url: 'imagen_url',
+    tipo: 'tipo'
   };
 
   export type GabinetesScalarFieldEnum = (typeof GabinetesScalarFieldEnum)[keyof typeof GabinetesScalarFieldEnum]
@@ -15199,7 +18281,8 @@ export namespace Prisma {
     boost_clock: 'boost_clock',
     color: 'color',
     length: 'length',
-    imagen_url: 'imagen_url'
+    imagen_url: 'imagen_url',
+    tipo: 'tipo'
   };
 
   export type GraficasScalarFieldEnum = (typeof GraficasScalarFieldEnum)[keyof typeof GraficasScalarFieldEnum]
@@ -15214,7 +18297,8 @@ export namespace Prisma {
     capacity: 'capacity',
     price_per_gb: 'price_per_gb',
     color: 'color',
-    imagen_url: 'imagen_url'
+    imagen_url: 'imagen_url',
+    tipo: 'tipo'
   };
 
   export type Memorias_externasScalarFieldEnum = (typeof Memorias_externasScalarFieldEnum)[keyof typeof Memorias_externasScalarFieldEnum]
@@ -15230,7 +18314,8 @@ export namespace Prisma {
     cache: 'cache',
     form_factor: 'form_factor',
     interface: 'interface',
-    imagen_url: 'imagen_url'
+    imagen_url: 'imagen_url',
+    tipo: 'tipo'
   };
 
   export type Memorias_internasScalarFieldEnum = (typeof Memorias_internasScalarFieldEnum)[keyof typeof Memorias_internasScalarFieldEnum]
@@ -15245,7 +18330,8 @@ export namespace Prisma {
     max_memory: 'max_memory',
     memory_slots: 'memory_slots',
     color: 'color',
-    imagen_url: 'imagen_url'
+    imagen_url: 'imagen_url',
+    tipo: 'tipo'
   };
 
   export type MothersScalarFieldEnum = (typeof MothersScalarFieldEnum)[keyof typeof MothersScalarFieldEnum]
@@ -15263,7 +18349,8 @@ export namespace Prisma {
     color: 'color',
     first_word_latency: 'first_word_latency',
     cas_latency: 'cas_latency',
-    imagen_url: 'imagen_url'
+    imagen_url: 'imagen_url',
+    tipo: 'tipo'
   };
 
   export type RamsScalarFieldEnum = (typeof RamsScalarFieldEnum)[keyof typeof RamsScalarFieldEnum]
@@ -15279,7 +18366,8 @@ export namespace Prisma {
     sample_rate: 'sample_rate',
     chipset: 'chipset',
     interface: 'interface',
-    imagen_url: 'imagen_url'
+    imagen_url: 'imagen_url',
+    tipo: 'tipo'
   };
 
   export type SoundsScalarFieldEnum = (typeof SoundsScalarFieldEnum)[keyof typeof SoundsScalarFieldEnum]
@@ -15314,6 +18402,27 @@ export namespace Prisma {
   };
 
   export type VendedoresScalarFieldEnum = (typeof VendedoresScalarFieldEnum)[keyof typeof VendedoresScalarFieldEnum]
+
+
+  export const PublicacionProductoScalarFieldEnum: {
+    id: 'id',
+    tipo_producto: 'tipo_producto',
+    cooler_id: 'cooler_id',
+    cpu_id: 'cpu_id',
+    fuente_id: 'fuente_id',
+    gabinete_id: 'gabinete_id',
+    grafica_id: 'grafica_id',
+    memoria_externa_id: 'memoria_externa_id',
+    memoria_interna_id: 'memoria_interna_id',
+    mother_id: 'mother_id',
+    ram_id: 'ram_id',
+    sound_id: 'sound_id',
+    usuario_id: 'usuario_id',
+    vendedor_id: 'vendedor_id',
+    creado_en: 'creado_en'
+  };
+
+  export type PublicacionProductoScalarFieldEnum = (typeof PublicacionProductoScalarFieldEnum)[keyof typeof PublicacionProductoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -15409,6 +18518,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'BigInt'
+   */
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+  /**
+   * Reference to a field of type 'BigInt[]'
+   */
+  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -15437,6 +18560,8 @@ export namespace Prisma {
     color?: StringNullableFilter<"coolers"> | string | null
     size?: IntNullableFilter<"coolers"> | number | null
     imagen_url?: StringNullableFilter<"coolers"> | string | null
+    tipo?: StringNullableFilter<"coolers"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }
 
   export type coolersOrderByWithRelationInput = {
@@ -15448,6 +18573,8 @@ export namespace Prisma {
     color?: SortOrderInput | SortOrder
     size?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    publicaciones?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type coolersWhereUniqueInput = Prisma.AtLeast<{
@@ -15462,6 +18589,8 @@ export namespace Prisma {
     color?: StringNullableFilter<"coolers"> | string | null
     size?: IntNullableFilter<"coolers"> | number | null
     imagen_url?: StringNullableFilter<"coolers"> | string | null
+    tipo?: StringNullableFilter<"coolers"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }, "id">
 
   export type coolersOrderByWithAggregationInput = {
@@ -15473,6 +18602,7 @@ export namespace Prisma {
     color?: SortOrderInput | SortOrder
     size?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
     _count?: coolersCountOrderByAggregateInput
     _avg?: coolersAvgOrderByAggregateInput
     _max?: coolersMaxOrderByAggregateInput
@@ -15492,6 +18622,7 @@ export namespace Prisma {
     color?: StringNullableWithAggregatesFilter<"coolers"> | string | null
     size?: IntNullableWithAggregatesFilter<"coolers"> | number | null
     imagen_url?: StringNullableWithAggregatesFilter<"coolers"> | string | null
+    tipo?: StringNullableWithAggregatesFilter<"coolers"> | string | null
   }
 
   export type cpusWhereInput = {
@@ -15508,6 +18639,8 @@ export namespace Prisma {
     graphics?: StringNullableFilter<"cpus"> | string | null
     smt?: BoolFilter<"cpus"> | boolean
     imagen_url?: StringNullableFilter<"cpus"> | string | null
+    tipo?: StringNullableFilter<"cpus"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }
 
   export type cpusOrderByWithRelationInput = {
@@ -15521,6 +18654,8 @@ export namespace Prisma {
     graphics?: SortOrderInput | SortOrder
     smt?: SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    publicaciones?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type cpusWhereUniqueInput = Prisma.AtLeast<{
@@ -15537,6 +18672,8 @@ export namespace Prisma {
     graphics?: StringNullableFilter<"cpus"> | string | null
     smt?: BoolFilter<"cpus"> | boolean
     imagen_url?: StringNullableFilter<"cpus"> | string | null
+    tipo?: StringNullableFilter<"cpus"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }, "id">
 
   export type cpusOrderByWithAggregationInput = {
@@ -15550,6 +18687,7 @@ export namespace Prisma {
     graphics?: SortOrderInput | SortOrder
     smt?: SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
     _count?: cpusCountOrderByAggregateInput
     _avg?: cpusAvgOrderByAggregateInput
     _max?: cpusMaxOrderByAggregateInput
@@ -15571,6 +18709,7 @@ export namespace Prisma {
     graphics?: StringNullableWithAggregatesFilter<"cpus"> | string | null
     smt?: BoolWithAggregatesFilter<"cpus"> | boolean
     imagen_url?: StringNullableWithAggregatesFilter<"cpus"> | string | null
+    tipo?: StringNullableWithAggregatesFilter<"cpus"> | string | null
   }
 
   export type fuentesWhereInput = {
@@ -15586,6 +18725,8 @@ export namespace Prisma {
     modular?: StringNullableFilter<"fuentes"> | string | null
     color?: StringNullableFilter<"fuentes"> | string | null
     imagen_url?: StringNullableFilter<"fuentes"> | string | null
+    tipo?: StringNullableFilter<"fuentes"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }
 
   export type fuentesOrderByWithRelationInput = {
@@ -15598,6 +18739,8 @@ export namespace Prisma {
     modular?: SortOrderInput | SortOrder
     color?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    publicaciones?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type fuentesWhereUniqueInput = Prisma.AtLeast<{
@@ -15613,6 +18756,8 @@ export namespace Prisma {
     modular?: StringNullableFilter<"fuentes"> | string | null
     color?: StringNullableFilter<"fuentes"> | string | null
     imagen_url?: StringNullableFilter<"fuentes"> | string | null
+    tipo?: StringNullableFilter<"fuentes"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }, "id">
 
   export type fuentesOrderByWithAggregationInput = {
@@ -15625,6 +18770,7 @@ export namespace Prisma {
     modular?: SortOrderInput | SortOrder
     color?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
     _count?: fuentesCountOrderByAggregateInput
     _avg?: fuentesAvgOrderByAggregateInput
     _max?: fuentesMaxOrderByAggregateInput
@@ -15645,6 +18791,7 @@ export namespace Prisma {
     modular?: StringNullableWithAggregatesFilter<"fuentes"> | string | null
     color?: StringNullableWithAggregatesFilter<"fuentes"> | string | null
     imagen_url?: StringNullableWithAggregatesFilter<"fuentes"> | string | null
+    tipo?: StringNullableWithAggregatesFilter<"fuentes"> | string | null
   }
 
   export type gabinetesWhereInput = {
@@ -15661,6 +18808,8 @@ export namespace Prisma {
     external_volume?: DecimalNullableFilter<"gabinetes"> | Decimal | DecimalJsLike | number | string | null
     internal_35_bays?: IntNullableFilter<"gabinetes"> | number | null
     imagen_url?: StringNullableFilter<"gabinetes"> | string | null
+    tipo?: StringNullableFilter<"gabinetes"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }
 
   export type gabinetesOrderByWithRelationInput = {
@@ -15674,6 +18823,8 @@ export namespace Prisma {
     external_volume?: SortOrderInput | SortOrder
     internal_35_bays?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    publicaciones?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type gabinetesWhereUniqueInput = Prisma.AtLeast<{
@@ -15690,6 +18841,8 @@ export namespace Prisma {
     external_volume?: DecimalNullableFilter<"gabinetes"> | Decimal | DecimalJsLike | number | string | null
     internal_35_bays?: IntNullableFilter<"gabinetes"> | number | null
     imagen_url?: StringNullableFilter<"gabinetes"> | string | null
+    tipo?: StringNullableFilter<"gabinetes"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }, "id">
 
   export type gabinetesOrderByWithAggregationInput = {
@@ -15703,6 +18856,7 @@ export namespace Prisma {
     external_volume?: SortOrderInput | SortOrder
     internal_35_bays?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
     _count?: gabinetesCountOrderByAggregateInput
     _avg?: gabinetesAvgOrderByAggregateInput
     _max?: gabinetesMaxOrderByAggregateInput
@@ -15724,6 +18878,7 @@ export namespace Prisma {
     external_volume?: DecimalNullableWithAggregatesFilter<"gabinetes"> | Decimal | DecimalJsLike | number | string | null
     internal_35_bays?: IntNullableWithAggregatesFilter<"gabinetes"> | number | null
     imagen_url?: StringNullableWithAggregatesFilter<"gabinetes"> | string | null
+    tipo?: StringNullableWithAggregatesFilter<"gabinetes"> | string | null
   }
 
   export type graficasWhereInput = {
@@ -15740,6 +18895,8 @@ export namespace Prisma {
     color?: StringNullableFilter<"graficas"> | string | null
     length?: IntNullableFilter<"graficas"> | number | null
     imagen_url?: StringNullableFilter<"graficas"> | string | null
+    tipo?: StringNullableFilter<"graficas"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }
 
   export type graficasOrderByWithRelationInput = {
@@ -15753,6 +18910,8 @@ export namespace Prisma {
     color?: SortOrderInput | SortOrder
     length?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    publicaciones?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type graficasWhereUniqueInput = Prisma.AtLeast<{
@@ -15769,6 +18928,8 @@ export namespace Prisma {
     color?: StringNullableFilter<"graficas"> | string | null
     length?: IntNullableFilter<"graficas"> | number | null
     imagen_url?: StringNullableFilter<"graficas"> | string | null
+    tipo?: StringNullableFilter<"graficas"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }, "id">
 
   export type graficasOrderByWithAggregationInput = {
@@ -15782,6 +18943,7 @@ export namespace Prisma {
     color?: SortOrderInput | SortOrder
     length?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
     _count?: graficasCountOrderByAggregateInput
     _avg?: graficasAvgOrderByAggregateInput
     _max?: graficasMaxOrderByAggregateInput
@@ -15803,6 +18965,7 @@ export namespace Prisma {
     color?: StringNullableWithAggregatesFilter<"graficas"> | string | null
     length?: IntNullableWithAggregatesFilter<"graficas"> | number | null
     imagen_url?: StringNullableWithAggregatesFilter<"graficas"> | string | null
+    tipo?: StringNullableWithAggregatesFilter<"graficas"> | string | null
   }
 
   export type memorias_externasWhereInput = {
@@ -15818,6 +18981,8 @@ export namespace Prisma {
     price_per_gb?: DecimalNullableFilter<"memorias_externas"> | Decimal | DecimalJsLike | number | string | null
     color?: StringNullableFilter<"memorias_externas"> | string | null
     imagen_url?: StringNullableFilter<"memorias_externas"> | string | null
+    tipo?: StringNullableFilter<"memorias_externas"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }
 
   export type memorias_externasOrderByWithRelationInput = {
@@ -15830,6 +18995,8 @@ export namespace Prisma {
     price_per_gb?: SortOrderInput | SortOrder
     color?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    publicaciones?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type memorias_externasWhereUniqueInput = Prisma.AtLeast<{
@@ -15845,6 +19012,8 @@ export namespace Prisma {
     price_per_gb?: DecimalNullableFilter<"memorias_externas"> | Decimal | DecimalJsLike | number | string | null
     color?: StringNullableFilter<"memorias_externas"> | string | null
     imagen_url?: StringNullableFilter<"memorias_externas"> | string | null
+    tipo?: StringNullableFilter<"memorias_externas"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }, "id">
 
   export type memorias_externasOrderByWithAggregationInput = {
@@ -15857,6 +19026,7 @@ export namespace Prisma {
     price_per_gb?: SortOrderInput | SortOrder
     color?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
     _count?: memorias_externasCountOrderByAggregateInput
     _avg?: memorias_externasAvgOrderByAggregateInput
     _max?: memorias_externasMaxOrderByAggregateInput
@@ -15877,6 +19047,7 @@ export namespace Prisma {
     price_per_gb?: DecimalNullableWithAggregatesFilter<"memorias_externas"> | Decimal | DecimalJsLike | number | string | null
     color?: StringNullableWithAggregatesFilter<"memorias_externas"> | string | null
     imagen_url?: StringNullableWithAggregatesFilter<"memorias_externas"> | string | null
+    tipo?: StringNullableWithAggregatesFilter<"memorias_externas"> | string | null
   }
 
   export type memorias_internasWhereInput = {
@@ -15893,6 +19064,8 @@ export namespace Prisma {
     form_factor?: StringNullableFilter<"memorias_internas"> | string | null
     interface?: StringNullableFilter<"memorias_internas"> | string | null
     imagen_url?: StringNullableFilter<"memorias_internas"> | string | null
+    tipo?: StringNullableFilter<"memorias_internas"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }
 
   export type memorias_internasOrderByWithRelationInput = {
@@ -15906,6 +19079,8 @@ export namespace Prisma {
     form_factor?: SortOrderInput | SortOrder
     interface?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    publicaciones?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type memorias_internasWhereUniqueInput = Prisma.AtLeast<{
@@ -15922,6 +19097,8 @@ export namespace Prisma {
     form_factor?: StringNullableFilter<"memorias_internas"> | string | null
     interface?: StringNullableFilter<"memorias_internas"> | string | null
     imagen_url?: StringNullableFilter<"memorias_internas"> | string | null
+    tipo?: StringNullableFilter<"memorias_internas"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }, "id">
 
   export type memorias_internasOrderByWithAggregationInput = {
@@ -15935,6 +19112,7 @@ export namespace Prisma {
     form_factor?: SortOrderInput | SortOrder
     interface?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
     _count?: memorias_internasCountOrderByAggregateInput
     _avg?: memorias_internasAvgOrderByAggregateInput
     _max?: memorias_internasMaxOrderByAggregateInput
@@ -15956,6 +19134,7 @@ export namespace Prisma {
     form_factor?: StringNullableWithAggregatesFilter<"memorias_internas"> | string | null
     interface?: StringNullableWithAggregatesFilter<"memorias_internas"> | string | null
     imagen_url?: StringNullableWithAggregatesFilter<"memorias_internas"> | string | null
+    tipo?: StringNullableWithAggregatesFilter<"memorias_internas"> | string | null
   }
 
   export type mothersWhereInput = {
@@ -15971,6 +19150,8 @@ export namespace Prisma {
     memory_slots?: IntNullableFilter<"mothers"> | number | null
     color?: StringNullableFilter<"mothers"> | string | null
     imagen_url?: StringNullableFilter<"mothers"> | string | null
+    tipo?: StringNullableFilter<"mothers"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }
 
   export type mothersOrderByWithRelationInput = {
@@ -15983,6 +19164,8 @@ export namespace Prisma {
     memory_slots?: SortOrderInput | SortOrder
     color?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    publicaciones?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type mothersWhereUniqueInput = Prisma.AtLeast<{
@@ -15998,6 +19181,8 @@ export namespace Prisma {
     memory_slots?: IntNullableFilter<"mothers"> | number | null
     color?: StringNullableFilter<"mothers"> | string | null
     imagen_url?: StringNullableFilter<"mothers"> | string | null
+    tipo?: StringNullableFilter<"mothers"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }, "id">
 
   export type mothersOrderByWithAggregationInput = {
@@ -16010,6 +19195,7 @@ export namespace Prisma {
     memory_slots?: SortOrderInput | SortOrder
     color?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
     _count?: mothersCountOrderByAggregateInput
     _avg?: mothersAvgOrderByAggregateInput
     _max?: mothersMaxOrderByAggregateInput
@@ -16030,6 +19216,7 @@ export namespace Prisma {
     memory_slots?: IntNullableWithAggregatesFilter<"mothers"> | number | null
     color?: StringNullableWithAggregatesFilter<"mothers"> | string | null
     imagen_url?: StringNullableWithAggregatesFilter<"mothers"> | string | null
+    tipo?: StringNullableWithAggregatesFilter<"mothers"> | string | null
   }
 
   export type ramsWhereInput = {
@@ -16048,6 +19235,8 @@ export namespace Prisma {
     first_word_latency?: IntNullableFilter<"rams"> | number | null
     cas_latency?: IntNullableFilter<"rams"> | number | null
     imagen_url?: StringNullableFilter<"rams"> | string | null
+    tipo?: StringNullableFilter<"rams"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }
 
   export type ramsOrderByWithRelationInput = {
@@ -16063,6 +19252,8 @@ export namespace Prisma {
     first_word_latency?: SortOrderInput | SortOrder
     cas_latency?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    publicaciones?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type ramsWhereUniqueInput = Prisma.AtLeast<{
@@ -16081,6 +19272,8 @@ export namespace Prisma {
     first_word_latency?: IntNullableFilter<"rams"> | number | null
     cas_latency?: IntNullableFilter<"rams"> | number | null
     imagen_url?: StringNullableFilter<"rams"> | string | null
+    tipo?: StringNullableFilter<"rams"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }, "id">
 
   export type ramsOrderByWithAggregationInput = {
@@ -16096,6 +19289,7 @@ export namespace Prisma {
     first_word_latency?: SortOrderInput | SortOrder
     cas_latency?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
     _count?: ramsCountOrderByAggregateInput
     _avg?: ramsAvgOrderByAggregateInput
     _max?: ramsMaxOrderByAggregateInput
@@ -16119,6 +19313,7 @@ export namespace Prisma {
     first_word_latency?: IntNullableWithAggregatesFilter<"rams"> | number | null
     cas_latency?: IntNullableWithAggregatesFilter<"rams"> | number | null
     imagen_url?: StringNullableWithAggregatesFilter<"rams"> | string | null
+    tipo?: StringNullableWithAggregatesFilter<"rams"> | string | null
   }
 
   export type soundsWhereInput = {
@@ -16135,6 +19330,8 @@ export namespace Prisma {
     chipset?: StringNullableFilter<"sounds"> | string | null
     interface?: StringNullableFilter<"sounds"> | string | null
     imagen_url?: StringNullableFilter<"sounds"> | string | null
+    tipo?: StringNullableFilter<"sounds"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }
 
   export type soundsOrderByWithRelationInput = {
@@ -16148,6 +19345,8 @@ export namespace Prisma {
     chipset?: SortOrderInput | SortOrder
     interface?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
+    publicaciones?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type soundsWhereUniqueInput = Prisma.AtLeast<{
@@ -16164,6 +19363,8 @@ export namespace Prisma {
     chipset?: StringNullableFilter<"sounds"> | string | null
     interface?: StringNullableFilter<"sounds"> | string | null
     imagen_url?: StringNullableFilter<"sounds"> | string | null
+    tipo?: StringNullableFilter<"sounds"> | string | null
+    publicaciones?: PublicacionProductoListRelationFilter
   }, "id">
 
   export type soundsOrderByWithAggregationInput = {
@@ -16177,6 +19378,7 @@ export namespace Prisma {
     chipset?: SortOrderInput | SortOrder
     interface?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
+    tipo?: SortOrderInput | SortOrder
     _count?: soundsCountOrderByAggregateInput
     _avg?: soundsAvgOrderByAggregateInput
     _max?: soundsMaxOrderByAggregateInput
@@ -16198,6 +19400,7 @@ export namespace Prisma {
     chipset?: StringNullableWithAggregatesFilter<"sounds"> | string | null
     interface?: StringNullableWithAggregatesFilter<"sounds"> | string | null
     imagen_url?: StringNullableWithAggregatesFilter<"sounds"> | string | null
+    tipo?: StringNullableWithAggregatesFilter<"sounds"> | string | null
   }
 
   export type ususariosWhereInput = {
@@ -16213,6 +19416,7 @@ export namespace Prisma {
     permisos?: BoolNullableFilter<"ususarios"> | boolean | null
     imagen_url?: StringNullableFilter<"ususarios"> | string | null
     direccion?: StringNullableFilter<"ususarios"> | string | null
+    publicacionesUsuario?: PublicacionProductoListRelationFilter
   }
 
   export type ususariosOrderByWithRelationInput = {
@@ -16225,6 +19429,7 @@ export namespace Prisma {
     permisos?: SortOrderInput | SortOrder
     imagen_url?: SortOrderInput | SortOrder
     direccion?: SortOrderInput | SortOrder
+    publicacionesUsuario?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type ususariosWhereUniqueInput = Prisma.AtLeast<{
@@ -16240,6 +19445,7 @@ export namespace Prisma {
     permisos?: BoolNullableFilter<"ususarios"> | boolean | null
     imagen_url?: StringNullableFilter<"ususarios"> | string | null
     direccion?: StringNullableFilter<"ususarios"> | string | null
+    publicacionesUsuario?: PublicacionProductoListRelationFilter
   }, "id_user">
 
   export type ususariosOrderByWithAggregationInput = {
@@ -16284,10 +19490,11 @@ export namespace Prisma {
     mail?: StringFilter<"vendedores"> | string
     contrasenia?: StringFilter<"vendedores"> | string
     fecha_nacimiento?: DateTimeFilter<"vendedores"> | Date | string
-    cuil?: DecimalFilter<"vendedores"> | Decimal | DecimalJsLike | number | string
+    cuil?: BigIntNullableFilter<"vendedores"> | bigint | number | null
     direccion?: StringFilter<"vendedores"> | string
     descripcion?: StringNullableFilter<"vendedores"> | string | null
     nombre_comercio?: StringNullableFilter<"vendedores"> | string | null
+    publicacionesVendedor?: PublicacionProductoListRelationFilter
   }
 
   export type vendedoresOrderByWithRelationInput = {
@@ -16297,10 +19504,11 @@ export namespace Prisma {
     mail?: SortOrder
     contrasenia?: SortOrder
     fecha_nacimiento?: SortOrder
-    cuil?: SortOrder
+    cuil?: SortOrderInput | SortOrder
     direccion?: SortOrder
     descripcion?: SortOrderInput | SortOrder
     nombre_comercio?: SortOrderInput | SortOrder
+    publicacionesVendedor?: PublicacionProductoOrderByRelationAggregateInput
   }
 
   export type vendedoresWhereUniqueInput = Prisma.AtLeast<{
@@ -16313,10 +19521,11 @@ export namespace Prisma {
     mail?: StringFilter<"vendedores"> | string
     contrasenia?: StringFilter<"vendedores"> | string
     fecha_nacimiento?: DateTimeFilter<"vendedores"> | Date | string
-    cuil?: DecimalFilter<"vendedores"> | Decimal | DecimalJsLike | number | string
+    cuil?: BigIntNullableFilter<"vendedores"> | bigint | number | null
     direccion?: StringFilter<"vendedores"> | string
     descripcion?: StringNullableFilter<"vendedores"> | string | null
     nombre_comercio?: StringNullableFilter<"vendedores"> | string | null
+    publicacionesVendedor?: PublicacionProductoListRelationFilter
   }, "id_vendedor">
 
   export type vendedoresOrderByWithAggregationInput = {
@@ -16326,7 +19535,7 @@ export namespace Prisma {
     mail?: SortOrder
     contrasenia?: SortOrder
     fecha_nacimiento?: SortOrder
-    cuil?: SortOrder
+    cuil?: SortOrderInput | SortOrder
     direccion?: SortOrder
     descripcion?: SortOrderInput | SortOrder
     nombre_comercio?: SortOrderInput | SortOrder
@@ -16347,10 +19556,150 @@ export namespace Prisma {
     mail?: StringWithAggregatesFilter<"vendedores"> | string
     contrasenia?: StringWithAggregatesFilter<"vendedores"> | string
     fecha_nacimiento?: DateTimeWithAggregatesFilter<"vendedores"> | Date | string
-    cuil?: DecimalWithAggregatesFilter<"vendedores"> | Decimal | DecimalJsLike | number | string
+    cuil?: BigIntNullableWithAggregatesFilter<"vendedores"> | bigint | number | null
     direccion?: StringWithAggregatesFilter<"vendedores"> | string
     descripcion?: StringNullableWithAggregatesFilter<"vendedores"> | string | null
     nombre_comercio?: StringNullableWithAggregatesFilter<"vendedores"> | string | null
+  }
+
+  export type PublicacionProductoWhereInput = {
+    AND?: PublicacionProductoWhereInput | PublicacionProductoWhereInput[]
+    OR?: PublicacionProductoWhereInput[]
+    NOT?: PublicacionProductoWhereInput | PublicacionProductoWhereInput[]
+    id?: IntFilter<"PublicacionProducto"> | number
+    tipo_producto?: StringFilter<"PublicacionProducto"> | string
+    cooler_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    cpu_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    fuente_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    gabinete_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    grafica_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    memoria_externa_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    memoria_interna_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    mother_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    ram_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    sound_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    usuario_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    vendedor_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    creado_en?: DateTimeFilter<"PublicacionProducto"> | Date | string
+    cooler?: XOR<CoolersNullableScalarRelationFilter, coolersWhereInput> | null
+    cpu?: XOR<CpusNullableScalarRelationFilter, cpusWhereInput> | null
+    fuente?: XOR<FuentesNullableScalarRelationFilter, fuentesWhereInput> | null
+    gabinete?: XOR<GabinetesNullableScalarRelationFilter, gabinetesWhereInput> | null
+    grafica?: XOR<GraficasNullableScalarRelationFilter, graficasWhereInput> | null
+    memoria_externa?: XOR<Memorias_externasNullableScalarRelationFilter, memorias_externasWhereInput> | null
+    memoria_interna?: XOR<Memorias_internasNullableScalarRelationFilter, memorias_internasWhereInput> | null
+    mother?: XOR<MothersNullableScalarRelationFilter, mothersWhereInput> | null
+    ram?: XOR<RamsNullableScalarRelationFilter, ramsWhereInput> | null
+    sound?: XOR<SoundsNullableScalarRelationFilter, soundsWhereInput> | null
+    usuario?: XOR<UsusariosNullableScalarRelationFilter, ususariosWhereInput> | null
+    vendedor?: XOR<VendedoresNullableScalarRelationFilter, vendedoresWhereInput> | null
+  }
+
+  export type PublicacionProductoOrderByWithRelationInput = {
+    id?: SortOrder
+    tipo_producto?: SortOrder
+    cooler_id?: SortOrderInput | SortOrder
+    cpu_id?: SortOrderInput | SortOrder
+    fuente_id?: SortOrderInput | SortOrder
+    gabinete_id?: SortOrderInput | SortOrder
+    grafica_id?: SortOrderInput | SortOrder
+    memoria_externa_id?: SortOrderInput | SortOrder
+    memoria_interna_id?: SortOrderInput | SortOrder
+    mother_id?: SortOrderInput | SortOrder
+    ram_id?: SortOrderInput | SortOrder
+    sound_id?: SortOrderInput | SortOrder
+    usuario_id?: SortOrderInput | SortOrder
+    vendedor_id?: SortOrderInput | SortOrder
+    creado_en?: SortOrder
+    cooler?: coolersOrderByWithRelationInput
+    cpu?: cpusOrderByWithRelationInput
+    fuente?: fuentesOrderByWithRelationInput
+    gabinete?: gabinetesOrderByWithRelationInput
+    grafica?: graficasOrderByWithRelationInput
+    memoria_externa?: memorias_externasOrderByWithRelationInput
+    memoria_interna?: memorias_internasOrderByWithRelationInput
+    mother?: mothersOrderByWithRelationInput
+    ram?: ramsOrderByWithRelationInput
+    sound?: soundsOrderByWithRelationInput
+    usuario?: ususariosOrderByWithRelationInput
+    vendedor?: vendedoresOrderByWithRelationInput
+  }
+
+  export type PublicacionProductoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PublicacionProductoWhereInput | PublicacionProductoWhereInput[]
+    OR?: PublicacionProductoWhereInput[]
+    NOT?: PublicacionProductoWhereInput | PublicacionProductoWhereInput[]
+    tipo_producto?: StringFilter<"PublicacionProducto"> | string
+    cooler_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    cpu_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    fuente_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    gabinete_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    grafica_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    memoria_externa_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    memoria_interna_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    mother_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    ram_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    sound_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    usuario_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    vendedor_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    creado_en?: DateTimeFilter<"PublicacionProducto"> | Date | string
+    cooler?: XOR<CoolersNullableScalarRelationFilter, coolersWhereInput> | null
+    cpu?: XOR<CpusNullableScalarRelationFilter, cpusWhereInput> | null
+    fuente?: XOR<FuentesNullableScalarRelationFilter, fuentesWhereInput> | null
+    gabinete?: XOR<GabinetesNullableScalarRelationFilter, gabinetesWhereInput> | null
+    grafica?: XOR<GraficasNullableScalarRelationFilter, graficasWhereInput> | null
+    memoria_externa?: XOR<Memorias_externasNullableScalarRelationFilter, memorias_externasWhereInput> | null
+    memoria_interna?: XOR<Memorias_internasNullableScalarRelationFilter, memorias_internasWhereInput> | null
+    mother?: XOR<MothersNullableScalarRelationFilter, mothersWhereInput> | null
+    ram?: XOR<RamsNullableScalarRelationFilter, ramsWhereInput> | null
+    sound?: XOR<SoundsNullableScalarRelationFilter, soundsWhereInput> | null
+    usuario?: XOR<UsusariosNullableScalarRelationFilter, ususariosWhereInput> | null
+    vendedor?: XOR<VendedoresNullableScalarRelationFilter, vendedoresWhereInput> | null
+  }, "id">
+
+  export type PublicacionProductoOrderByWithAggregationInput = {
+    id?: SortOrder
+    tipo_producto?: SortOrder
+    cooler_id?: SortOrderInput | SortOrder
+    cpu_id?: SortOrderInput | SortOrder
+    fuente_id?: SortOrderInput | SortOrder
+    gabinete_id?: SortOrderInput | SortOrder
+    grafica_id?: SortOrderInput | SortOrder
+    memoria_externa_id?: SortOrderInput | SortOrder
+    memoria_interna_id?: SortOrderInput | SortOrder
+    mother_id?: SortOrderInput | SortOrder
+    ram_id?: SortOrderInput | SortOrder
+    sound_id?: SortOrderInput | SortOrder
+    usuario_id?: SortOrderInput | SortOrder
+    vendedor_id?: SortOrderInput | SortOrder
+    creado_en?: SortOrder
+    _count?: PublicacionProductoCountOrderByAggregateInput
+    _avg?: PublicacionProductoAvgOrderByAggregateInput
+    _max?: PublicacionProductoMaxOrderByAggregateInput
+    _min?: PublicacionProductoMinOrderByAggregateInput
+    _sum?: PublicacionProductoSumOrderByAggregateInput
+  }
+
+  export type PublicacionProductoScalarWhereWithAggregatesInput = {
+    AND?: PublicacionProductoScalarWhereWithAggregatesInput | PublicacionProductoScalarWhereWithAggregatesInput[]
+    OR?: PublicacionProductoScalarWhereWithAggregatesInput[]
+    NOT?: PublicacionProductoScalarWhereWithAggregatesInput | PublicacionProductoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PublicacionProducto"> | number
+    tipo_producto?: StringWithAggregatesFilter<"PublicacionProducto"> | string
+    cooler_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    cpu_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    fuente_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    gabinete_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    grafica_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    memoria_externa_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    memoria_interna_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    mother_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    ram_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    sound_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    usuario_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    vendedor_id?: IntNullableWithAggregatesFilter<"PublicacionProducto"> | number | null
+    creado_en?: DateTimeWithAggregatesFilter<"PublicacionProducto"> | Date | string
   }
 
   export type coolersCreateInput = {
@@ -16361,6 +19710,8 @@ export namespace Prisma {
     color?: string | null
     size?: number | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoCreateNestedManyWithoutCoolerInput
   }
 
   export type coolersUncheckedCreateInput = {
@@ -16372,6 +19723,8 @@ export namespace Prisma {
     color?: string | null
     size?: number | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoUncheckedCreateNestedManyWithoutCoolerInput
   }
 
   export type coolersUpdateInput = {
@@ -16382,6 +19735,8 @@ export namespace Prisma {
     color?: NullableStringFieldUpdateOperationsInput | string | null
     size?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUpdateManyWithoutCoolerNestedInput
   }
 
   export type coolersUncheckedUpdateInput = {
@@ -16393,6 +19748,8 @@ export namespace Prisma {
     color?: NullableStringFieldUpdateOperationsInput | string | null
     size?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUncheckedUpdateManyWithoutCoolerNestedInput
   }
 
   export type coolersCreateManyInput = {
@@ -16404,6 +19761,7 @@ export namespace Prisma {
     color?: string | null
     size?: number | null
     imagen_url?: string | null
+    tipo?: string | null
   }
 
   export type coolersUpdateManyMutationInput = {
@@ -16414,6 +19772,7 @@ export namespace Prisma {
     color?: NullableStringFieldUpdateOperationsInput | string | null
     size?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type coolersUncheckedUpdateManyInput = {
@@ -16425,6 +19784,7 @@ export namespace Prisma {
     color?: NullableStringFieldUpdateOperationsInput | string | null
     size?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type cpusCreateInput = {
@@ -16437,6 +19797,8 @@ export namespace Prisma {
     graphics?: string | null
     smt: boolean
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoCreateNestedManyWithoutCpuInput
   }
 
   export type cpusUncheckedCreateInput = {
@@ -16450,6 +19812,8 @@ export namespace Prisma {
     graphics?: string | null
     smt: boolean
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoUncheckedCreateNestedManyWithoutCpuInput
   }
 
   export type cpusUpdateInput = {
@@ -16462,6 +19826,8 @@ export namespace Prisma {
     graphics?: NullableStringFieldUpdateOperationsInput | string | null
     smt?: BoolFieldUpdateOperationsInput | boolean
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUpdateManyWithoutCpuNestedInput
   }
 
   export type cpusUncheckedUpdateInput = {
@@ -16475,6 +19841,8 @@ export namespace Prisma {
     graphics?: NullableStringFieldUpdateOperationsInput | string | null
     smt?: BoolFieldUpdateOperationsInput | boolean
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUncheckedUpdateManyWithoutCpuNestedInput
   }
 
   export type cpusCreateManyInput = {
@@ -16488,6 +19856,7 @@ export namespace Prisma {
     graphics?: string | null
     smt: boolean
     imagen_url?: string | null
+    tipo?: string | null
   }
 
   export type cpusUpdateManyMutationInput = {
@@ -16500,6 +19869,7 @@ export namespace Prisma {
     graphics?: NullableStringFieldUpdateOperationsInput | string | null
     smt?: BoolFieldUpdateOperationsInput | boolean
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type cpusUncheckedUpdateManyInput = {
@@ -16513,6 +19883,7 @@ export namespace Prisma {
     graphics?: NullableStringFieldUpdateOperationsInput | string | null
     smt?: BoolFieldUpdateOperationsInput | boolean
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type fuentesCreateInput = {
@@ -16524,6 +19895,8 @@ export namespace Prisma {
     modular?: string | null
     color?: string | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoCreateNestedManyWithoutFuenteInput
   }
 
   export type fuentesUncheckedCreateInput = {
@@ -16536,6 +19909,8 @@ export namespace Prisma {
     modular?: string | null
     color?: string | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoUncheckedCreateNestedManyWithoutFuenteInput
   }
 
   export type fuentesUpdateInput = {
@@ -16547,6 +19922,8 @@ export namespace Prisma {
     modular?: NullableStringFieldUpdateOperationsInput | string | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUpdateManyWithoutFuenteNestedInput
   }
 
   export type fuentesUncheckedUpdateInput = {
@@ -16559,6 +19936,8 @@ export namespace Prisma {
     modular?: NullableStringFieldUpdateOperationsInput | string | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUncheckedUpdateManyWithoutFuenteNestedInput
   }
 
   export type fuentesCreateManyInput = {
@@ -16571,6 +19950,7 @@ export namespace Prisma {
     modular?: string | null
     color?: string | null
     imagen_url?: string | null
+    tipo?: string | null
   }
 
   export type fuentesUpdateManyMutationInput = {
@@ -16582,6 +19962,7 @@ export namespace Prisma {
     modular?: NullableStringFieldUpdateOperationsInput | string | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type fuentesUncheckedUpdateManyInput = {
@@ -16594,6 +19975,7 @@ export namespace Prisma {
     modular?: NullableStringFieldUpdateOperationsInput | string | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type gabinetesCreateInput = {
@@ -16606,6 +19988,8 @@ export namespace Prisma {
     external_volume?: Decimal | DecimalJsLike | number | string | null
     internal_35_bays?: number | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoCreateNestedManyWithoutGabineteInput
   }
 
   export type gabinetesUncheckedCreateInput = {
@@ -16619,6 +20003,8 @@ export namespace Prisma {
     external_volume?: Decimal | DecimalJsLike | number | string | null
     internal_35_bays?: number | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoUncheckedCreateNestedManyWithoutGabineteInput
   }
 
   export type gabinetesUpdateInput = {
@@ -16631,6 +20017,8 @@ export namespace Prisma {
     external_volume?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     internal_35_bays?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUpdateManyWithoutGabineteNestedInput
   }
 
   export type gabinetesUncheckedUpdateInput = {
@@ -16644,6 +20032,8 @@ export namespace Prisma {
     external_volume?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     internal_35_bays?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUncheckedUpdateManyWithoutGabineteNestedInput
   }
 
   export type gabinetesCreateManyInput = {
@@ -16657,6 +20047,7 @@ export namespace Prisma {
     external_volume?: Decimal | DecimalJsLike | number | string | null
     internal_35_bays?: number | null
     imagen_url?: string | null
+    tipo?: string | null
   }
 
   export type gabinetesUpdateManyMutationInput = {
@@ -16669,6 +20060,7 @@ export namespace Prisma {
     external_volume?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     internal_35_bays?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type gabinetesUncheckedUpdateManyInput = {
@@ -16682,6 +20074,7 @@ export namespace Prisma {
     external_volume?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     internal_35_bays?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type graficasCreateInput = {
@@ -16694,6 +20087,8 @@ export namespace Prisma {
     color?: string | null
     length?: number | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoCreateNestedManyWithoutGraficaInput
   }
 
   export type graficasUncheckedCreateInput = {
@@ -16707,6 +20102,8 @@ export namespace Prisma {
     color?: string | null
     length?: number | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoUncheckedCreateNestedManyWithoutGraficaInput
   }
 
   export type graficasUpdateInput = {
@@ -16719,6 +20116,8 @@ export namespace Prisma {
     color?: NullableStringFieldUpdateOperationsInput | string | null
     length?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUpdateManyWithoutGraficaNestedInput
   }
 
   export type graficasUncheckedUpdateInput = {
@@ -16732,6 +20131,8 @@ export namespace Prisma {
     color?: NullableStringFieldUpdateOperationsInput | string | null
     length?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUncheckedUpdateManyWithoutGraficaNestedInput
   }
 
   export type graficasCreateManyInput = {
@@ -16745,6 +20146,7 @@ export namespace Prisma {
     color?: string | null
     length?: number | null
     imagen_url?: string | null
+    tipo?: string | null
   }
 
   export type graficasUpdateManyMutationInput = {
@@ -16757,6 +20159,7 @@ export namespace Prisma {
     color?: NullableStringFieldUpdateOperationsInput | string | null
     length?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type graficasUncheckedUpdateManyInput = {
@@ -16770,6 +20173,7 @@ export namespace Prisma {
     color?: NullableStringFieldUpdateOperationsInput | string | null
     length?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type memorias_externasCreateInput = {
@@ -16781,6 +20185,8 @@ export namespace Prisma {
     price_per_gb?: Decimal | DecimalJsLike | number | string | null
     color?: string | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoCreateNestedManyWithoutMemoria_externaInput
   }
 
   export type memorias_externasUncheckedCreateInput = {
@@ -16793,6 +20199,8 @@ export namespace Prisma {
     price_per_gb?: Decimal | DecimalJsLike | number | string | null
     color?: string | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoUncheckedCreateNestedManyWithoutMemoria_externaInput
   }
 
   export type memorias_externasUpdateInput = {
@@ -16804,6 +20212,8 @@ export namespace Prisma {
     price_per_gb?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUpdateManyWithoutMemoria_externaNestedInput
   }
 
   export type memorias_externasUncheckedUpdateInput = {
@@ -16816,6 +20226,8 @@ export namespace Prisma {
     price_per_gb?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUncheckedUpdateManyWithoutMemoria_externaNestedInput
   }
 
   export type memorias_externasCreateManyInput = {
@@ -16828,6 +20240,7 @@ export namespace Prisma {
     price_per_gb?: Decimal | DecimalJsLike | number | string | null
     color?: string | null
     imagen_url?: string | null
+    tipo?: string | null
   }
 
   export type memorias_externasUpdateManyMutationInput = {
@@ -16839,6 +20252,7 @@ export namespace Prisma {
     price_per_gb?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type memorias_externasUncheckedUpdateManyInput = {
@@ -16851,6 +20265,7 @@ export namespace Prisma {
     price_per_gb?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type memorias_internasCreateInput = {
@@ -16863,6 +20278,8 @@ export namespace Prisma {
     form_factor?: string | null
     interface?: string | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoCreateNestedManyWithoutMemoria_internaInput
   }
 
   export type memorias_internasUncheckedCreateInput = {
@@ -16876,6 +20293,8 @@ export namespace Prisma {
     form_factor?: string | null
     interface?: string | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoUncheckedCreateNestedManyWithoutMemoria_internaInput
   }
 
   export type memorias_internasUpdateInput = {
@@ -16888,6 +20307,8 @@ export namespace Prisma {
     form_factor?: NullableStringFieldUpdateOperationsInput | string | null
     interface?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUpdateManyWithoutMemoria_internaNestedInput
   }
 
   export type memorias_internasUncheckedUpdateInput = {
@@ -16901,6 +20322,8 @@ export namespace Prisma {
     form_factor?: NullableStringFieldUpdateOperationsInput | string | null
     interface?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUncheckedUpdateManyWithoutMemoria_internaNestedInput
   }
 
   export type memorias_internasCreateManyInput = {
@@ -16914,6 +20337,7 @@ export namespace Prisma {
     form_factor?: string | null
     interface?: string | null
     imagen_url?: string | null
+    tipo?: string | null
   }
 
   export type memorias_internasUpdateManyMutationInput = {
@@ -16926,6 +20350,7 @@ export namespace Prisma {
     form_factor?: NullableStringFieldUpdateOperationsInput | string | null
     interface?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type memorias_internasUncheckedUpdateManyInput = {
@@ -16939,6 +20364,7 @@ export namespace Prisma {
     form_factor?: NullableStringFieldUpdateOperationsInput | string | null
     interface?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type mothersCreateInput = {
@@ -16950,6 +20376,8 @@ export namespace Prisma {
     memory_slots?: number | null
     color?: string | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoCreateNestedManyWithoutMotherInput
   }
 
   export type mothersUncheckedCreateInput = {
@@ -16962,6 +20390,8 @@ export namespace Prisma {
     memory_slots?: number | null
     color?: string | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoUncheckedCreateNestedManyWithoutMotherInput
   }
 
   export type mothersUpdateInput = {
@@ -16973,6 +20403,8 @@ export namespace Prisma {
     memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUpdateManyWithoutMotherNestedInput
   }
 
   export type mothersUncheckedUpdateInput = {
@@ -16985,6 +20417,8 @@ export namespace Prisma {
     memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUncheckedUpdateManyWithoutMotherNestedInput
   }
 
   export type mothersCreateManyInput = {
@@ -16997,6 +20431,7 @@ export namespace Prisma {
     memory_slots?: number | null
     color?: string | null
     imagen_url?: string | null
+    tipo?: string | null
   }
 
   export type mothersUpdateManyMutationInput = {
@@ -17008,6 +20443,7 @@ export namespace Prisma {
     memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type mothersUncheckedUpdateManyInput = {
@@ -17020,6 +20456,7 @@ export namespace Prisma {
     memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
     color?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ramsCreateInput = {
@@ -17034,6 +20471,8 @@ export namespace Prisma {
     first_word_latency?: number | null
     cas_latency?: number | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoCreateNestedManyWithoutRamInput
   }
 
   export type ramsUncheckedCreateInput = {
@@ -17049,6 +20488,8 @@ export namespace Prisma {
     first_word_latency?: number | null
     cas_latency?: number | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoUncheckedCreateNestedManyWithoutRamInput
   }
 
   export type ramsUpdateInput = {
@@ -17063,6 +20504,8 @@ export namespace Prisma {
     first_word_latency?: NullableIntFieldUpdateOperationsInput | number | null
     cas_latency?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUpdateManyWithoutRamNestedInput
   }
 
   export type ramsUncheckedUpdateInput = {
@@ -17078,6 +20521,8 @@ export namespace Prisma {
     first_word_latency?: NullableIntFieldUpdateOperationsInput | number | null
     cas_latency?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUncheckedUpdateManyWithoutRamNestedInput
   }
 
   export type ramsCreateManyInput = {
@@ -17093,6 +20538,7 @@ export namespace Prisma {
     first_word_latency?: number | null
     cas_latency?: number | null
     imagen_url?: string | null
+    tipo?: string | null
   }
 
   export type ramsUpdateManyMutationInput = {
@@ -17107,6 +20553,7 @@ export namespace Prisma {
     first_word_latency?: NullableIntFieldUpdateOperationsInput | number | null
     cas_latency?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ramsUncheckedUpdateManyInput = {
@@ -17122,6 +20569,7 @@ export namespace Prisma {
     first_word_latency?: NullableIntFieldUpdateOperationsInput | number | null
     cas_latency?: NullableIntFieldUpdateOperationsInput | number | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type soundsCreateInput = {
@@ -17134,6 +20582,8 @@ export namespace Prisma {
     chipset?: string | null
     interface?: string | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoCreateNestedManyWithoutSoundInput
   }
 
   export type soundsUncheckedCreateInput = {
@@ -17147,6 +20597,8 @@ export namespace Prisma {
     chipset?: string | null
     interface?: string | null
     imagen_url?: string | null
+    tipo?: string | null
+    publicaciones?: PublicacionProductoUncheckedCreateNestedManyWithoutSoundInput
   }
 
   export type soundsUpdateInput = {
@@ -17159,6 +20611,8 @@ export namespace Prisma {
     chipset?: NullableStringFieldUpdateOperationsInput | string | null
     interface?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUpdateManyWithoutSoundNestedInput
   }
 
   export type soundsUncheckedUpdateInput = {
@@ -17172,6 +20626,8 @@ export namespace Prisma {
     chipset?: NullableStringFieldUpdateOperationsInput | string | null
     interface?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+    publicaciones?: PublicacionProductoUncheckedUpdateManyWithoutSoundNestedInput
   }
 
   export type soundsCreateManyInput = {
@@ -17185,6 +20641,7 @@ export namespace Prisma {
     chipset?: string | null
     interface?: string | null
     imagen_url?: string | null
+    tipo?: string | null
   }
 
   export type soundsUpdateManyMutationInput = {
@@ -17197,6 +20654,7 @@ export namespace Prisma {
     chipset?: NullableStringFieldUpdateOperationsInput | string | null
     interface?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type soundsUncheckedUpdateManyInput = {
@@ -17210,6 +20668,7 @@ export namespace Prisma {
     chipset?: NullableStringFieldUpdateOperationsInput | string | null
     interface?: NullableStringFieldUpdateOperationsInput | string | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ususariosCreateInput = {
@@ -17221,6 +20680,7 @@ export namespace Prisma {
     permisos?: boolean | null
     imagen_url?: string | null
     direccion?: string | null
+    publicacionesUsuario?: PublicacionProductoCreateNestedManyWithoutUsuarioInput
   }
 
   export type ususariosUncheckedCreateInput = {
@@ -17233,6 +20693,7 @@ export namespace Prisma {
     permisos?: boolean | null
     imagen_url?: string | null
     direccion?: string | null
+    publicacionesUsuario?: PublicacionProductoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type ususariosUpdateInput = {
@@ -17244,6 +20705,7 @@ export namespace Prisma {
     permisos?: NullableBoolFieldUpdateOperationsInput | boolean | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
     direccion?: NullableStringFieldUpdateOperationsInput | string | null
+    publicacionesUsuario?: PublicacionProductoUpdateManyWithoutUsuarioNestedInput
   }
 
   export type ususariosUncheckedUpdateInput = {
@@ -17256,6 +20718,7 @@ export namespace Prisma {
     permisos?: NullableBoolFieldUpdateOperationsInput | boolean | null
     imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
     direccion?: NullableStringFieldUpdateOperationsInput | string | null
+    publicacionesUsuario?: PublicacionProductoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type ususariosCreateManyInput = {
@@ -17299,10 +20762,11 @@ export namespace Prisma {
     mail: string
     contrasenia: string
     fecha_nacimiento: Date | string
-    cuil: Decimal | DecimalJsLike | number | string
+    cuil?: bigint | number | null
     direccion: string
     descripcion?: string | null
     nombre_comercio?: string | null
+    publicacionesVendedor?: PublicacionProductoCreateNestedManyWithoutVendedorInput
   }
 
   export type vendedoresUncheckedCreateInput = {
@@ -17312,10 +20776,11 @@ export namespace Prisma {
     mail: string
     contrasenia: string
     fecha_nacimiento: Date | string
-    cuil: Decimal | DecimalJsLike | number | string
+    cuil?: bigint | number | null
     direccion: string
     descripcion?: string | null
     nombre_comercio?: string | null
+    publicacionesVendedor?: PublicacionProductoUncheckedCreateNestedManyWithoutVendedorInput
   }
 
   export type vendedoresUpdateInput = {
@@ -17324,10 +20789,11 @@ export namespace Prisma {
     mail?: StringFieldUpdateOperationsInput | string
     contrasenia?: StringFieldUpdateOperationsInput | string
     fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
-    cuil?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cuil?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     direccion?: StringFieldUpdateOperationsInput | string
     descripcion?: NullableStringFieldUpdateOperationsInput | string | null
     nombre_comercio?: NullableStringFieldUpdateOperationsInput | string | null
+    publicacionesVendedor?: PublicacionProductoUpdateManyWithoutVendedorNestedInput
   }
 
   export type vendedoresUncheckedUpdateInput = {
@@ -17337,10 +20803,11 @@ export namespace Prisma {
     mail?: StringFieldUpdateOperationsInput | string
     contrasenia?: StringFieldUpdateOperationsInput | string
     fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
-    cuil?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cuil?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     direccion?: StringFieldUpdateOperationsInput | string
     descripcion?: NullableStringFieldUpdateOperationsInput | string | null
     nombre_comercio?: NullableStringFieldUpdateOperationsInput | string | null
+    publicacionesVendedor?: PublicacionProductoUncheckedUpdateManyWithoutVendedorNestedInput
   }
 
   export type vendedoresCreateManyInput = {
@@ -17350,7 +20817,7 @@ export namespace Prisma {
     mail: string
     contrasenia: string
     fecha_nacimiento: Date | string
-    cuil: Decimal | DecimalJsLike | number | string
+    cuil?: bigint | number | null
     direccion: string
     descripcion?: string | null
     nombre_comercio?: string | null
@@ -17362,7 +20829,7 @@ export namespace Prisma {
     mail?: StringFieldUpdateOperationsInput | string
     contrasenia?: StringFieldUpdateOperationsInput | string
     fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
-    cuil?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cuil?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     direccion?: StringFieldUpdateOperationsInput | string
     descripcion?: NullableStringFieldUpdateOperationsInput | string | null
     nombre_comercio?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17375,10 +20842,121 @@ export namespace Prisma {
     mail?: StringFieldUpdateOperationsInput | string
     contrasenia?: StringFieldUpdateOperationsInput | string
     fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
-    cuil?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cuil?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     direccion?: StringFieldUpdateOperationsInput | string
     descripcion?: NullableStringFieldUpdateOperationsInput | string | null
     nombre_comercio?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PublicacionProductoCreateInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManyInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateManyMutationInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -17444,9 +21022,19 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type PublicacionProductoListRelationFilter = {
+    every?: PublicacionProductoWhereInput
+    some?: PublicacionProductoWhereInput
+    none?: PublicacionProductoWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type PublicacionProductoOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type coolersCountOrderByAggregateInput = {
@@ -17458,6 +21046,7 @@ export namespace Prisma {
     color?: SortOrder
     size?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type coolersAvgOrderByAggregateInput = {
@@ -17477,6 +21066,7 @@ export namespace Prisma {
     color?: SortOrder
     size?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type coolersMinOrderByAggregateInput = {
@@ -17488,6 +21078,7 @@ export namespace Prisma {
     color?: SortOrder
     size?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type coolersSumOrderByAggregateInput = {
@@ -17609,6 +21200,7 @@ export namespace Prisma {
     graphics?: SortOrder
     smt?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type cpusAvgOrderByAggregateInput = {
@@ -17631,6 +21223,7 @@ export namespace Prisma {
     graphics?: SortOrder
     smt?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type cpusMinOrderByAggregateInput = {
@@ -17644,6 +21237,7 @@ export namespace Prisma {
     graphics?: SortOrder
     smt?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type cpusSumOrderByAggregateInput = {
@@ -17689,6 +21283,7 @@ export namespace Prisma {
     modular?: SortOrder
     color?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type fuentesAvgOrderByAggregateInput = {
@@ -17707,6 +21302,7 @@ export namespace Prisma {
     modular?: SortOrder
     color?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type fuentesMinOrderByAggregateInput = {
@@ -17719,6 +21315,7 @@ export namespace Prisma {
     modular?: SortOrder
     color?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type fuentesSumOrderByAggregateInput = {
@@ -17738,6 +21335,7 @@ export namespace Prisma {
     external_volume?: SortOrder
     internal_35_bays?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type gabinetesAvgOrderByAggregateInput = {
@@ -17758,6 +21356,7 @@ export namespace Prisma {
     external_volume?: SortOrder
     internal_35_bays?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type gabinetesMinOrderByAggregateInput = {
@@ -17771,6 +21370,7 @@ export namespace Prisma {
     external_volume?: SortOrder
     internal_35_bays?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type gabinetesSumOrderByAggregateInput = {
@@ -17791,6 +21391,7 @@ export namespace Prisma {
     color?: SortOrder
     length?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type graficasAvgOrderByAggregateInput = {
@@ -17813,6 +21414,7 @@ export namespace Prisma {
     color?: SortOrder
     length?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type graficasMinOrderByAggregateInput = {
@@ -17826,6 +21428,7 @@ export namespace Prisma {
     color?: SortOrder
     length?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type graficasSumOrderByAggregateInput = {
@@ -17847,6 +21450,7 @@ export namespace Prisma {
     price_per_gb?: SortOrder
     color?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type memorias_externasAvgOrderByAggregateInput = {
@@ -17866,6 +21470,7 @@ export namespace Prisma {
     price_per_gb?: SortOrder
     color?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type memorias_externasMinOrderByAggregateInput = {
@@ -17878,6 +21483,7 @@ export namespace Prisma {
     price_per_gb?: SortOrder
     color?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type memorias_externasSumOrderByAggregateInput = {
@@ -17898,6 +21504,7 @@ export namespace Prisma {
     form_factor?: SortOrder
     interface?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type memorias_internasAvgOrderByAggregateInput = {
@@ -17919,6 +21526,7 @@ export namespace Prisma {
     form_factor?: SortOrder
     interface?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type memorias_internasMinOrderByAggregateInput = {
@@ -17932,6 +21540,7 @@ export namespace Prisma {
     form_factor?: SortOrder
     interface?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type memorias_internasSumOrderByAggregateInput = {
@@ -17952,6 +21561,7 @@ export namespace Prisma {
     memory_slots?: SortOrder
     color?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type mothersAvgOrderByAggregateInput = {
@@ -17971,6 +21581,7 @@ export namespace Prisma {
     memory_slots?: SortOrder
     color?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type mothersMinOrderByAggregateInput = {
@@ -17983,6 +21594,7 @@ export namespace Prisma {
     memory_slots?: SortOrder
     color?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type mothersSumOrderByAggregateInput = {
@@ -18005,6 +21617,7 @@ export namespace Prisma {
     first_word_latency?: SortOrder
     cas_latency?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type ramsAvgOrderByAggregateInput = {
@@ -18032,6 +21645,7 @@ export namespace Prisma {
     first_word_latency?: SortOrder
     cas_latency?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type ramsMinOrderByAggregateInput = {
@@ -18047,6 +21661,7 @@ export namespace Prisma {
     first_word_latency?: SortOrder
     cas_latency?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type ramsSumOrderByAggregateInput = {
@@ -18072,6 +21687,7 @@ export namespace Prisma {
     chipset?: SortOrder
     interface?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type soundsAvgOrderByAggregateInput = {
@@ -18093,6 +21709,7 @@ export namespace Prisma {
     chipset?: SortOrder
     interface?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type soundsMinOrderByAggregateInput = {
@@ -18106,6 +21723,7 @@ export namespace Prisma {
     chipset?: SortOrder
     interface?: SortOrder
     imagen_url?: SortOrder
+    tipo?: SortOrder
   }
 
   export type soundsSumOrderByAggregateInput = {
@@ -18198,6 +21816,17 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
+  export type BigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  }
+
   export type vendedoresCountOrderByAggregateInput = {
     id_vendedor?: SortOrder
     nombre?: SortOrder
@@ -18247,6 +21876,182 @@ export namespace Prisma {
     cuil?: SortOrder
   }
 
+  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
+  }
+
+  export type CoolersNullableScalarRelationFilter = {
+    is?: coolersWhereInput | null
+    isNot?: coolersWhereInput | null
+  }
+
+  export type CpusNullableScalarRelationFilter = {
+    is?: cpusWhereInput | null
+    isNot?: cpusWhereInput | null
+  }
+
+  export type FuentesNullableScalarRelationFilter = {
+    is?: fuentesWhereInput | null
+    isNot?: fuentesWhereInput | null
+  }
+
+  export type GabinetesNullableScalarRelationFilter = {
+    is?: gabinetesWhereInput | null
+    isNot?: gabinetesWhereInput | null
+  }
+
+  export type GraficasNullableScalarRelationFilter = {
+    is?: graficasWhereInput | null
+    isNot?: graficasWhereInput | null
+  }
+
+  export type Memorias_externasNullableScalarRelationFilter = {
+    is?: memorias_externasWhereInput | null
+    isNot?: memorias_externasWhereInput | null
+  }
+
+  export type Memorias_internasNullableScalarRelationFilter = {
+    is?: memorias_internasWhereInput | null
+    isNot?: memorias_internasWhereInput | null
+  }
+
+  export type MothersNullableScalarRelationFilter = {
+    is?: mothersWhereInput | null
+    isNot?: mothersWhereInput | null
+  }
+
+  export type RamsNullableScalarRelationFilter = {
+    is?: ramsWhereInput | null
+    isNot?: ramsWhereInput | null
+  }
+
+  export type SoundsNullableScalarRelationFilter = {
+    is?: soundsWhereInput | null
+    isNot?: soundsWhereInput | null
+  }
+
+  export type UsusariosNullableScalarRelationFilter = {
+    is?: ususariosWhereInput | null
+    isNot?: ususariosWhereInput | null
+  }
+
+  export type VendedoresNullableScalarRelationFilter = {
+    is?: vendedoresWhereInput | null
+    isNot?: vendedoresWhereInput | null
+  }
+
+  export type PublicacionProductoCountOrderByAggregateInput = {
+    id?: SortOrder
+    tipo_producto?: SortOrder
+    cooler_id?: SortOrder
+    cpu_id?: SortOrder
+    fuente_id?: SortOrder
+    gabinete_id?: SortOrder
+    grafica_id?: SortOrder
+    memoria_externa_id?: SortOrder
+    memoria_interna_id?: SortOrder
+    mother_id?: SortOrder
+    ram_id?: SortOrder
+    sound_id?: SortOrder
+    usuario_id?: SortOrder
+    vendedor_id?: SortOrder
+    creado_en?: SortOrder
+  }
+
+  export type PublicacionProductoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    cooler_id?: SortOrder
+    cpu_id?: SortOrder
+    fuente_id?: SortOrder
+    gabinete_id?: SortOrder
+    grafica_id?: SortOrder
+    memoria_externa_id?: SortOrder
+    memoria_interna_id?: SortOrder
+    mother_id?: SortOrder
+    ram_id?: SortOrder
+    sound_id?: SortOrder
+    usuario_id?: SortOrder
+    vendedor_id?: SortOrder
+  }
+
+  export type PublicacionProductoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    tipo_producto?: SortOrder
+    cooler_id?: SortOrder
+    cpu_id?: SortOrder
+    fuente_id?: SortOrder
+    gabinete_id?: SortOrder
+    grafica_id?: SortOrder
+    memoria_externa_id?: SortOrder
+    memoria_interna_id?: SortOrder
+    mother_id?: SortOrder
+    ram_id?: SortOrder
+    sound_id?: SortOrder
+    usuario_id?: SortOrder
+    vendedor_id?: SortOrder
+    creado_en?: SortOrder
+  }
+
+  export type PublicacionProductoMinOrderByAggregateInput = {
+    id?: SortOrder
+    tipo_producto?: SortOrder
+    cooler_id?: SortOrder
+    cpu_id?: SortOrder
+    fuente_id?: SortOrder
+    gabinete_id?: SortOrder
+    grafica_id?: SortOrder
+    memoria_externa_id?: SortOrder
+    memoria_interna_id?: SortOrder
+    mother_id?: SortOrder
+    ram_id?: SortOrder
+    sound_id?: SortOrder
+    usuario_id?: SortOrder
+    vendedor_id?: SortOrder
+    creado_en?: SortOrder
+  }
+
+  export type PublicacionProductoSumOrderByAggregateInput = {
+    id?: SortOrder
+    cooler_id?: SortOrder
+    cpu_id?: SortOrder
+    fuente_id?: SortOrder
+    gabinete_id?: SortOrder
+    grafica_id?: SortOrder
+    memoria_externa_id?: SortOrder
+    memoria_interna_id?: SortOrder
+    mother_id?: SortOrder
+    ram_id?: SortOrder
+    sound_id?: SortOrder
+    usuario_id?: SortOrder
+    vendedor_id?: SortOrder
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutCoolerInput = {
+    create?: XOR<PublicacionProductoCreateWithoutCoolerInput, PublicacionProductoUncheckedCreateWithoutCoolerInput> | PublicacionProductoCreateWithoutCoolerInput[] | PublicacionProductoUncheckedCreateWithoutCoolerInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutCoolerInput | PublicacionProductoCreateOrConnectWithoutCoolerInput[]
+    createMany?: PublicacionProductoCreateManyCoolerInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutCoolerInput = {
+    create?: XOR<PublicacionProductoCreateWithoutCoolerInput, PublicacionProductoUncheckedCreateWithoutCoolerInput> | PublicacionProductoCreateWithoutCoolerInput[] | PublicacionProductoUncheckedCreateWithoutCoolerInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutCoolerInput | PublicacionProductoCreateOrConnectWithoutCoolerInput[]
+    createMany?: PublicacionProductoCreateManyCoolerInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -18271,12 +22076,54 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type PublicacionProductoUpdateManyWithoutCoolerNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutCoolerInput, PublicacionProductoUncheckedCreateWithoutCoolerInput> | PublicacionProductoCreateWithoutCoolerInput[] | PublicacionProductoUncheckedCreateWithoutCoolerInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutCoolerInput | PublicacionProductoCreateOrConnectWithoutCoolerInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutCoolerInput | PublicacionProductoUpsertWithWhereUniqueWithoutCoolerInput[]
+    createMany?: PublicacionProductoCreateManyCoolerInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutCoolerInput | PublicacionProductoUpdateWithWhereUniqueWithoutCoolerInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutCoolerInput | PublicacionProductoUpdateManyWithWhereWithoutCoolerInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutCoolerNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutCoolerInput, PublicacionProductoUncheckedCreateWithoutCoolerInput> | PublicacionProductoCreateWithoutCoolerInput[] | PublicacionProductoUncheckedCreateWithoutCoolerInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutCoolerInput | PublicacionProductoCreateOrConnectWithoutCoolerInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutCoolerInput | PublicacionProductoUpsertWithWhereUniqueWithoutCoolerInput[]
+    createMany?: PublicacionProductoCreateManyCoolerInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutCoolerInput | PublicacionProductoUpdateWithWhereUniqueWithoutCoolerInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutCoolerInput | PublicacionProductoUpdateManyWithWhereWithoutCoolerInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutCpuInput = {
+    create?: XOR<PublicacionProductoCreateWithoutCpuInput, PublicacionProductoUncheckedCreateWithoutCpuInput> | PublicacionProductoCreateWithoutCpuInput[] | PublicacionProductoUncheckedCreateWithoutCpuInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutCpuInput | PublicacionProductoCreateOrConnectWithoutCpuInput[]
+    createMany?: PublicacionProductoCreateManyCpuInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutCpuInput = {
+    create?: XOR<PublicacionProductoCreateWithoutCpuInput, PublicacionProductoUncheckedCreateWithoutCpuInput> | PublicacionProductoCreateWithoutCpuInput[] | PublicacionProductoUncheckedCreateWithoutCpuInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutCpuInput | PublicacionProductoCreateOrConnectWithoutCpuInput[]
+    createMany?: PublicacionProductoCreateManyCpuInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
   }
 
   export type DecimalFieldUpdateOperationsInput = {
@@ -18291,12 +22138,660 @@ export namespace Prisma {
     set?: boolean
   }
 
+  export type PublicacionProductoUpdateManyWithoutCpuNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutCpuInput, PublicacionProductoUncheckedCreateWithoutCpuInput> | PublicacionProductoCreateWithoutCpuInput[] | PublicacionProductoUncheckedCreateWithoutCpuInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutCpuInput | PublicacionProductoCreateOrConnectWithoutCpuInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutCpuInput | PublicacionProductoUpsertWithWhereUniqueWithoutCpuInput[]
+    createMany?: PublicacionProductoCreateManyCpuInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutCpuInput | PublicacionProductoUpdateWithWhereUniqueWithoutCpuInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutCpuInput | PublicacionProductoUpdateManyWithWhereWithoutCpuInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutCpuNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutCpuInput, PublicacionProductoUncheckedCreateWithoutCpuInput> | PublicacionProductoCreateWithoutCpuInput[] | PublicacionProductoUncheckedCreateWithoutCpuInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutCpuInput | PublicacionProductoCreateOrConnectWithoutCpuInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutCpuInput | PublicacionProductoUpsertWithWhereUniqueWithoutCpuInput[]
+    createMany?: PublicacionProductoCreateManyCpuInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutCpuInput | PublicacionProductoUpdateWithWhereUniqueWithoutCpuInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutCpuInput | PublicacionProductoUpdateManyWithWhereWithoutCpuInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutFuenteInput = {
+    create?: XOR<PublicacionProductoCreateWithoutFuenteInput, PublicacionProductoUncheckedCreateWithoutFuenteInput> | PublicacionProductoCreateWithoutFuenteInput[] | PublicacionProductoUncheckedCreateWithoutFuenteInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutFuenteInput | PublicacionProductoCreateOrConnectWithoutFuenteInput[]
+    createMany?: PublicacionProductoCreateManyFuenteInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutFuenteInput = {
+    create?: XOR<PublicacionProductoCreateWithoutFuenteInput, PublicacionProductoUncheckedCreateWithoutFuenteInput> | PublicacionProductoCreateWithoutFuenteInput[] | PublicacionProductoUncheckedCreateWithoutFuenteInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutFuenteInput | PublicacionProductoCreateOrConnectWithoutFuenteInput[]
+    createMany?: PublicacionProductoCreateManyFuenteInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUpdateManyWithoutFuenteNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutFuenteInput, PublicacionProductoUncheckedCreateWithoutFuenteInput> | PublicacionProductoCreateWithoutFuenteInput[] | PublicacionProductoUncheckedCreateWithoutFuenteInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutFuenteInput | PublicacionProductoCreateOrConnectWithoutFuenteInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutFuenteInput | PublicacionProductoUpsertWithWhereUniqueWithoutFuenteInput[]
+    createMany?: PublicacionProductoCreateManyFuenteInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutFuenteInput | PublicacionProductoUpdateWithWhereUniqueWithoutFuenteInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutFuenteInput | PublicacionProductoUpdateManyWithWhereWithoutFuenteInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutFuenteNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutFuenteInput, PublicacionProductoUncheckedCreateWithoutFuenteInput> | PublicacionProductoCreateWithoutFuenteInput[] | PublicacionProductoUncheckedCreateWithoutFuenteInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutFuenteInput | PublicacionProductoCreateOrConnectWithoutFuenteInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutFuenteInput | PublicacionProductoUpsertWithWhereUniqueWithoutFuenteInput[]
+    createMany?: PublicacionProductoCreateManyFuenteInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutFuenteInput | PublicacionProductoUpdateWithWhereUniqueWithoutFuenteInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutFuenteInput | PublicacionProductoUpdateManyWithWhereWithoutFuenteInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutGabineteInput = {
+    create?: XOR<PublicacionProductoCreateWithoutGabineteInput, PublicacionProductoUncheckedCreateWithoutGabineteInput> | PublicacionProductoCreateWithoutGabineteInput[] | PublicacionProductoUncheckedCreateWithoutGabineteInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutGabineteInput | PublicacionProductoCreateOrConnectWithoutGabineteInput[]
+    createMany?: PublicacionProductoCreateManyGabineteInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutGabineteInput = {
+    create?: XOR<PublicacionProductoCreateWithoutGabineteInput, PublicacionProductoUncheckedCreateWithoutGabineteInput> | PublicacionProductoCreateWithoutGabineteInput[] | PublicacionProductoUncheckedCreateWithoutGabineteInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutGabineteInput | PublicacionProductoCreateOrConnectWithoutGabineteInput[]
+    createMany?: PublicacionProductoCreateManyGabineteInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUpdateManyWithoutGabineteNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutGabineteInput, PublicacionProductoUncheckedCreateWithoutGabineteInput> | PublicacionProductoCreateWithoutGabineteInput[] | PublicacionProductoUncheckedCreateWithoutGabineteInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutGabineteInput | PublicacionProductoCreateOrConnectWithoutGabineteInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutGabineteInput | PublicacionProductoUpsertWithWhereUniqueWithoutGabineteInput[]
+    createMany?: PublicacionProductoCreateManyGabineteInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutGabineteInput | PublicacionProductoUpdateWithWhereUniqueWithoutGabineteInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutGabineteInput | PublicacionProductoUpdateManyWithWhereWithoutGabineteInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutGabineteNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutGabineteInput, PublicacionProductoUncheckedCreateWithoutGabineteInput> | PublicacionProductoCreateWithoutGabineteInput[] | PublicacionProductoUncheckedCreateWithoutGabineteInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutGabineteInput | PublicacionProductoCreateOrConnectWithoutGabineteInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutGabineteInput | PublicacionProductoUpsertWithWhereUniqueWithoutGabineteInput[]
+    createMany?: PublicacionProductoCreateManyGabineteInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutGabineteInput | PublicacionProductoUpdateWithWhereUniqueWithoutGabineteInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutGabineteInput | PublicacionProductoUpdateManyWithWhereWithoutGabineteInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutGraficaInput = {
+    create?: XOR<PublicacionProductoCreateWithoutGraficaInput, PublicacionProductoUncheckedCreateWithoutGraficaInput> | PublicacionProductoCreateWithoutGraficaInput[] | PublicacionProductoUncheckedCreateWithoutGraficaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutGraficaInput | PublicacionProductoCreateOrConnectWithoutGraficaInput[]
+    createMany?: PublicacionProductoCreateManyGraficaInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutGraficaInput = {
+    create?: XOR<PublicacionProductoCreateWithoutGraficaInput, PublicacionProductoUncheckedCreateWithoutGraficaInput> | PublicacionProductoCreateWithoutGraficaInput[] | PublicacionProductoUncheckedCreateWithoutGraficaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutGraficaInput | PublicacionProductoCreateOrConnectWithoutGraficaInput[]
+    createMany?: PublicacionProductoCreateManyGraficaInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUpdateManyWithoutGraficaNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutGraficaInput, PublicacionProductoUncheckedCreateWithoutGraficaInput> | PublicacionProductoCreateWithoutGraficaInput[] | PublicacionProductoUncheckedCreateWithoutGraficaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutGraficaInput | PublicacionProductoCreateOrConnectWithoutGraficaInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutGraficaInput | PublicacionProductoUpsertWithWhereUniqueWithoutGraficaInput[]
+    createMany?: PublicacionProductoCreateManyGraficaInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutGraficaInput | PublicacionProductoUpdateWithWhereUniqueWithoutGraficaInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutGraficaInput | PublicacionProductoUpdateManyWithWhereWithoutGraficaInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutGraficaNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutGraficaInput, PublicacionProductoUncheckedCreateWithoutGraficaInput> | PublicacionProductoCreateWithoutGraficaInput[] | PublicacionProductoUncheckedCreateWithoutGraficaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutGraficaInput | PublicacionProductoCreateOrConnectWithoutGraficaInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutGraficaInput | PublicacionProductoUpsertWithWhereUniqueWithoutGraficaInput[]
+    createMany?: PublicacionProductoCreateManyGraficaInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutGraficaInput | PublicacionProductoUpdateWithWhereUniqueWithoutGraficaInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutGraficaInput | PublicacionProductoUpdateManyWithWhereWithoutGraficaInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutMemoria_externaInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMemoria_externaInput, PublicacionProductoUncheckedCreateWithoutMemoria_externaInput> | PublicacionProductoCreateWithoutMemoria_externaInput[] | PublicacionProductoUncheckedCreateWithoutMemoria_externaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMemoria_externaInput | PublicacionProductoCreateOrConnectWithoutMemoria_externaInput[]
+    createMany?: PublicacionProductoCreateManyMemoria_externaInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutMemoria_externaInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMemoria_externaInput, PublicacionProductoUncheckedCreateWithoutMemoria_externaInput> | PublicacionProductoCreateWithoutMemoria_externaInput[] | PublicacionProductoUncheckedCreateWithoutMemoria_externaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMemoria_externaInput | PublicacionProductoCreateOrConnectWithoutMemoria_externaInput[]
+    createMany?: PublicacionProductoCreateManyMemoria_externaInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUpdateManyWithoutMemoria_externaNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMemoria_externaInput, PublicacionProductoUncheckedCreateWithoutMemoria_externaInput> | PublicacionProductoCreateWithoutMemoria_externaInput[] | PublicacionProductoUncheckedCreateWithoutMemoria_externaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMemoria_externaInput | PublicacionProductoCreateOrConnectWithoutMemoria_externaInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutMemoria_externaInput | PublicacionProductoUpsertWithWhereUniqueWithoutMemoria_externaInput[]
+    createMany?: PublicacionProductoCreateManyMemoria_externaInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutMemoria_externaInput | PublicacionProductoUpdateWithWhereUniqueWithoutMemoria_externaInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutMemoria_externaInput | PublicacionProductoUpdateManyWithWhereWithoutMemoria_externaInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutMemoria_externaNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMemoria_externaInput, PublicacionProductoUncheckedCreateWithoutMemoria_externaInput> | PublicacionProductoCreateWithoutMemoria_externaInput[] | PublicacionProductoUncheckedCreateWithoutMemoria_externaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMemoria_externaInput | PublicacionProductoCreateOrConnectWithoutMemoria_externaInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutMemoria_externaInput | PublicacionProductoUpsertWithWhereUniqueWithoutMemoria_externaInput[]
+    createMany?: PublicacionProductoCreateManyMemoria_externaInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutMemoria_externaInput | PublicacionProductoUpdateWithWhereUniqueWithoutMemoria_externaInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutMemoria_externaInput | PublicacionProductoUpdateManyWithWhereWithoutMemoria_externaInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutMemoria_internaInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMemoria_internaInput, PublicacionProductoUncheckedCreateWithoutMemoria_internaInput> | PublicacionProductoCreateWithoutMemoria_internaInput[] | PublicacionProductoUncheckedCreateWithoutMemoria_internaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMemoria_internaInput | PublicacionProductoCreateOrConnectWithoutMemoria_internaInput[]
+    createMany?: PublicacionProductoCreateManyMemoria_internaInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutMemoria_internaInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMemoria_internaInput, PublicacionProductoUncheckedCreateWithoutMemoria_internaInput> | PublicacionProductoCreateWithoutMemoria_internaInput[] | PublicacionProductoUncheckedCreateWithoutMemoria_internaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMemoria_internaInput | PublicacionProductoCreateOrConnectWithoutMemoria_internaInput[]
+    createMany?: PublicacionProductoCreateManyMemoria_internaInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUpdateManyWithoutMemoria_internaNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMemoria_internaInput, PublicacionProductoUncheckedCreateWithoutMemoria_internaInput> | PublicacionProductoCreateWithoutMemoria_internaInput[] | PublicacionProductoUncheckedCreateWithoutMemoria_internaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMemoria_internaInput | PublicacionProductoCreateOrConnectWithoutMemoria_internaInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutMemoria_internaInput | PublicacionProductoUpsertWithWhereUniqueWithoutMemoria_internaInput[]
+    createMany?: PublicacionProductoCreateManyMemoria_internaInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutMemoria_internaInput | PublicacionProductoUpdateWithWhereUniqueWithoutMemoria_internaInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutMemoria_internaInput | PublicacionProductoUpdateManyWithWhereWithoutMemoria_internaInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutMemoria_internaNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMemoria_internaInput, PublicacionProductoUncheckedCreateWithoutMemoria_internaInput> | PublicacionProductoCreateWithoutMemoria_internaInput[] | PublicacionProductoUncheckedCreateWithoutMemoria_internaInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMemoria_internaInput | PublicacionProductoCreateOrConnectWithoutMemoria_internaInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutMemoria_internaInput | PublicacionProductoUpsertWithWhereUniqueWithoutMemoria_internaInput[]
+    createMany?: PublicacionProductoCreateManyMemoria_internaInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutMemoria_internaInput | PublicacionProductoUpdateWithWhereUniqueWithoutMemoria_internaInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutMemoria_internaInput | PublicacionProductoUpdateManyWithWhereWithoutMemoria_internaInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutMotherInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMotherInput, PublicacionProductoUncheckedCreateWithoutMotherInput> | PublicacionProductoCreateWithoutMotherInput[] | PublicacionProductoUncheckedCreateWithoutMotherInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMotherInput | PublicacionProductoCreateOrConnectWithoutMotherInput[]
+    createMany?: PublicacionProductoCreateManyMotherInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutMotherInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMotherInput, PublicacionProductoUncheckedCreateWithoutMotherInput> | PublicacionProductoCreateWithoutMotherInput[] | PublicacionProductoUncheckedCreateWithoutMotherInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMotherInput | PublicacionProductoCreateOrConnectWithoutMotherInput[]
+    createMany?: PublicacionProductoCreateManyMotherInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUpdateManyWithoutMotherNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMotherInput, PublicacionProductoUncheckedCreateWithoutMotherInput> | PublicacionProductoCreateWithoutMotherInput[] | PublicacionProductoUncheckedCreateWithoutMotherInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMotherInput | PublicacionProductoCreateOrConnectWithoutMotherInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutMotherInput | PublicacionProductoUpsertWithWhereUniqueWithoutMotherInput[]
+    createMany?: PublicacionProductoCreateManyMotherInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutMotherInput | PublicacionProductoUpdateWithWhereUniqueWithoutMotherInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutMotherInput | PublicacionProductoUpdateManyWithWhereWithoutMotherInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutMotherNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutMotherInput, PublicacionProductoUncheckedCreateWithoutMotherInput> | PublicacionProductoCreateWithoutMotherInput[] | PublicacionProductoUncheckedCreateWithoutMotherInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutMotherInput | PublicacionProductoCreateOrConnectWithoutMotherInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutMotherInput | PublicacionProductoUpsertWithWhereUniqueWithoutMotherInput[]
+    createMany?: PublicacionProductoCreateManyMotherInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutMotherInput | PublicacionProductoUpdateWithWhereUniqueWithoutMotherInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutMotherInput | PublicacionProductoUpdateManyWithWhereWithoutMotherInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutRamInput = {
+    create?: XOR<PublicacionProductoCreateWithoutRamInput, PublicacionProductoUncheckedCreateWithoutRamInput> | PublicacionProductoCreateWithoutRamInput[] | PublicacionProductoUncheckedCreateWithoutRamInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutRamInput | PublicacionProductoCreateOrConnectWithoutRamInput[]
+    createMany?: PublicacionProductoCreateManyRamInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutRamInput = {
+    create?: XOR<PublicacionProductoCreateWithoutRamInput, PublicacionProductoUncheckedCreateWithoutRamInput> | PublicacionProductoCreateWithoutRamInput[] | PublicacionProductoUncheckedCreateWithoutRamInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutRamInput | PublicacionProductoCreateOrConnectWithoutRamInput[]
+    createMany?: PublicacionProductoCreateManyRamInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUpdateManyWithoutRamNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutRamInput, PublicacionProductoUncheckedCreateWithoutRamInput> | PublicacionProductoCreateWithoutRamInput[] | PublicacionProductoUncheckedCreateWithoutRamInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutRamInput | PublicacionProductoCreateOrConnectWithoutRamInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutRamInput | PublicacionProductoUpsertWithWhereUniqueWithoutRamInput[]
+    createMany?: PublicacionProductoCreateManyRamInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutRamInput | PublicacionProductoUpdateWithWhereUniqueWithoutRamInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutRamInput | PublicacionProductoUpdateManyWithWhereWithoutRamInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutRamNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutRamInput, PublicacionProductoUncheckedCreateWithoutRamInput> | PublicacionProductoCreateWithoutRamInput[] | PublicacionProductoUncheckedCreateWithoutRamInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutRamInput | PublicacionProductoCreateOrConnectWithoutRamInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutRamInput | PublicacionProductoUpsertWithWhereUniqueWithoutRamInput[]
+    createMany?: PublicacionProductoCreateManyRamInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutRamInput | PublicacionProductoUpdateWithWhereUniqueWithoutRamInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutRamInput | PublicacionProductoUpdateManyWithWhereWithoutRamInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutSoundInput = {
+    create?: XOR<PublicacionProductoCreateWithoutSoundInput, PublicacionProductoUncheckedCreateWithoutSoundInput> | PublicacionProductoCreateWithoutSoundInput[] | PublicacionProductoUncheckedCreateWithoutSoundInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutSoundInput | PublicacionProductoCreateOrConnectWithoutSoundInput[]
+    createMany?: PublicacionProductoCreateManySoundInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutSoundInput = {
+    create?: XOR<PublicacionProductoCreateWithoutSoundInput, PublicacionProductoUncheckedCreateWithoutSoundInput> | PublicacionProductoCreateWithoutSoundInput[] | PublicacionProductoUncheckedCreateWithoutSoundInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutSoundInput | PublicacionProductoCreateOrConnectWithoutSoundInput[]
+    createMany?: PublicacionProductoCreateManySoundInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUpdateManyWithoutSoundNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutSoundInput, PublicacionProductoUncheckedCreateWithoutSoundInput> | PublicacionProductoCreateWithoutSoundInput[] | PublicacionProductoUncheckedCreateWithoutSoundInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutSoundInput | PublicacionProductoCreateOrConnectWithoutSoundInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutSoundInput | PublicacionProductoUpsertWithWhereUniqueWithoutSoundInput[]
+    createMany?: PublicacionProductoCreateManySoundInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutSoundInput | PublicacionProductoUpdateWithWhereUniqueWithoutSoundInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutSoundInput | PublicacionProductoUpdateManyWithWhereWithoutSoundInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutSoundNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutSoundInput, PublicacionProductoUncheckedCreateWithoutSoundInput> | PublicacionProductoCreateWithoutSoundInput[] | PublicacionProductoUncheckedCreateWithoutSoundInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutSoundInput | PublicacionProductoCreateOrConnectWithoutSoundInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutSoundInput | PublicacionProductoUpsertWithWhereUniqueWithoutSoundInput[]
+    createMany?: PublicacionProductoCreateManySoundInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutSoundInput | PublicacionProductoUpdateWithWhereUniqueWithoutSoundInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutSoundInput | PublicacionProductoUpdateManyWithWhereWithoutSoundInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<PublicacionProductoCreateWithoutUsuarioInput, PublicacionProductoUncheckedCreateWithoutUsuarioInput> | PublicacionProductoCreateWithoutUsuarioInput[] | PublicacionProductoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutUsuarioInput | PublicacionProductoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: PublicacionProductoCreateManyUsuarioInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<PublicacionProductoCreateWithoutUsuarioInput, PublicacionProductoUncheckedCreateWithoutUsuarioInput> | PublicacionProductoCreateWithoutUsuarioInput[] | PublicacionProductoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutUsuarioInput | PublicacionProductoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: PublicacionProductoCreateManyUsuarioInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
   export type NullableBoolFieldUpdateOperationsInput = {
     set?: boolean | null
+  }
+
+  export type PublicacionProductoUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutUsuarioInput, PublicacionProductoUncheckedCreateWithoutUsuarioInput> | PublicacionProductoCreateWithoutUsuarioInput[] | PublicacionProductoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutUsuarioInput | PublicacionProductoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutUsuarioInput | PublicacionProductoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: PublicacionProductoCreateManyUsuarioInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutUsuarioInput | PublicacionProductoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutUsuarioInput | PublicacionProductoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutUsuarioInput, PublicacionProductoUncheckedCreateWithoutUsuarioInput> | PublicacionProductoCreateWithoutUsuarioInput[] | PublicacionProductoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutUsuarioInput | PublicacionProductoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutUsuarioInput | PublicacionProductoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: PublicacionProductoCreateManyUsuarioInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutUsuarioInput | PublicacionProductoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutUsuarioInput | PublicacionProductoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoCreateNestedManyWithoutVendedorInput = {
+    create?: XOR<PublicacionProductoCreateWithoutVendedorInput, PublicacionProductoUncheckedCreateWithoutVendedorInput> | PublicacionProductoCreateWithoutVendedorInput[] | PublicacionProductoUncheckedCreateWithoutVendedorInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutVendedorInput | PublicacionProductoCreateOrConnectWithoutVendedorInput[]
+    createMany?: PublicacionProductoCreateManyVendedorInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type PublicacionProductoUncheckedCreateNestedManyWithoutVendedorInput = {
+    create?: XOR<PublicacionProductoCreateWithoutVendedorInput, PublicacionProductoUncheckedCreateWithoutVendedorInput> | PublicacionProductoCreateWithoutVendedorInput[] | PublicacionProductoUncheckedCreateWithoutVendedorInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutVendedorInput | PublicacionProductoCreateOrConnectWithoutVendedorInput[]
+    createMany?: PublicacionProductoCreateManyVendedorInputEnvelope
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+  }
+
+  export type NullableBigIntFieldUpdateOperationsInput = {
+    set?: bigint | number | null
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
+  }
+
+  export type PublicacionProductoUpdateManyWithoutVendedorNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutVendedorInput, PublicacionProductoUncheckedCreateWithoutVendedorInput> | PublicacionProductoCreateWithoutVendedorInput[] | PublicacionProductoUncheckedCreateWithoutVendedorInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutVendedorInput | PublicacionProductoCreateOrConnectWithoutVendedorInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutVendedorInput | PublicacionProductoUpsertWithWhereUniqueWithoutVendedorInput[]
+    createMany?: PublicacionProductoCreateManyVendedorInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutVendedorInput | PublicacionProductoUpdateWithWhereUniqueWithoutVendedorInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutVendedorInput | PublicacionProductoUpdateManyWithWhereWithoutVendedorInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutVendedorNestedInput = {
+    create?: XOR<PublicacionProductoCreateWithoutVendedorInput, PublicacionProductoUncheckedCreateWithoutVendedorInput> | PublicacionProductoCreateWithoutVendedorInput[] | PublicacionProductoUncheckedCreateWithoutVendedorInput[]
+    connectOrCreate?: PublicacionProductoCreateOrConnectWithoutVendedorInput | PublicacionProductoCreateOrConnectWithoutVendedorInput[]
+    upsert?: PublicacionProductoUpsertWithWhereUniqueWithoutVendedorInput | PublicacionProductoUpsertWithWhereUniqueWithoutVendedorInput[]
+    createMany?: PublicacionProductoCreateManyVendedorInputEnvelope
+    set?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    disconnect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    delete?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    connect?: PublicacionProductoWhereUniqueInput | PublicacionProductoWhereUniqueInput[]
+    update?: PublicacionProductoUpdateWithWhereUniqueWithoutVendedorInput | PublicacionProductoUpdateWithWhereUniqueWithoutVendedorInput[]
+    updateMany?: PublicacionProductoUpdateManyWithWhereWithoutVendedorInput | PublicacionProductoUpdateManyWithWhereWithoutVendedorInput[]
+    deleteMany?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+  }
+
+  export type coolersCreateNestedOneWithoutPublicacionesInput = {
+    create?: XOR<coolersCreateWithoutPublicacionesInput, coolersUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: coolersCreateOrConnectWithoutPublicacionesInput
+    connect?: coolersWhereUniqueInput
+  }
+
+  export type cpusCreateNestedOneWithoutPublicacionesInput = {
+    create?: XOR<cpusCreateWithoutPublicacionesInput, cpusUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: cpusCreateOrConnectWithoutPublicacionesInput
+    connect?: cpusWhereUniqueInput
+  }
+
+  export type fuentesCreateNestedOneWithoutPublicacionesInput = {
+    create?: XOR<fuentesCreateWithoutPublicacionesInput, fuentesUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: fuentesCreateOrConnectWithoutPublicacionesInput
+    connect?: fuentesWhereUniqueInput
+  }
+
+  export type gabinetesCreateNestedOneWithoutPublicacionesInput = {
+    create?: XOR<gabinetesCreateWithoutPublicacionesInput, gabinetesUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: gabinetesCreateOrConnectWithoutPublicacionesInput
+    connect?: gabinetesWhereUniqueInput
+  }
+
+  export type graficasCreateNestedOneWithoutPublicacionesInput = {
+    create?: XOR<graficasCreateWithoutPublicacionesInput, graficasUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: graficasCreateOrConnectWithoutPublicacionesInput
+    connect?: graficasWhereUniqueInput
+  }
+
+  export type memorias_externasCreateNestedOneWithoutPublicacionesInput = {
+    create?: XOR<memorias_externasCreateWithoutPublicacionesInput, memorias_externasUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: memorias_externasCreateOrConnectWithoutPublicacionesInput
+    connect?: memorias_externasWhereUniqueInput
+  }
+
+  export type memorias_internasCreateNestedOneWithoutPublicacionesInput = {
+    create?: XOR<memorias_internasCreateWithoutPublicacionesInput, memorias_internasUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: memorias_internasCreateOrConnectWithoutPublicacionesInput
+    connect?: memorias_internasWhereUniqueInput
+  }
+
+  export type mothersCreateNestedOneWithoutPublicacionesInput = {
+    create?: XOR<mothersCreateWithoutPublicacionesInput, mothersUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: mothersCreateOrConnectWithoutPublicacionesInput
+    connect?: mothersWhereUniqueInput
+  }
+
+  export type ramsCreateNestedOneWithoutPublicacionesInput = {
+    create?: XOR<ramsCreateWithoutPublicacionesInput, ramsUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: ramsCreateOrConnectWithoutPublicacionesInput
+    connect?: ramsWhereUniqueInput
+  }
+
+  export type soundsCreateNestedOneWithoutPublicacionesInput = {
+    create?: XOR<soundsCreateWithoutPublicacionesInput, soundsUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: soundsCreateOrConnectWithoutPublicacionesInput
+    connect?: soundsWhereUniqueInput
+  }
+
+  export type ususariosCreateNestedOneWithoutPublicacionesUsuarioInput = {
+    create?: XOR<ususariosCreateWithoutPublicacionesUsuarioInput, ususariosUncheckedCreateWithoutPublicacionesUsuarioInput>
+    connectOrCreate?: ususariosCreateOrConnectWithoutPublicacionesUsuarioInput
+    connect?: ususariosWhereUniqueInput
+  }
+
+  export type vendedoresCreateNestedOneWithoutPublicacionesVendedorInput = {
+    create?: XOR<vendedoresCreateWithoutPublicacionesVendedorInput, vendedoresUncheckedCreateWithoutPublicacionesVendedorInput>
+    connectOrCreate?: vendedoresCreateOrConnectWithoutPublicacionesVendedorInput
+    connect?: vendedoresWhereUniqueInput
+  }
+
+  export type coolersUpdateOneWithoutPublicacionesNestedInput = {
+    create?: XOR<coolersCreateWithoutPublicacionesInput, coolersUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: coolersCreateOrConnectWithoutPublicacionesInput
+    upsert?: coolersUpsertWithoutPublicacionesInput
+    disconnect?: coolersWhereInput | boolean
+    delete?: coolersWhereInput | boolean
+    connect?: coolersWhereUniqueInput
+    update?: XOR<XOR<coolersUpdateToOneWithWhereWithoutPublicacionesInput, coolersUpdateWithoutPublicacionesInput>, coolersUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type cpusUpdateOneWithoutPublicacionesNestedInput = {
+    create?: XOR<cpusCreateWithoutPublicacionesInput, cpusUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: cpusCreateOrConnectWithoutPublicacionesInput
+    upsert?: cpusUpsertWithoutPublicacionesInput
+    disconnect?: cpusWhereInput | boolean
+    delete?: cpusWhereInput | boolean
+    connect?: cpusWhereUniqueInput
+    update?: XOR<XOR<cpusUpdateToOneWithWhereWithoutPublicacionesInput, cpusUpdateWithoutPublicacionesInput>, cpusUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type fuentesUpdateOneWithoutPublicacionesNestedInput = {
+    create?: XOR<fuentesCreateWithoutPublicacionesInput, fuentesUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: fuentesCreateOrConnectWithoutPublicacionesInput
+    upsert?: fuentesUpsertWithoutPublicacionesInput
+    disconnect?: fuentesWhereInput | boolean
+    delete?: fuentesWhereInput | boolean
+    connect?: fuentesWhereUniqueInput
+    update?: XOR<XOR<fuentesUpdateToOneWithWhereWithoutPublicacionesInput, fuentesUpdateWithoutPublicacionesInput>, fuentesUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type gabinetesUpdateOneWithoutPublicacionesNestedInput = {
+    create?: XOR<gabinetesCreateWithoutPublicacionesInput, gabinetesUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: gabinetesCreateOrConnectWithoutPublicacionesInput
+    upsert?: gabinetesUpsertWithoutPublicacionesInput
+    disconnect?: gabinetesWhereInput | boolean
+    delete?: gabinetesWhereInput | boolean
+    connect?: gabinetesWhereUniqueInput
+    update?: XOR<XOR<gabinetesUpdateToOneWithWhereWithoutPublicacionesInput, gabinetesUpdateWithoutPublicacionesInput>, gabinetesUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type graficasUpdateOneWithoutPublicacionesNestedInput = {
+    create?: XOR<graficasCreateWithoutPublicacionesInput, graficasUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: graficasCreateOrConnectWithoutPublicacionesInput
+    upsert?: graficasUpsertWithoutPublicacionesInput
+    disconnect?: graficasWhereInput | boolean
+    delete?: graficasWhereInput | boolean
+    connect?: graficasWhereUniqueInput
+    update?: XOR<XOR<graficasUpdateToOneWithWhereWithoutPublicacionesInput, graficasUpdateWithoutPublicacionesInput>, graficasUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type memorias_externasUpdateOneWithoutPublicacionesNestedInput = {
+    create?: XOR<memorias_externasCreateWithoutPublicacionesInput, memorias_externasUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: memorias_externasCreateOrConnectWithoutPublicacionesInput
+    upsert?: memorias_externasUpsertWithoutPublicacionesInput
+    disconnect?: memorias_externasWhereInput | boolean
+    delete?: memorias_externasWhereInput | boolean
+    connect?: memorias_externasWhereUniqueInput
+    update?: XOR<XOR<memorias_externasUpdateToOneWithWhereWithoutPublicacionesInput, memorias_externasUpdateWithoutPublicacionesInput>, memorias_externasUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type memorias_internasUpdateOneWithoutPublicacionesNestedInput = {
+    create?: XOR<memorias_internasCreateWithoutPublicacionesInput, memorias_internasUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: memorias_internasCreateOrConnectWithoutPublicacionesInput
+    upsert?: memorias_internasUpsertWithoutPublicacionesInput
+    disconnect?: memorias_internasWhereInput | boolean
+    delete?: memorias_internasWhereInput | boolean
+    connect?: memorias_internasWhereUniqueInput
+    update?: XOR<XOR<memorias_internasUpdateToOneWithWhereWithoutPublicacionesInput, memorias_internasUpdateWithoutPublicacionesInput>, memorias_internasUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type mothersUpdateOneWithoutPublicacionesNestedInput = {
+    create?: XOR<mothersCreateWithoutPublicacionesInput, mothersUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: mothersCreateOrConnectWithoutPublicacionesInput
+    upsert?: mothersUpsertWithoutPublicacionesInput
+    disconnect?: mothersWhereInput | boolean
+    delete?: mothersWhereInput | boolean
+    connect?: mothersWhereUniqueInput
+    update?: XOR<XOR<mothersUpdateToOneWithWhereWithoutPublicacionesInput, mothersUpdateWithoutPublicacionesInput>, mothersUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type ramsUpdateOneWithoutPublicacionesNestedInput = {
+    create?: XOR<ramsCreateWithoutPublicacionesInput, ramsUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: ramsCreateOrConnectWithoutPublicacionesInput
+    upsert?: ramsUpsertWithoutPublicacionesInput
+    disconnect?: ramsWhereInput | boolean
+    delete?: ramsWhereInput | boolean
+    connect?: ramsWhereUniqueInput
+    update?: XOR<XOR<ramsUpdateToOneWithWhereWithoutPublicacionesInput, ramsUpdateWithoutPublicacionesInput>, ramsUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type soundsUpdateOneWithoutPublicacionesNestedInput = {
+    create?: XOR<soundsCreateWithoutPublicacionesInput, soundsUncheckedCreateWithoutPublicacionesInput>
+    connectOrCreate?: soundsCreateOrConnectWithoutPublicacionesInput
+    upsert?: soundsUpsertWithoutPublicacionesInput
+    disconnect?: soundsWhereInput | boolean
+    delete?: soundsWhereInput | boolean
+    connect?: soundsWhereUniqueInput
+    update?: XOR<XOR<soundsUpdateToOneWithWhereWithoutPublicacionesInput, soundsUpdateWithoutPublicacionesInput>, soundsUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput = {
+    create?: XOR<ususariosCreateWithoutPublicacionesUsuarioInput, ususariosUncheckedCreateWithoutPublicacionesUsuarioInput>
+    connectOrCreate?: ususariosCreateOrConnectWithoutPublicacionesUsuarioInput
+    upsert?: ususariosUpsertWithoutPublicacionesUsuarioInput
+    disconnect?: ususariosWhereInput | boolean
+    delete?: ususariosWhereInput | boolean
+    connect?: ususariosWhereUniqueInput
+    update?: XOR<XOR<ususariosUpdateToOneWithWhereWithoutPublicacionesUsuarioInput, ususariosUpdateWithoutPublicacionesUsuarioInput>, ususariosUncheckedUpdateWithoutPublicacionesUsuarioInput>
+  }
+
+  export type vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput = {
+    create?: XOR<vendedoresCreateWithoutPublicacionesVendedorInput, vendedoresUncheckedCreateWithoutPublicacionesVendedorInput>
+    connectOrCreate?: vendedoresCreateOrConnectWithoutPublicacionesVendedorInput
+    upsert?: vendedoresUpsertWithoutPublicacionesVendedorInput
+    disconnect?: vendedoresWhereInput | boolean
+    delete?: vendedoresWhereInput | boolean
+    connect?: vendedoresWhereUniqueInput
+    update?: XOR<XOR<vendedoresUpdateToOneWithWhereWithoutPublicacionesVendedorInput, vendedoresUpdateWithoutPublicacionesVendedorInput>, vendedoresUncheckedUpdateWithoutPublicacionesVendedorInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -18540,6 +23035,2382 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  }
+
+  export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
+  }
+
+  export type PublicacionProductoCreateWithoutCoolerInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutCoolerInput = {
+    id?: number
+    tipo_producto: string
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutCoolerInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutCoolerInput, PublicacionProductoUncheckedCreateWithoutCoolerInput>
+  }
+
+  export type PublicacionProductoCreateManyCoolerInputEnvelope = {
+    data: PublicacionProductoCreateManyCoolerInput | PublicacionProductoCreateManyCoolerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutCoolerInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutCoolerInput, PublicacionProductoUncheckedUpdateWithoutCoolerInput>
+    create: XOR<PublicacionProductoCreateWithoutCoolerInput, PublicacionProductoUncheckedCreateWithoutCoolerInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutCoolerInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutCoolerInput, PublicacionProductoUncheckedUpdateWithoutCoolerInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutCoolerInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutCoolerInput>
+  }
+
+  export type PublicacionProductoScalarWhereInput = {
+    AND?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+    OR?: PublicacionProductoScalarWhereInput[]
+    NOT?: PublicacionProductoScalarWhereInput | PublicacionProductoScalarWhereInput[]
+    id?: IntFilter<"PublicacionProducto"> | number
+    tipo_producto?: StringFilter<"PublicacionProducto"> | string
+    cooler_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    cpu_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    fuente_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    gabinete_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    grafica_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    memoria_externa_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    memoria_interna_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    mother_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    ram_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    sound_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    usuario_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    vendedor_id?: IntNullableFilter<"PublicacionProducto"> | number | null
+    creado_en?: DateTimeFilter<"PublicacionProducto"> | Date | string
+  }
+
+  export type PublicacionProductoCreateWithoutCpuInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutCpuInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutCpuInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutCpuInput, PublicacionProductoUncheckedCreateWithoutCpuInput>
+  }
+
+  export type PublicacionProductoCreateManyCpuInputEnvelope = {
+    data: PublicacionProductoCreateManyCpuInput | PublicacionProductoCreateManyCpuInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutCpuInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutCpuInput, PublicacionProductoUncheckedUpdateWithoutCpuInput>
+    create: XOR<PublicacionProductoCreateWithoutCpuInput, PublicacionProductoUncheckedCreateWithoutCpuInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutCpuInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutCpuInput, PublicacionProductoUncheckedUpdateWithoutCpuInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutCpuInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutCpuInput>
+  }
+
+  export type PublicacionProductoCreateWithoutFuenteInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutFuenteInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutFuenteInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutFuenteInput, PublicacionProductoUncheckedCreateWithoutFuenteInput>
+  }
+
+  export type PublicacionProductoCreateManyFuenteInputEnvelope = {
+    data: PublicacionProductoCreateManyFuenteInput | PublicacionProductoCreateManyFuenteInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutFuenteInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutFuenteInput, PublicacionProductoUncheckedUpdateWithoutFuenteInput>
+    create: XOR<PublicacionProductoCreateWithoutFuenteInput, PublicacionProductoUncheckedCreateWithoutFuenteInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutFuenteInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutFuenteInput, PublicacionProductoUncheckedUpdateWithoutFuenteInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutFuenteInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutFuenteInput>
+  }
+
+  export type PublicacionProductoCreateWithoutGabineteInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutGabineteInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutGabineteInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutGabineteInput, PublicacionProductoUncheckedCreateWithoutGabineteInput>
+  }
+
+  export type PublicacionProductoCreateManyGabineteInputEnvelope = {
+    data: PublicacionProductoCreateManyGabineteInput | PublicacionProductoCreateManyGabineteInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutGabineteInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutGabineteInput, PublicacionProductoUncheckedUpdateWithoutGabineteInput>
+    create: XOR<PublicacionProductoCreateWithoutGabineteInput, PublicacionProductoUncheckedCreateWithoutGabineteInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutGabineteInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutGabineteInput, PublicacionProductoUncheckedUpdateWithoutGabineteInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutGabineteInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutGabineteInput>
+  }
+
+  export type PublicacionProductoCreateWithoutGraficaInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutGraficaInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutGraficaInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutGraficaInput, PublicacionProductoUncheckedCreateWithoutGraficaInput>
+  }
+
+  export type PublicacionProductoCreateManyGraficaInputEnvelope = {
+    data: PublicacionProductoCreateManyGraficaInput | PublicacionProductoCreateManyGraficaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutGraficaInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutGraficaInput, PublicacionProductoUncheckedUpdateWithoutGraficaInput>
+    create: XOR<PublicacionProductoCreateWithoutGraficaInput, PublicacionProductoUncheckedCreateWithoutGraficaInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutGraficaInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutGraficaInput, PublicacionProductoUncheckedUpdateWithoutGraficaInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutGraficaInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutGraficaInput>
+  }
+
+  export type PublicacionProductoCreateWithoutMemoria_externaInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutMemoria_externaInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutMemoria_externaInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutMemoria_externaInput, PublicacionProductoUncheckedCreateWithoutMemoria_externaInput>
+  }
+
+  export type PublicacionProductoCreateManyMemoria_externaInputEnvelope = {
+    data: PublicacionProductoCreateManyMemoria_externaInput | PublicacionProductoCreateManyMemoria_externaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutMemoria_externaInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutMemoria_externaInput, PublicacionProductoUncheckedUpdateWithoutMemoria_externaInput>
+    create: XOR<PublicacionProductoCreateWithoutMemoria_externaInput, PublicacionProductoUncheckedCreateWithoutMemoria_externaInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutMemoria_externaInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutMemoria_externaInput, PublicacionProductoUncheckedUpdateWithoutMemoria_externaInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutMemoria_externaInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutMemoria_externaInput>
+  }
+
+  export type PublicacionProductoCreateWithoutMemoria_internaInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutMemoria_internaInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutMemoria_internaInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutMemoria_internaInput, PublicacionProductoUncheckedCreateWithoutMemoria_internaInput>
+  }
+
+  export type PublicacionProductoCreateManyMemoria_internaInputEnvelope = {
+    data: PublicacionProductoCreateManyMemoria_internaInput | PublicacionProductoCreateManyMemoria_internaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutMemoria_internaInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutMemoria_internaInput, PublicacionProductoUncheckedUpdateWithoutMemoria_internaInput>
+    create: XOR<PublicacionProductoCreateWithoutMemoria_internaInput, PublicacionProductoUncheckedCreateWithoutMemoria_internaInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutMemoria_internaInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutMemoria_internaInput, PublicacionProductoUncheckedUpdateWithoutMemoria_internaInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutMemoria_internaInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutMemoria_internaInput>
+  }
+
+  export type PublicacionProductoCreateWithoutMotherInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutMotherInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutMotherInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutMotherInput, PublicacionProductoUncheckedCreateWithoutMotherInput>
+  }
+
+  export type PublicacionProductoCreateManyMotherInputEnvelope = {
+    data: PublicacionProductoCreateManyMotherInput | PublicacionProductoCreateManyMotherInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutMotherInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutMotherInput, PublicacionProductoUncheckedUpdateWithoutMotherInput>
+    create: XOR<PublicacionProductoCreateWithoutMotherInput, PublicacionProductoUncheckedCreateWithoutMotherInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutMotherInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutMotherInput, PublicacionProductoUncheckedUpdateWithoutMotherInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutMotherInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutMotherInput>
+  }
+
+  export type PublicacionProductoCreateWithoutRamInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutRamInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutRamInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutRamInput, PublicacionProductoUncheckedCreateWithoutRamInput>
+  }
+
+  export type PublicacionProductoCreateManyRamInputEnvelope = {
+    data: PublicacionProductoCreateManyRamInput | PublicacionProductoCreateManyRamInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutRamInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutRamInput, PublicacionProductoUncheckedUpdateWithoutRamInput>
+    create: XOR<PublicacionProductoCreateWithoutRamInput, PublicacionProductoUncheckedCreateWithoutRamInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutRamInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutRamInput, PublicacionProductoUncheckedUpdateWithoutRamInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutRamInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutRamInput>
+  }
+
+  export type PublicacionProductoCreateWithoutSoundInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutSoundInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutSoundInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutSoundInput, PublicacionProductoUncheckedCreateWithoutSoundInput>
+  }
+
+  export type PublicacionProductoCreateManySoundInputEnvelope = {
+    data: PublicacionProductoCreateManySoundInput | PublicacionProductoCreateManySoundInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutSoundInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutSoundInput, PublicacionProductoUncheckedUpdateWithoutSoundInput>
+    create: XOR<PublicacionProductoCreateWithoutSoundInput, PublicacionProductoUncheckedCreateWithoutSoundInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutSoundInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutSoundInput, PublicacionProductoUncheckedUpdateWithoutSoundInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutSoundInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutSoundInput>
+  }
+
+  export type PublicacionProductoCreateWithoutUsuarioInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    vendedor?: vendedoresCreateNestedOneWithoutPublicacionesVendedorInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutUsuarioInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutUsuarioInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutUsuarioInput, PublicacionProductoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type PublicacionProductoCreateManyUsuarioInputEnvelope = {
+    data: PublicacionProductoCreateManyUsuarioInput | PublicacionProductoCreateManyUsuarioInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutUsuarioInput, PublicacionProductoUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<PublicacionProductoCreateWithoutUsuarioInput, PublicacionProductoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutUsuarioInput, PublicacionProductoUncheckedUpdateWithoutUsuarioInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutUsuarioInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutUsuarioInput>
+  }
+
+  export type PublicacionProductoCreateWithoutVendedorInput = {
+    tipo_producto: string
+    creado_en?: Date | string
+    cooler?: coolersCreateNestedOneWithoutPublicacionesInput
+    cpu?: cpusCreateNestedOneWithoutPublicacionesInput
+    fuente?: fuentesCreateNestedOneWithoutPublicacionesInput
+    gabinete?: gabinetesCreateNestedOneWithoutPublicacionesInput
+    grafica?: graficasCreateNestedOneWithoutPublicacionesInput
+    memoria_externa?: memorias_externasCreateNestedOneWithoutPublicacionesInput
+    memoria_interna?: memorias_internasCreateNestedOneWithoutPublicacionesInput
+    mother?: mothersCreateNestedOneWithoutPublicacionesInput
+    ram?: ramsCreateNestedOneWithoutPublicacionesInput
+    sound?: soundsCreateNestedOneWithoutPublicacionesInput
+    usuario?: ususariosCreateNestedOneWithoutPublicacionesUsuarioInput
+  }
+
+  export type PublicacionProductoUncheckedCreateWithoutVendedorInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoCreateOrConnectWithoutVendedorInput = {
+    where: PublicacionProductoWhereUniqueInput
+    create: XOR<PublicacionProductoCreateWithoutVendedorInput, PublicacionProductoUncheckedCreateWithoutVendedorInput>
+  }
+
+  export type PublicacionProductoCreateManyVendedorInputEnvelope = {
+    data: PublicacionProductoCreateManyVendedorInput | PublicacionProductoCreateManyVendedorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicacionProductoUpsertWithWhereUniqueWithoutVendedorInput = {
+    where: PublicacionProductoWhereUniqueInput
+    update: XOR<PublicacionProductoUpdateWithoutVendedorInput, PublicacionProductoUncheckedUpdateWithoutVendedorInput>
+    create: XOR<PublicacionProductoCreateWithoutVendedorInput, PublicacionProductoUncheckedCreateWithoutVendedorInput>
+  }
+
+  export type PublicacionProductoUpdateWithWhereUniqueWithoutVendedorInput = {
+    where: PublicacionProductoWhereUniqueInput
+    data: XOR<PublicacionProductoUpdateWithoutVendedorInput, PublicacionProductoUncheckedUpdateWithoutVendedorInput>
+  }
+
+  export type PublicacionProductoUpdateManyWithWhereWithoutVendedorInput = {
+    where: PublicacionProductoScalarWhereInput
+    data: XOR<PublicacionProductoUpdateManyMutationInput, PublicacionProductoUncheckedUpdateManyWithoutVendedorInput>
+  }
+
+  export type coolersCreateWithoutPublicacionesInput = {
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    rpm?: number | null
+    noise?: Decimal | DecimalJsLike | number | string | null
+    color?: string | null
+    size?: number | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type coolersUncheckedCreateWithoutPublicacionesInput = {
+    id?: number
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    rpm?: number | null
+    noise?: Decimal | DecimalJsLike | number | string | null
+    color?: string | null
+    size?: number | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type coolersCreateOrConnectWithoutPublicacionesInput = {
+    where: coolersWhereUniqueInput
+    create: XOR<coolersCreateWithoutPublicacionesInput, coolersUncheckedCreateWithoutPublicacionesInput>
+  }
+
+  export type cpusCreateWithoutPublicacionesInput = {
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    core_count: number
+    core_clock: Decimal | DecimalJsLike | number | string
+    boost_clock?: Decimal | DecimalJsLike | number | string | null
+    tdp: number
+    graphics?: string | null
+    smt: boolean
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type cpusUncheckedCreateWithoutPublicacionesInput = {
+    id?: number
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    core_count: number
+    core_clock: Decimal | DecimalJsLike | number | string
+    boost_clock?: Decimal | DecimalJsLike | number | string | null
+    tdp: number
+    graphics?: string | null
+    smt: boolean
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type cpusCreateOrConnectWithoutPublicacionesInput = {
+    where: cpusWhereUniqueInput
+    create: XOR<cpusCreateWithoutPublicacionesInput, cpusUncheckedCreateWithoutPublicacionesInput>
+  }
+
+  export type fuentesCreateWithoutPublicacionesInput = {
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    type?: string | null
+    efficiency?: string | null
+    wattage?: number | null
+    modular?: string | null
+    color?: string | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type fuentesUncheckedCreateWithoutPublicacionesInput = {
+    id?: number
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    type?: string | null
+    efficiency?: string | null
+    wattage?: number | null
+    modular?: string | null
+    color?: string | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type fuentesCreateOrConnectWithoutPublicacionesInput = {
+    where: fuentesWhereUniqueInput
+    create: XOR<fuentesCreateWithoutPublicacionesInput, fuentesUncheckedCreateWithoutPublicacionesInput>
+  }
+
+  export type gabinetesCreateWithoutPublicacionesInput = {
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    type?: string | null
+    color?: string | null
+    psu?: string | null
+    side_panel?: string | null
+    external_volume?: Decimal | DecimalJsLike | number | string | null
+    internal_35_bays?: number | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type gabinetesUncheckedCreateWithoutPublicacionesInput = {
+    id?: number
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    type?: string | null
+    color?: string | null
+    psu?: string | null
+    side_panel?: string | null
+    external_volume?: Decimal | DecimalJsLike | number | string | null
+    internal_35_bays?: number | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type gabinetesCreateOrConnectWithoutPublicacionesInput = {
+    where: gabinetesWhereUniqueInput
+    create: XOR<gabinetesCreateWithoutPublicacionesInput, gabinetesUncheckedCreateWithoutPublicacionesInput>
+  }
+
+  export type graficasCreateWithoutPublicacionesInput = {
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    chipset?: string | null
+    memory?: number | null
+    core_clock?: number | null
+    boost_clock?: number | null
+    color?: string | null
+    length?: number | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type graficasUncheckedCreateWithoutPublicacionesInput = {
+    id?: number
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    chipset?: string | null
+    memory?: number | null
+    core_clock?: number | null
+    boost_clock?: number | null
+    color?: string | null
+    length?: number | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type graficasCreateOrConnectWithoutPublicacionesInput = {
+    where: graficasWhereUniqueInput
+    create: XOR<graficasCreateWithoutPublicacionesInput, graficasUncheckedCreateWithoutPublicacionesInput>
+  }
+
+  export type memorias_externasCreateWithoutPublicacionesInput = {
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    type?: string | null
+    interface?: string | null
+    capacity?: number | null
+    price_per_gb?: Decimal | DecimalJsLike | number | string | null
+    color?: string | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type memorias_externasUncheckedCreateWithoutPublicacionesInput = {
+    id?: number
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    type?: string | null
+    interface?: string | null
+    capacity?: number | null
+    price_per_gb?: Decimal | DecimalJsLike | number | string | null
+    color?: string | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type memorias_externasCreateOrConnectWithoutPublicacionesInput = {
+    where: memorias_externasWhereUniqueInput
+    create: XOR<memorias_externasCreateWithoutPublicacionesInput, memorias_externasUncheckedCreateWithoutPublicacionesInput>
+  }
+
+  export type memorias_internasCreateWithoutPublicacionesInput = {
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    capacity?: number | null
+    price_per_gb?: Decimal | DecimalJsLike | number | string | null
+    type?: string | null
+    cache?: number | null
+    form_factor?: string | null
+    interface?: string | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type memorias_internasUncheckedCreateWithoutPublicacionesInput = {
+    id?: number
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    capacity?: number | null
+    price_per_gb?: Decimal | DecimalJsLike | number | string | null
+    type?: string | null
+    cache?: number | null
+    form_factor?: string | null
+    interface?: string | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type memorias_internasCreateOrConnectWithoutPublicacionesInput = {
+    where: memorias_internasWhereUniqueInput
+    create: XOR<memorias_internasCreateWithoutPublicacionesInput, memorias_internasUncheckedCreateWithoutPublicacionesInput>
+  }
+
+  export type mothersCreateWithoutPublicacionesInput = {
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    socket?: string | null
+    form_factor?: string | null
+    max_memory?: number | null
+    memory_slots?: number | null
+    color?: string | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type mothersUncheckedCreateWithoutPublicacionesInput = {
+    id?: number
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    socket?: string | null
+    form_factor?: string | null
+    max_memory?: number | null
+    memory_slots?: number | null
+    color?: string | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type mothersCreateOrConnectWithoutPublicacionesInput = {
+    where: mothersWhereUniqueInput
+    create: XOR<mothersCreateWithoutPublicacionesInput, mothersUncheckedCreateWithoutPublicacionesInput>
+  }
+
+  export type ramsCreateWithoutPublicacionesInput = {
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    speed_channels?: number | null
+    speed_mhz?: number | null
+    modules_qty?: number | null
+    module_capacity?: number | null
+    price_per_gb?: Decimal | DecimalJsLike | number | string | null
+    color?: string | null
+    first_word_latency?: number | null
+    cas_latency?: number | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type ramsUncheckedCreateWithoutPublicacionesInput = {
+    id?: number
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    speed_channels?: number | null
+    speed_mhz?: number | null
+    modules_qty?: number | null
+    module_capacity?: number | null
+    price_per_gb?: Decimal | DecimalJsLike | number | string | null
+    color?: string | null
+    first_word_latency?: number | null
+    cas_latency?: number | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type ramsCreateOrConnectWithoutPublicacionesInput = {
+    where: ramsWhereUniqueInput
+    create: XOR<ramsCreateWithoutPublicacionesInput, ramsUncheckedCreateWithoutPublicacionesInput>
+  }
+
+  export type soundsCreateWithoutPublicacionesInput = {
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    channels?: string | null
+    digital_audio?: number | null
+    snr?: number | null
+    sample_rate?: number | null
+    chipset?: string | null
+    interface?: string | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type soundsUncheckedCreateWithoutPublicacionesInput = {
+    id?: number
+    name: string
+    price?: Decimal | DecimalJsLike | number | string | null
+    channels?: string | null
+    digital_audio?: number | null
+    snr?: number | null
+    sample_rate?: number | null
+    chipset?: string | null
+    interface?: string | null
+    imagen_url?: string | null
+    tipo?: string | null
+  }
+
+  export type soundsCreateOrConnectWithoutPublicacionesInput = {
+    where: soundsWhereUniqueInput
+    create: XOR<soundsCreateWithoutPublicacionesInput, soundsUncheckedCreateWithoutPublicacionesInput>
+  }
+
+  export type ususariosCreateWithoutPublicacionesUsuarioInput = {
+    nombre: string
+    apellido: string
+    mail: string
+    contrasenia: string
+    fecha_nacimiento: Date | string
+    permisos?: boolean | null
+    imagen_url?: string | null
+    direccion?: string | null
+  }
+
+  export type ususariosUncheckedCreateWithoutPublicacionesUsuarioInput = {
+    id_user?: number
+    nombre: string
+    apellido: string
+    mail: string
+    contrasenia: string
+    fecha_nacimiento: Date | string
+    permisos?: boolean | null
+    imagen_url?: string | null
+    direccion?: string | null
+  }
+
+  export type ususariosCreateOrConnectWithoutPublicacionesUsuarioInput = {
+    where: ususariosWhereUniqueInput
+    create: XOR<ususariosCreateWithoutPublicacionesUsuarioInput, ususariosUncheckedCreateWithoutPublicacionesUsuarioInput>
+  }
+
+  export type vendedoresCreateWithoutPublicacionesVendedorInput = {
+    nombre: string
+    apellido: string
+    mail: string
+    contrasenia: string
+    fecha_nacimiento: Date | string
+    cuil?: bigint | number | null
+    direccion: string
+    descripcion?: string | null
+    nombre_comercio?: string | null
+  }
+
+  export type vendedoresUncheckedCreateWithoutPublicacionesVendedorInput = {
+    id_vendedor?: number
+    nombre: string
+    apellido: string
+    mail: string
+    contrasenia: string
+    fecha_nacimiento: Date | string
+    cuil?: bigint | number | null
+    direccion: string
+    descripcion?: string | null
+    nombre_comercio?: string | null
+  }
+
+  export type vendedoresCreateOrConnectWithoutPublicacionesVendedorInput = {
+    where: vendedoresWhereUniqueInput
+    create: XOR<vendedoresCreateWithoutPublicacionesVendedorInput, vendedoresUncheckedCreateWithoutPublicacionesVendedorInput>
+  }
+
+  export type coolersUpsertWithoutPublicacionesInput = {
+    update: XOR<coolersUpdateWithoutPublicacionesInput, coolersUncheckedUpdateWithoutPublicacionesInput>
+    create: XOR<coolersCreateWithoutPublicacionesInput, coolersUncheckedCreateWithoutPublicacionesInput>
+    where?: coolersWhereInput
+  }
+
+  export type coolersUpdateToOneWithWhereWithoutPublicacionesInput = {
+    where?: coolersWhereInput
+    data: XOR<coolersUpdateWithoutPublicacionesInput, coolersUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type coolersUpdateWithoutPublicacionesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rpm?: NullableIntFieldUpdateOperationsInput | number | null
+    noise?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    size?: NullableIntFieldUpdateOperationsInput | number | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type coolersUncheckedUpdateWithoutPublicacionesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rpm?: NullableIntFieldUpdateOperationsInput | number | null
+    noise?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    size?: NullableIntFieldUpdateOperationsInput | number | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type cpusUpsertWithoutPublicacionesInput = {
+    update: XOR<cpusUpdateWithoutPublicacionesInput, cpusUncheckedUpdateWithoutPublicacionesInput>
+    create: XOR<cpusCreateWithoutPublicacionesInput, cpusUncheckedCreateWithoutPublicacionesInput>
+    where?: cpusWhereInput
+  }
+
+  export type cpusUpdateToOneWithWhereWithoutPublicacionesInput = {
+    where?: cpusWhereInput
+    data: XOR<cpusUpdateWithoutPublicacionesInput, cpusUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type cpusUpdateWithoutPublicacionesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    core_count?: IntFieldUpdateOperationsInput | number
+    core_clock?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    boost_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    tdp?: IntFieldUpdateOperationsInput | number
+    graphics?: NullableStringFieldUpdateOperationsInput | string | null
+    smt?: BoolFieldUpdateOperationsInput | boolean
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type cpusUncheckedUpdateWithoutPublicacionesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    core_count?: IntFieldUpdateOperationsInput | number
+    core_clock?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    boost_clock?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    tdp?: IntFieldUpdateOperationsInput | number
+    graphics?: NullableStringFieldUpdateOperationsInput | string | null
+    smt?: BoolFieldUpdateOperationsInput | boolean
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type fuentesUpsertWithoutPublicacionesInput = {
+    update: XOR<fuentesUpdateWithoutPublicacionesInput, fuentesUncheckedUpdateWithoutPublicacionesInput>
+    create: XOR<fuentesCreateWithoutPublicacionesInput, fuentesUncheckedCreateWithoutPublicacionesInput>
+    where?: fuentesWhereInput
+  }
+
+  export type fuentesUpdateToOneWithWhereWithoutPublicacionesInput = {
+    where?: fuentesWhereInput
+    data: XOR<fuentesUpdateWithoutPublicacionesInput, fuentesUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type fuentesUpdateWithoutPublicacionesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    efficiency?: NullableStringFieldUpdateOperationsInput | string | null
+    wattage?: NullableIntFieldUpdateOperationsInput | number | null
+    modular?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type fuentesUncheckedUpdateWithoutPublicacionesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    efficiency?: NullableStringFieldUpdateOperationsInput | string | null
+    wattage?: NullableIntFieldUpdateOperationsInput | number | null
+    modular?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type gabinetesUpsertWithoutPublicacionesInput = {
+    update: XOR<gabinetesUpdateWithoutPublicacionesInput, gabinetesUncheckedUpdateWithoutPublicacionesInput>
+    create: XOR<gabinetesCreateWithoutPublicacionesInput, gabinetesUncheckedCreateWithoutPublicacionesInput>
+    where?: gabinetesWhereInput
+  }
+
+  export type gabinetesUpdateToOneWithWhereWithoutPublicacionesInput = {
+    where?: gabinetesWhereInput
+    data: XOR<gabinetesUpdateWithoutPublicacionesInput, gabinetesUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type gabinetesUpdateWithoutPublicacionesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    psu?: NullableStringFieldUpdateOperationsInput | string | null
+    side_panel?: NullableStringFieldUpdateOperationsInput | string | null
+    external_volume?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    internal_35_bays?: NullableIntFieldUpdateOperationsInput | number | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type gabinetesUncheckedUpdateWithoutPublicacionesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    psu?: NullableStringFieldUpdateOperationsInput | string | null
+    side_panel?: NullableStringFieldUpdateOperationsInput | string | null
+    external_volume?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    internal_35_bays?: NullableIntFieldUpdateOperationsInput | number | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type graficasUpsertWithoutPublicacionesInput = {
+    update: XOR<graficasUpdateWithoutPublicacionesInput, graficasUncheckedUpdateWithoutPublicacionesInput>
+    create: XOR<graficasCreateWithoutPublicacionesInput, graficasUncheckedCreateWithoutPublicacionesInput>
+    where?: graficasWhereInput
+  }
+
+  export type graficasUpdateToOneWithWhereWithoutPublicacionesInput = {
+    where?: graficasWhereInput
+    data: XOR<graficasUpdateWithoutPublicacionesInput, graficasUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type graficasUpdateWithoutPublicacionesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    chipset?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableIntFieldUpdateOperationsInput | number | null
+    core_clock?: NullableIntFieldUpdateOperationsInput | number | null
+    boost_clock?: NullableIntFieldUpdateOperationsInput | number | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    length?: NullableIntFieldUpdateOperationsInput | number | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type graficasUncheckedUpdateWithoutPublicacionesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    chipset?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableIntFieldUpdateOperationsInput | number | null
+    core_clock?: NullableIntFieldUpdateOperationsInput | number | null
+    boost_clock?: NullableIntFieldUpdateOperationsInput | number | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    length?: NullableIntFieldUpdateOperationsInput | number | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type memorias_externasUpsertWithoutPublicacionesInput = {
+    update: XOR<memorias_externasUpdateWithoutPublicacionesInput, memorias_externasUncheckedUpdateWithoutPublicacionesInput>
+    create: XOR<memorias_externasCreateWithoutPublicacionesInput, memorias_externasUncheckedCreateWithoutPublicacionesInput>
+    where?: memorias_externasWhereInput
+  }
+
+  export type memorias_externasUpdateToOneWithWhereWithoutPublicacionesInput = {
+    where?: memorias_externasWhereInput
+    data: XOR<memorias_externasUpdateWithoutPublicacionesInput, memorias_externasUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type memorias_externasUpdateWithoutPublicacionesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    interface?: NullableStringFieldUpdateOperationsInput | string | null
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
+    price_per_gb?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type memorias_externasUncheckedUpdateWithoutPublicacionesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    interface?: NullableStringFieldUpdateOperationsInput | string | null
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
+    price_per_gb?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type memorias_internasUpsertWithoutPublicacionesInput = {
+    update: XOR<memorias_internasUpdateWithoutPublicacionesInput, memorias_internasUncheckedUpdateWithoutPublicacionesInput>
+    create: XOR<memorias_internasCreateWithoutPublicacionesInput, memorias_internasUncheckedCreateWithoutPublicacionesInput>
+    where?: memorias_internasWhereInput
+  }
+
+  export type memorias_internasUpdateToOneWithWhereWithoutPublicacionesInput = {
+    where?: memorias_internasWhereInput
+    data: XOR<memorias_internasUpdateWithoutPublicacionesInput, memorias_internasUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type memorias_internasUpdateWithoutPublicacionesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
+    price_per_gb?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    cache?: NullableIntFieldUpdateOperationsInput | number | null
+    form_factor?: NullableStringFieldUpdateOperationsInput | string | null
+    interface?: NullableStringFieldUpdateOperationsInput | string | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type memorias_internasUncheckedUpdateWithoutPublicacionesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
+    price_per_gb?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    cache?: NullableIntFieldUpdateOperationsInput | number | null
+    form_factor?: NullableStringFieldUpdateOperationsInput | string | null
+    interface?: NullableStringFieldUpdateOperationsInput | string | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type mothersUpsertWithoutPublicacionesInput = {
+    update: XOR<mothersUpdateWithoutPublicacionesInput, mothersUncheckedUpdateWithoutPublicacionesInput>
+    create: XOR<mothersCreateWithoutPublicacionesInput, mothersUncheckedCreateWithoutPublicacionesInput>
+    where?: mothersWhereInput
+  }
+
+  export type mothersUpdateToOneWithWhereWithoutPublicacionesInput = {
+    where?: mothersWhereInput
+    data: XOR<mothersUpdateWithoutPublicacionesInput, mothersUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type mothersUpdateWithoutPublicacionesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    socket?: NullableStringFieldUpdateOperationsInput | string | null
+    form_factor?: NullableStringFieldUpdateOperationsInput | string | null
+    max_memory?: NullableIntFieldUpdateOperationsInput | number | null
+    memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type mothersUncheckedUpdateWithoutPublicacionesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    socket?: NullableStringFieldUpdateOperationsInput | string | null
+    form_factor?: NullableStringFieldUpdateOperationsInput | string | null
+    max_memory?: NullableIntFieldUpdateOperationsInput | number | null
+    memory_slots?: NullableIntFieldUpdateOperationsInput | number | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ramsUpsertWithoutPublicacionesInput = {
+    update: XOR<ramsUpdateWithoutPublicacionesInput, ramsUncheckedUpdateWithoutPublicacionesInput>
+    create: XOR<ramsCreateWithoutPublicacionesInput, ramsUncheckedCreateWithoutPublicacionesInput>
+    where?: ramsWhereInput
+  }
+
+  export type ramsUpdateToOneWithWhereWithoutPublicacionesInput = {
+    where?: ramsWhereInput
+    data: XOR<ramsUpdateWithoutPublicacionesInput, ramsUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type ramsUpdateWithoutPublicacionesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    speed_channels?: NullableIntFieldUpdateOperationsInput | number | null
+    speed_mhz?: NullableIntFieldUpdateOperationsInput | number | null
+    modules_qty?: NullableIntFieldUpdateOperationsInput | number | null
+    module_capacity?: NullableIntFieldUpdateOperationsInput | number | null
+    price_per_gb?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    first_word_latency?: NullableIntFieldUpdateOperationsInput | number | null
+    cas_latency?: NullableIntFieldUpdateOperationsInput | number | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ramsUncheckedUpdateWithoutPublicacionesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    speed_channels?: NullableIntFieldUpdateOperationsInput | number | null
+    speed_mhz?: NullableIntFieldUpdateOperationsInput | number | null
+    modules_qty?: NullableIntFieldUpdateOperationsInput | number | null
+    module_capacity?: NullableIntFieldUpdateOperationsInput | number | null
+    price_per_gb?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    first_word_latency?: NullableIntFieldUpdateOperationsInput | number | null
+    cas_latency?: NullableIntFieldUpdateOperationsInput | number | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type soundsUpsertWithoutPublicacionesInput = {
+    update: XOR<soundsUpdateWithoutPublicacionesInput, soundsUncheckedUpdateWithoutPublicacionesInput>
+    create: XOR<soundsCreateWithoutPublicacionesInput, soundsUncheckedCreateWithoutPublicacionesInput>
+    where?: soundsWhereInput
+  }
+
+  export type soundsUpdateToOneWithWhereWithoutPublicacionesInput = {
+    where?: soundsWhereInput
+    data: XOR<soundsUpdateWithoutPublicacionesInput, soundsUncheckedUpdateWithoutPublicacionesInput>
+  }
+
+  export type soundsUpdateWithoutPublicacionesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    channels?: NullableStringFieldUpdateOperationsInput | string | null
+    digital_audio?: NullableIntFieldUpdateOperationsInput | number | null
+    snr?: NullableIntFieldUpdateOperationsInput | number | null
+    sample_rate?: NullableIntFieldUpdateOperationsInput | number | null
+    chipset?: NullableStringFieldUpdateOperationsInput | string | null
+    interface?: NullableStringFieldUpdateOperationsInput | string | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type soundsUncheckedUpdateWithoutPublicacionesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    channels?: NullableStringFieldUpdateOperationsInput | string | null
+    digital_audio?: NullableIntFieldUpdateOperationsInput | number | null
+    snr?: NullableIntFieldUpdateOperationsInput | number | null
+    sample_rate?: NullableIntFieldUpdateOperationsInput | number | null
+    chipset?: NullableStringFieldUpdateOperationsInput | string | null
+    interface?: NullableStringFieldUpdateOperationsInput | string | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ususariosUpsertWithoutPublicacionesUsuarioInput = {
+    update: XOR<ususariosUpdateWithoutPublicacionesUsuarioInput, ususariosUncheckedUpdateWithoutPublicacionesUsuarioInput>
+    create: XOR<ususariosCreateWithoutPublicacionesUsuarioInput, ususariosUncheckedCreateWithoutPublicacionesUsuarioInput>
+    where?: ususariosWhereInput
+  }
+
+  export type ususariosUpdateToOneWithWhereWithoutPublicacionesUsuarioInput = {
+    where?: ususariosWhereInput
+    data: XOR<ususariosUpdateWithoutPublicacionesUsuarioInput, ususariosUncheckedUpdateWithoutPublicacionesUsuarioInput>
+  }
+
+  export type ususariosUpdateWithoutPublicacionesUsuarioInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    apellido?: StringFieldUpdateOperationsInput | string
+    mail?: StringFieldUpdateOperationsInput | string
+    contrasenia?: StringFieldUpdateOperationsInput | string
+    fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
+    permisos?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ususariosUncheckedUpdateWithoutPublicacionesUsuarioInput = {
+    id_user?: IntFieldUpdateOperationsInput | number
+    nombre?: StringFieldUpdateOperationsInput | string
+    apellido?: StringFieldUpdateOperationsInput | string
+    mail?: StringFieldUpdateOperationsInput | string
+    contrasenia?: StringFieldUpdateOperationsInput | string
+    fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
+    permisos?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imagen_url?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type vendedoresUpsertWithoutPublicacionesVendedorInput = {
+    update: XOR<vendedoresUpdateWithoutPublicacionesVendedorInput, vendedoresUncheckedUpdateWithoutPublicacionesVendedorInput>
+    create: XOR<vendedoresCreateWithoutPublicacionesVendedorInput, vendedoresUncheckedCreateWithoutPublicacionesVendedorInput>
+    where?: vendedoresWhereInput
+  }
+
+  export type vendedoresUpdateToOneWithWhereWithoutPublicacionesVendedorInput = {
+    where?: vendedoresWhereInput
+    data: XOR<vendedoresUpdateWithoutPublicacionesVendedorInput, vendedoresUncheckedUpdateWithoutPublicacionesVendedorInput>
+  }
+
+  export type vendedoresUpdateWithoutPublicacionesVendedorInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    apellido?: StringFieldUpdateOperationsInput | string
+    mail?: StringFieldUpdateOperationsInput | string
+    contrasenia?: StringFieldUpdateOperationsInput | string
+    fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
+    cuil?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    direccion?: StringFieldUpdateOperationsInput | string
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    nombre_comercio?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type vendedoresUncheckedUpdateWithoutPublicacionesVendedorInput = {
+    id_vendedor?: IntFieldUpdateOperationsInput | number
+    nombre?: StringFieldUpdateOperationsInput | string
+    apellido?: StringFieldUpdateOperationsInput | string
+    mail?: StringFieldUpdateOperationsInput | string
+    contrasenia?: StringFieldUpdateOperationsInput | string
+    fecha_nacimiento?: DateTimeFieldUpdateOperationsInput | Date | string
+    cuil?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    direccion?: StringFieldUpdateOperationsInput | string
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    nombre_comercio?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PublicacionProductoCreateManyCoolerInput = {
+    id?: number
+    tipo_producto: string
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutCoolerInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutCoolerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutCoolerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManyCpuInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutCpuInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutCpuInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutCpuInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManyFuenteInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutFuenteInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutFuenteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutFuenteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManyGabineteInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutGabineteInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutGabineteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutGabineteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManyGraficaInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutGraficaInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutGraficaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutGraficaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManyMemoria_externaInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutMemoria_externaInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutMemoria_externaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutMemoria_externaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManyMemoria_internaInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutMemoria_internaInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutMemoria_internaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutMemoria_internaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManyMotherInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutMotherInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutMotherInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutMotherInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManyRamInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutRamInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutRamInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutRamInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManySoundInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    usuario_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutSoundInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutSoundInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutSoundInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManyUsuarioInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    vendedor_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutUsuarioInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    vendedor?: vendedoresUpdateOneWithoutPublicacionesVendedorNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutUsuarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutUsuarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    vendedor_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoCreateManyVendedorInput = {
+    id?: number
+    tipo_producto: string
+    cooler_id?: number | null
+    cpu_id?: number | null
+    fuente_id?: number | null
+    gabinete_id?: number | null
+    grafica_id?: number | null
+    memoria_externa_id?: number | null
+    memoria_interna_id?: number | null
+    mother_id?: number | null
+    ram_id?: number | null
+    sound_id?: number | null
+    usuario_id?: number | null
+    creado_en?: Date | string
+  }
+
+  export type PublicacionProductoUpdateWithoutVendedorInput = {
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+    cooler?: coolersUpdateOneWithoutPublicacionesNestedInput
+    cpu?: cpusUpdateOneWithoutPublicacionesNestedInput
+    fuente?: fuentesUpdateOneWithoutPublicacionesNestedInput
+    gabinete?: gabinetesUpdateOneWithoutPublicacionesNestedInput
+    grafica?: graficasUpdateOneWithoutPublicacionesNestedInput
+    memoria_externa?: memorias_externasUpdateOneWithoutPublicacionesNestedInput
+    memoria_interna?: memorias_internasUpdateOneWithoutPublicacionesNestedInput
+    mother?: mothersUpdateOneWithoutPublicacionesNestedInput
+    ram?: ramsUpdateOneWithoutPublicacionesNestedInput
+    sound?: soundsUpdateOneWithoutPublicacionesNestedInput
+    usuario?: ususariosUpdateOneWithoutPublicacionesUsuarioNestedInput
+  }
+
+  export type PublicacionProductoUncheckedUpdateWithoutVendedorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicacionProductoUncheckedUpdateManyWithoutVendedorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo_producto?: StringFieldUpdateOperationsInput | string
+    cooler_id?: NullableIntFieldUpdateOperationsInput | number | null
+    cpu_id?: NullableIntFieldUpdateOperationsInput | number | null
+    fuente_id?: NullableIntFieldUpdateOperationsInput | number | null
+    gabinete_id?: NullableIntFieldUpdateOperationsInput | number | null
+    grafica_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_externa_id?: NullableIntFieldUpdateOperationsInput | number | null
+    memoria_interna_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mother_id?: NullableIntFieldUpdateOperationsInput | number | null
+    ram_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sound_id?: NullableIntFieldUpdateOperationsInput | number | null
+    usuario_id?: NullableIntFieldUpdateOperationsInput | number | null
+    creado_en?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
