@@ -16,7 +16,7 @@ import {
     CarouselItem,
 } from "@/components/ui/carousel";
 import Link from "next/link";
-import CaracteristicasDinamicas from "./CaracteristicasDinamicas";
+import CaracteristicasDinamicas from "./caracteristicasDinamicas";
 
 
 

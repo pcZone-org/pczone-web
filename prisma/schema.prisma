@@ -10,187 +10,6 @@ datasource db {
 }
 
 model coolers {
-<<<<<<< HEAD
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  price               Decimal?              @db.Decimal(10, 2)
-  rpm                 Int?
-  noise               Decimal?              @db.Decimal(5, 2)
-  color               String?
-  size                Int?
-  imagen_url          String?
-  tipo                String?
-  PublicacionProducto PublicacionProducto[]
-}
-
-model cpus {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  price               Decimal?              @db.Decimal(10, 2)
-  core_count          Int
-  core_clock          Decimal               @db.Decimal(4, 2)
-  boost_clock         Decimal?              @db.Decimal(4, 2)
-  tdp                 Int
-  graphics            String?
-  smt                 Boolean
-  imagen_url          String?
-  tipo                String?
-  PublicacionProducto PublicacionProducto[]
-}
-
-model fuentes {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  price               Decimal?              @db.Decimal(10, 2)
-  type                String?
-  efficiency          String?
-  wattage             Int?
-  modular             String?
-  color               String?
-  imagen_url          String?
-  tipo                String?               @default("fuentes")
-  PublicacionProducto PublicacionProducto[]
-}
-
-model gabinetes {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  price               Decimal?              @db.Decimal(10, 2)
-  type                String?
-  color               String?
-  psu                 String?
-  side_panel          String?
-  external_volume     Decimal?              @db.Decimal(5, 2)
-  internal_35_bays    Int?
-  imagen_url          String?
-  tipo                String?
-  PublicacionProducto PublicacionProducto[]
-}
-
-model graficas {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  price               Decimal?              @db.Decimal(10, 2)
-  chipset             String?
-  memory              Int?
-  core_clock          Int?
-  boost_clock         Int?
-  color               String?
-  length              Int?
-  imagen_url          String?
-  tipo                String?               @default("graficas")
-  PublicacionProducto PublicacionProducto[]
-}
-
-model memorias_externas {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  price               Decimal?              @db.Decimal(10, 2)
-  type                String?
-  interface           String?
-  capacity            Int?
-  price_per_gb        Decimal?              @db.Decimal(10, 3)
-  color               String?
-  imagen_url          String?
-  tipo                String?
-  PublicacionProducto PublicacionProducto[]
-}
-
-model memorias_internas {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  price               Decimal?              @db.Decimal(10, 2)
-  capacity            Int?
-  price_per_gb        Decimal?              @db.Decimal(10, 3)
-  type                String?
-  cache               Int?
-  form_factor         String?
-  interface           String?
-  imagen_url          String?
-  tipo                String?
-  PublicacionProducto PublicacionProducto[]
-}
-
-model mothers {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  price               Decimal?              @db.Decimal(10, 2)
-  socket              String?
-  form_factor         String?
-  max_memory          Int?
-  memory_slots        Int?
-  color               String?
-  imagen_url          String?
-  tipo                String?
-  PublicacionProducto PublicacionProducto[]
-}
-
-model rams {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  price               Decimal?              @db.Decimal(10, 2)
-  speed_channels      Int?
-  speed_mhz           Int?
-  modules_qty         Int?
-  module_capacity     Int?
-  price_per_gb        Decimal?              @db.Decimal(10, 3)
-  color               String?
-  first_word_latency  Int?
-  cas_latency         Int?
-  imagen_url          String?
-  tipo                String?
-  PublicacionProducto PublicacionProducto[]
-}
-
-model sounds {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  price               Decimal?              @db.Decimal(10, 2)
-  channels            String?
-  digital_audio       Int?
-  snr                 Int?
-  sample_rate         Int?
-  chipset             String?
-  interface           String?
-  imagen_url          String?
-  tipo                String?
-  PublicacionProducto PublicacionProducto[]
-}
-
-model ususarios {
-  id_user             Int                   @id @default(autoincrement())
-  nombre              String                @db.VarChar
-  apellido            String                @db.VarChar
-  mail                String                @db.VarChar
-  contrasenia         String                @db.VarChar
-  fecha_nacimiento    DateTime              @db.Date
-  permisos            Boolean?
-  imagen_url          String?
-  direccion           String?
-  PublicacionProducto PublicacionProducto[]
-}
-
-model vendedores {
-  id_vendedor         Int                   @id @default(autoincrement())
-  nombre              String                @db.VarChar
-  apellido            String                @db.VarChar
-  mail                String                @db.VarChar
-  contrasenia         String                @db.VarChar(50)
-  fecha_nacimiento    DateTime              @db.Date
-  cuil                BigInt?
-  direccion           String
-  descripcion         String?
-  nombre_comercio     String?
-  PublicacionProducto PublicacionProducto[]
-}
-
-model PublicacionProducto {
-  id                 Int                @id @default(autoincrement())
-  tipo_producto      String
-  creado_en          DateTime           @default(now())
-  usuario_id         Int?
-  vendedor_id        Int?
-=======
   id         Int      @id @default(autoincrement())
   name       String
   price      Decimal? @db.Decimal(10, 2)
@@ -381,7 +200,6 @@ model PublicacionProducto {
   tipo_producto String
 
   // ——— FKs a cada tipo de producto ———
->>>>>>> 6a8743d3d4344fabe32d2906d024e229095754a6
   cooler_id          Int?
   cpu_id             Int?
   fuente_id          Int?
@@ -392,33 +210,6 @@ model PublicacionProducto {
   mother_id          Int?
   ram_id             Int?
   sound_id           Int?
-<<<<<<< HEAD
-  coolers            coolers?           @relation(fields: [cooler_id], references: [id])
-  cpus               cpus?              @relation(fields: [cpu_id], references: [id])
-  fuentes            fuentes?           @relation(fields: [fuente_id], references: [id])
-  gabinetes          gabinetes?         @relation(fields: [gabinete_id], references: [id])
-  graficas           graficas?          @relation(fields: [grafica_id], references: [id])
-  memorias_externas  memorias_externas? @relation(fields: [memoria_externa_id], references: [id])
-  memorias_internas  memorias_internas? @relation(fields: [memoria_interna_id], references: [id])
-  mothers            mothers?           @relation(fields: [mother_id], references: [id])
-  rams               rams?              @relation(fields: [ram_id], references: [id])
-  sounds             sounds?            @relation(fields: [sound_id], references: [id])
-  ususarios          ususarios?         @relation(fields: [usuario_id], references: [id_user])
-  vendedores         vendedores?        @relation(fields: [vendedor_id], references: [id_vendedor])
-
-  @@index([cooler_id], map: "idx_publicacion_cooler_id")
-  @@index([cpu_id], map: "idx_publicacion_cpu_id")
-  @@index([fuente_id], map: "idx_publicacion_fuente_id")
-  @@index([gabinete_id], map: "idx_publicacion_gabinete_id")
-  @@index([grafica_id], map: "idx_publicacion_grafica_id")
-  @@index([memoria_externa_id], map: "idx_publicacion_memoria_externa_id")
-  @@index([memoria_interna_id], map: "idx_publicacion_memoria_interna_id")
-  @@index([mother_id], map: "idx_publicacion_mother_id")
-  @@index([ram_id], map: "idx_publicacion_ram_id")
-  @@index([sound_id], map: "idx_publicacion_sound_id")
-  @@index([usuario_id], map: "idx_publicacion_usuario_id")
-  @@index([vendedor_id], map: "idx_publicacion_vendedor_id")
-=======
 
   usuario_id    Int?      
   vendedor_id   Int?
@@ -452,5 +243,4 @@ model PublicacionProducto {
   @@index([sound_id],           name: "idx_publicacion_sound_id")
   @@index([usuario_id],         name: "idx_publicacion_usuario_id")
   @@index([vendedor_id],        name: "idx_publicacion_vendedor_id")
->>>>>>> 6a8743d3d4344fabe32d2906d024e229095754a6
 }
