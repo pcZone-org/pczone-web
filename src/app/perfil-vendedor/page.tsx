@@ -1,9 +1,30 @@
 "use client";
+
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import VendorProductForm from "@/components/VendorProductForm";
 
 export default function PerfilVendedorPage() {
   const router = useRouter();
-  const userName = typeof window !== "undefined" ? localStorage.getItem("userName") : "";
+  const [role, setRole] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string>("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Leer rol y nombre del storage
+    const storedRole = localStorage.getItem("role");
+    const storedName = localStorage.getItem("userName");
+
+    if (!storedRole) {
+      // Si no hay rol, volvemos al login
+      router.push("/login");
+      return;
+    }
+
+    setRole(storedRole);
+    setUserName(storedName ?? "");
+    setLoading(false);
+  }, [router]);
 
   const handleLogout = () => {
     localStorage.removeItem("role");
@@ -11,15 +32,38 @@ export default function PerfilVendedorPage() {
     router.push("/login");
   };
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-gray-600">Cargando...</p>
+      </div>
+    );
+  }
+
   return (
-    <main className="p-8">
-      <h1 className="text-3xl font-bold mb-6">¡Hola, {userName || "Vendedor"}!</h1>
-      <button
-        onClick={handleLogout}
-        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition"
-      >
-        Cerrar sesión
-      </button>
+    <main className="p-8 max-w-4xl mx-auto">
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold">
+          ¡Hola, {userName || "Vendedor"}!
+        </h1>
+        <button
+          onClick={handleLogout}
+          className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition"
+        >
+          Cerrar sesión
+        </button>
+      </div>
+
+      {role === "vendedor" ? (
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Publicar nuevo producto</h2>
+          <VendorProductForm />
+        </section>
+      ) : (
+        <p className="text-red-600">
+          No tienes permisos para acceder a esta página.
+        </p>
+      )}
     </main>
   );
 }

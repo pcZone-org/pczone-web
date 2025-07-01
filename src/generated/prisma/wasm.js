@@ -285,9 +285,24 @@ exports.Prisma.VendedoresScalarFieldEnum = {
 exports.Prisma.PublicacionProductoScalarFieldEnum = {
   id: 'id',
   tipo_producto: 'tipo_producto',
+<<<<<<< HEAD
   producto_id: 'producto_id',
   tipo_duenio: 'tipo_duenio',
   duenio_id: 'duenio_id',
+=======
+  cooler_id: 'cooler_id',
+  cpu_id: 'cpu_id',
+  fuente_id: 'fuente_id',
+  gabinete_id: 'gabinete_id',
+  grafica_id: 'grafica_id',
+  memoria_externa_id: 'memoria_externa_id',
+  memoria_interna_id: 'memoria_interna_id',
+  mother_id: 'mother_id',
+  ram_id: 'ram_id',
+  sound_id: 'sound_id',
+  usuario_id: 'usuario_id',
+  vendedor_id: 'vendedor_id',
+>>>>>>> 6a8743d3d4344fabe32d2906d024e229095754a6
   creado_en: 'creado_en'
 };
 
