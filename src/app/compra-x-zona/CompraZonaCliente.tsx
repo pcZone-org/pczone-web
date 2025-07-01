@@ -35,6 +35,7 @@ export default function CompraZonaCliente({ productos }: Props) {
               nombre={p.name}
               precio={Number(p.price ?? 0)}
               imagen_url={p.imagen_url ?? ""}
+              tipo={"graficas"} 
             />
           ))}
         </div>

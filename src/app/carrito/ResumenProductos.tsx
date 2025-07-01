@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { div } from "three/tsl";
 
 const mockProductos = [
     {
@@ -11,14 +10,15 @@ const mockProductos = [
         cantidad: 1,
     },
     {
-    id: 2,
-    nombre: "Placa de Video RTX 3060",
-    precio: 1234,
-    imagen: "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/graficas//NVIDIA%20GeForce%20RTX%203060.png",
-    cantidad: 2,
+        id: 2,
+        nombre: "Placa de Video RTX 3060",
+        precio: 1234,
+        imagen: "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/graficas//NVIDIA%20GeForce%20RTX%203060.png",
+        cantidad: 2,
     },
   // agregá más si querés
 ];
+
 type Producto = {
     id: number;
     nombre: string;

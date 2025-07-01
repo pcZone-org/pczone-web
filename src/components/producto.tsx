@@ -1,31 +1,35 @@
 import Image from "next/image";
 import carritoIcon from "@/imagenes/Icons/carritoIcon.svg";
 import addCarrito from "@/app/carrito/agregarACarrito";
+import Link from "next/link";
 
 type ProductoProps = {
   id: number;
   nombre: string;
   precio: number;
   imagen_url?: string;
+  tipo: string;
 };
 
-export default function Producto({id, nombre, precio, imagen_url }: ProductoProps) {
+export default function Producto({id, nombre, precio, imagen_url, tipo}: ProductoProps) {
   return (
     <div className="bg-white text-black rounded-lg p-5 m-5 max-w-[250px] h-[300px] shadow">
-      <Image
-        src={imagen_url || "/imagenes/producto-ejemplo.png"}
-        alt={nombre}
-        width={200}
-        height={150}
-        className="w-40 h-40 object-contain mx-auto"
-      />
-      <p className="text-[16px] mt-2 line-clamp-2">{nombre}</p>
-      <div className="flex justify-between items-center mt-2">
-        <p className="text-[16px] text-black font-bold">${precio}</p>
-        <button className="bg-[#4A89DC] rounded-lg p-2 cursor-pointer hover:bg-[#102647]" onClick={() => addCarrito(id, nombre, precio, imagen_url)}>
-          <Image src={carritoIcon} alt="Carrito" width={25} height={25} className="invert" />
-        </button>
+        <Link href={'/producto?componente=' + tipo + '&id=' + id}>
+          <Image
+            src={imagen_url || "/imagenes/producto-ejemplo.png"}
+            alt={nombre}
+            width={200}
+            height={150}
+            className="w-40 h-40 object-contain mx-auto"
+          />
+        </Link>
+        <p className="text-[16px] mt-2 line-clamp-2">{nombre}</p>
+        <div className="flex justify-between items-center mt-2">
+          <p className="text-[16px] text-black font-bold">USD${precio}</p>
+          <button className="bg-[#4A89DC] rounded-lg p-2 cursor-pointer hover:bg-[#102647]" onClick={() => addCarrito(id, nombre, precio, imagen_url)}>
+            <Image src={carritoIcon} alt="Carrito" width={25} height={25} className="invert" />
+          </button>
+        </div>
       </div>
-    </div>
   );
 }

@@ -128,7 +128,8 @@ exports.Prisma.CoolersScalarFieldEnum = {
   noise: 'noise',
   color: 'color',
   size: 'size',
-  imagen_url: 'imagen_url'
+  imagen_url: 'imagen_url',
+  tipo: 'tipo'
 };
 
 exports.Prisma.CpusScalarFieldEnum = {
@@ -141,7 +142,8 @@ exports.Prisma.CpusScalarFieldEnum = {
   tdp: 'tdp',
   graphics: 'graphics',
   smt: 'smt',
-  imagen_url: 'imagen_url'
+  imagen_url: 'imagen_url',
+  tipo: 'tipo'
 };
 
 exports.Prisma.FuentesScalarFieldEnum = {
@@ -153,7 +155,8 @@ exports.Prisma.FuentesScalarFieldEnum = {
   wattage: 'wattage',
   modular: 'modular',
   color: 'color',
-  imagen_url: 'imagen_url'
+  imagen_url: 'imagen_url',
+  tipo: 'tipo'
 };
 
 exports.Prisma.GabinetesScalarFieldEnum = {
@@ -166,7 +169,8 @@ exports.Prisma.GabinetesScalarFieldEnum = {
   side_panel: 'side_panel',
   external_volume: 'external_volume',
   internal_35_bays: 'internal_35_bays',
-  imagen_url: 'imagen_url'
+  imagen_url: 'imagen_url',
+  tipo: 'tipo'
 };
 
 exports.Prisma.GraficasScalarFieldEnum = {
@@ -179,7 +183,8 @@ exports.Prisma.GraficasScalarFieldEnum = {
   boost_clock: 'boost_clock',
   color: 'color',
   length: 'length',
-  imagen_url: 'imagen_url'
+  imagen_url: 'imagen_url',
+  tipo: 'tipo'
 };
 
 exports.Prisma.Memorias_externasScalarFieldEnum = {
@@ -191,7 +196,8 @@ exports.Prisma.Memorias_externasScalarFieldEnum = {
   capacity: 'capacity',
   price_per_gb: 'price_per_gb',
   color: 'color',
-  imagen_url: 'imagen_url'
+  imagen_url: 'imagen_url',
+  tipo: 'tipo'
 };
 
 exports.Prisma.Memorias_internasScalarFieldEnum = {
@@ -204,7 +210,8 @@ exports.Prisma.Memorias_internasScalarFieldEnum = {
   cache: 'cache',
   form_factor: 'form_factor',
   interface: 'interface',
-  imagen_url: 'imagen_url'
+  imagen_url: 'imagen_url',
+  tipo: 'tipo'
 };
 
 exports.Prisma.MothersScalarFieldEnum = {
@@ -216,7 +223,8 @@ exports.Prisma.MothersScalarFieldEnum = {
   max_memory: 'max_memory',
   memory_slots: 'memory_slots',
   color: 'color',
-  imagen_url: 'imagen_url'
+  imagen_url: 'imagen_url',
+  tipo: 'tipo'
 };
 
 exports.Prisma.RamsScalarFieldEnum = {
@@ -231,7 +239,8 @@ exports.Prisma.RamsScalarFieldEnum = {
   color: 'color',
   first_word_latency: 'first_word_latency',
   cas_latency: 'cas_latency',
-  imagen_url: 'imagen_url'
+  imagen_url: 'imagen_url',
+  tipo: 'tipo'
 };
 
 exports.Prisma.SoundsScalarFieldEnum = {
@@ -244,7 +253,8 @@ exports.Prisma.SoundsScalarFieldEnum = {
   sample_rate: 'sample_rate',
   chipset: 'chipset',
   interface: 'interface',
-  imagen_url: 'imagen_url'
+  imagen_url: 'imagen_url',
+  tipo: 'tipo'
 };
 
 exports.Prisma.UsusariosScalarFieldEnum = {
@@ -270,6 +280,15 @@ exports.Prisma.VendedoresScalarFieldEnum = {
   direccion: 'direccion',
   descripcion: 'descripcion',
   nombre_comercio: 'nombre_comercio'
+};
+
+exports.Prisma.PublicacionProductoScalarFieldEnum = {
+  id: 'id',
+  tipo_producto: 'tipo_producto',
+  producto_id: 'producto_id',
+  tipo_duenio: 'tipo_duenio',
+  duenio_id: 'duenio_id',
+  creado_en: 'creado_en'
 };
 
 exports.Prisma.SortOrder = {
@@ -300,7 +319,8 @@ exports.Prisma.ModelName = {
   rams: 'rams',
   sounds: 'sounds',
   ususarios: 'ususarios',
-  vendedores: 'vendedores'
+  vendedores: 'vendedores',
+  PublicacionProducto: 'PublicacionProducto'
 };
 
 /**

@@ -9,13 +9,14 @@ export async function GET(request: Request) {
     const componente = searchParams.get('componente');
     const nombre = searchParams.get('nombre');
     const orden = searchParams.get('orden') || 'id';
+    const id = searchParams.get('id');
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '12');
     const skip = (page - 1) * limit;
     
     const prismaModeloMap: Record<string, {
-        findMany: Function;
-        count: Function;
+          findMany: Function;
+          count: Function;
         }> = {
         graficas: prisma.graficas,
         fuentes: prisma.fuentes,
@@ -66,11 +67,48 @@ export async function GET(request: Request) {
           return NextResponse.json({ error: 'Error en búsqueda global' }, { status: 500 });
         }
       }
+      if (id && componente && componente in prismaModeloMap && searchParams.get('relacionados') === 'true') {
+        const modelo = prismaModeloMap[componente];
+
+        try {
+          const recomendados = await modelo.findMany({
+            where: {
+              NOT: { id: Number(id) }
+            },
+            take: 10,
+          });
+
+          return NextResponse.json(recomendados);
+        } catch (error) {
+          return NextResponse.json({ error: 'Error al buscar productos relacionados' }, { status: 500 });
+        }
+      }
+
+
+      if (id && componente && componente in prismaModeloMap){
+        const modelo = prismaModeloMap[componente];
+        try {
+            const productos = await modelo.findMany({
+                where: { id: Number(id) },
+            });
+
+            const producto = productos[0];
+
+            if (!producto) {
+                return NextResponse.json({ error: 'Producto no encontrado' }, { status: 404 });
+            }
+
+            return NextResponse.json(producto);
+        } catch (error) {
+            return NextResponse.json({ error: 'Error al buscar producto' }, { status: 500 });
+        }
+      }
 
       if (componente && componente in prismaModeloMap) {
         const modelo = prismaModeloMap[componente];
 
         const where: any = {};
+
         if (nombre) {
           where.name = {
             contains: nombre,
@@ -103,6 +141,7 @@ export async function GET(request: Request) {
           return NextResponse.json({ error: 'Error al obtener productos' }, { status: 500 });
         }
       }
+
 
     
     return NextResponse.json({ error: 'Parámetros inválidos' }, { status: 400 });
