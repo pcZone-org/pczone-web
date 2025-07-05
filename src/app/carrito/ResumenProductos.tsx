@@ -1,24 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-const mockProductos = [
-    {
-        id: 1,
-        nombre: "Producto x",
-        precio: 1234,
-        imagen: "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/cpus//AMD%20Ryzen%205%201500X.webp",
-        cantidad: 1,
-    },
-    {
-        id: 2,
-        nombre: "Placa de Video RTX 3060",
-        precio: 1234,
-        imagen: "https://pcsupptnitvozhbhfxiu.supabase.co/storage/v1/object/public/graficas//NVIDIA%20GeForce%20RTX%203060.png",
-        cantidad: 2,
-    },
-  // agregá más si querés
-];
-
 type Producto = {
     id: number;
     nombre: string;
@@ -32,14 +14,16 @@ type ResumenProductosProps = {
 };
 
 export default function ResumenProductos({ onTotalChange }: ResumenProductosProps) {
-    
+    const userId = localStorage.getItem("userId");
     const [productos, setProductos] = useState<Producto[]>([]);
 
     
     useEffect(() => {
-        const guardados = localStorage.getItem("carrito");
-        if (guardados) {
-            setProductos(JSON.parse(guardados));
+        if (userId) {
+            const guardados = localStorage.getItem("carrito_${userId}");
+            if (guardados) {
+                setProductos(JSON.parse(guardados));
+            }
         }
     }, []);
 

@@ -1,4 +1,4 @@
-import { PrismaClient } from "@/generated/prisma"; // ← Importamos desde la ruta correcta
+import {PrismaClient} from "@/generated/prisma"; // ← Importamos desde la ruta correcta
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
