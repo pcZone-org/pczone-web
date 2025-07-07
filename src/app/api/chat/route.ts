@@ -12,10 +12,10 @@ export async function POST(req: Request) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "openai/gpt-3.5-turbo", // ✅ modelo seguro y soportado
+        model: "deepseek/deepseek-r1-0528-qwen3-8b:free", 
         messages: [
           {
-            role: "system",
+            role: "user",
             content: "Sos un experto en armado de PCs. Recomendá componentes compatibles según el uso indicado por el usuario.",
           },
           {
