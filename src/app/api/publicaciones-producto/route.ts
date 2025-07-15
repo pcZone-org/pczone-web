@@ -92,16 +92,18 @@ export async function POST(request: Request) {
         }
       }
     }
+    
+    dataProducto.tipo = tipo_producto;
+
 
     // Crear componente
     const creado = await (modeloMap as any)[tipo_producto].create({ data: dataProducto });
 
     // Crear publicación (sin producto_id)
     const productoIdField = fkMap[tipo_producto];
-    const tipo_duenio = usuario_id ? "usuario" : "vendedor";
+    const role = usuario_id ? "usuario" : "vendedor";
     const publicacionData = {
       tipo_producto,
-      tipo_duenio,
       usuario_id: usuario_id ?? null,
       vendedor_id: vendedor_id ?? null,
       [productoIdField]: creado.id,

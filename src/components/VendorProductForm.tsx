@@ -150,7 +150,7 @@ export default function VendorProductForm() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Error al publicar");
-      router.push(`/productos/${tipoProducto}/${data.producto.id}`);
+      router.push(`/`);
     } catch (err: any) { setError(err.message); }
   };
 

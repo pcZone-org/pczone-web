@@ -15,7 +15,7 @@ export default function Footer() {
                 </div>
                 {/* FOOTER: Botones centrales */}
                 <div className="flex flex-row gap-10 justify-center my-4">
-                    <Link href={"#"} className="font-bold">
+                    <Link href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"} className="font-bold">
                         Boton Sorpresa
                     </Link>
                     <Link href={"faq"} className="font-bold">
