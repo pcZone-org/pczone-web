@@ -5,11 +5,13 @@ import Image from 'next/image';
 import { useState } from 'react';
 import SelectorComponente from '@/app/arma-pc/SelectorComponente';
 import ResumenBuild from '@/app/arma-pc/ResumenBuild';
+import addCarrito from "@/app/carrito/agregarACarrito";
 
 export default function ArmaTuPcPage() {
     const [build, setBuild] = useState<{ [key: string]: any }>({});
     const router = useRouter();
     const searchParams = useSearchParams();
+    const userId = localStorage.getItem("userId");
 
     const pasoActual = searchParams.get('paso') || 'cpus';
 
@@ -26,14 +28,14 @@ export default function ArmaTuPcPage() {
     ];
 
     const handleSeleccionar = (tipo: string, producto: any) => {
-    setBuild((prev) => ({ ...prev, [tipo]: producto }));
+        setBuild((prev) => ({ ...prev, [tipo]: producto }));
 
 
-    const index = CATEGORIAS.findIndex((c) => c.tipo === tipo);
-    const siguiente = CATEGORIAS[index + 1];
-    if (siguiente) {
-        router.push(`/arma-pc?paso=${siguiente.tipo}`);
-    }
+        const index = CATEGORIAS.findIndex((c) => c.tipo === tipo);
+        const siguiente = CATEGORIAS[index + 1];
+        if (siguiente) {
+            router.push(`/arma-pc?paso=${siguiente.tipo}`);
+        }
     }; 
 
     const seleccionados = Object.keys(build).length;
@@ -43,21 +45,23 @@ export default function ArmaTuPcPage() {
     const handleAgregarTodosAlCarrito = (e: React.FormEvent) => {
         e.preventDefault();
 
-        const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
+        const carrito = JSON.parse(localStorage.getItem("carrito_" + userId) || "[]");
 
         productosBuild.forEach(([_, prod]: any) => {
+            console.log("Producto:", prod);
             if (!carrito.find((p: any) => p.id === prod.id)) {
+
                 carrito.push({
-                    id: prod.id,
-                    nombre: prod.name,
-                    precio: prod.price,
-                    imagen: prod.imagen_url,
-                    cantidad: 1,
-                });
+                id: prod.id,
+                nombre: prod.name,
+                precio: prod.price,
+                imagen: prod.imagen_url,
+                cantidad: 1
+            });
             }
         });
 
-        localStorage.setItem("carrito", JSON.stringify(carrito));
+        localStorage.setItem("carrito_" + userId, JSON.stringify(carrito));
         router.push("/carrito");
     };
 

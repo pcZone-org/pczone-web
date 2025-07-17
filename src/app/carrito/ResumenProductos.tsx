@@ -20,7 +20,7 @@ export default function ResumenProductos({ onTotalChange }: ResumenProductosProp
     
     useEffect(() => {
         if (userId) {
-            const guardados = localStorage.getItem("carrito_${userId}");
+            const guardados = localStorage.getItem("carrito_" + userId);
             if (guardados) {
                 setProductos(JSON.parse(guardados));
             }
@@ -33,11 +33,11 @@ export default function ResumenProductos({ onTotalChange }: ResumenProductosProp
     }, [productos, onTotalChange]);
 
     // Guardar en localStorage cada vez que se modifica el carrito
-    /*
+    
     useEffect(() => {
         localStorage.setItem("carrito", JSON.stringify(productos));
     }, [productos]);
-    */
+    
 
     const aumentarCantidad = (id: number) => {
         setProductos((prev) =>

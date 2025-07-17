@@ -11,16 +11,16 @@ export default function addCarrito(id: number, nombre: string, precio: number, i
         id: id || 1, 
         nombre: nombre || "Producto de ejemplo",
         precio: precio || 0,
-        imagen: imagen_url || "https://via.placeholder.com/150",
+        imagen: imagen_url || "",
         cantidad: 1,
     };
 
-    const carrito = JSON.parse(localStorage.getItem("carrito_${userId}") || "[]");
+    const carrito = JSON.parse(localStorage.getItem("carrito_" + userId) || "[]");
     const existe = carrito.find((p: any) => p.id === nuevoProducto.id);
 
     if (!existe) {
         carrito.push(nuevoProducto);
-        localStorage.setItem("carrito_${userId}", JSON.stringify(carrito));
-        alert("Producto agregado al carrito");
+        localStorage.setItem("carrito_" + userId, JSON.stringify(carrito));
+        
     }
 }
